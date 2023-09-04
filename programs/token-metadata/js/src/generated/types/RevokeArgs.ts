@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 /**
  * @category enums
  * @category generated
@@ -31,7 +31,6 @@ export enum RevokeArgs {
  * @category userTypes
  * @category generated
  */
-export const revokeArgsBeet = beet.fixedScalarEnum(RevokeArgs) as beet.FixedSizeBeet<
-  RevokeArgs,
+export const revokeArgsBeet = beet.fixedScalarEnum(
   RevokeArgs
->;
+) as beet.FixedSizeBeet<RevokeArgs, RevokeArgs>

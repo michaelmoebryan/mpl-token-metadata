@@ -5,11 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type LeafInfo = {
-  leaf: number[] /* size: 32 */;
-  proof: number[] /* size: 32 */[];
-};
+  leaf: number[] /* size: 32 */
+  proof: number[] /* size: 32 */[]
+}
 
 /**
  * @category userTypes
@@ -20,5 +20,5 @@ export const leafInfoBeet = new beet.FixableBeetArgsStruct<LeafInfo>(
     ['leaf', beet.uniformFixedSizeArray(beet.u8, 32)],
     ['proof', beet.array(beet.uniformFixedSizeArray(beet.u8, 32))],
   ],
-  'LeafInfo',
-);
+  'LeafInfo'
+)

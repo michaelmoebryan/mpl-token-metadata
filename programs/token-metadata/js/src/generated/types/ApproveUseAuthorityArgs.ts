@@ -5,16 +5,17 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type ApproveUseAuthorityArgs = {
-  numberOfUses: beet.bignum;
-};
+  numberOfUses: beet.bignum
+}
 
 /**
  * @category userTypes
  * @category generated
  */
-export const approveUseAuthorityArgsBeet = new beet.BeetArgsStruct<ApproveUseAuthorityArgs>(
-  [['numberOfUses', beet.u64]],
-  'ApproveUseAuthorityArgs',
-);
+export const approveUseAuthorityArgsBeet =
+  new beet.BeetArgsStruct<ApproveUseAuthorityArgs>(
+    [['numberOfUses', beet.u64]],
+    'ApproveUseAuthorityArgs'
+  )

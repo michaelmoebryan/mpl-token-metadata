@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,33 +14,36 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const DeprecatedCreateReservationListStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'DeprecatedCreateReservationListInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'DeprecatedCreateReservationListInstructionArgs'
+)
 /**
  * Accounts required by the _DeprecatedCreateReservationList_ instruction
  *
- * @property [_writable_] reservationList PDA for ReservationList of ['metadata', program id, master edition key, 'reservation', resource-key]
- * @property [**signer**] payer Payer
- * @property [**signer**] updateAuthority Update authority
- * @property [] masterEdition  Master Edition V1 key (pda of ['metadata', program id, mint id, 'edition'])
- * @property [] resource A resource you wish to tie the reservation list to. This is so your later visitors who come to redeem can derive your reservation list PDA with something they can easily get at. You choose what this should be.
- * @property [] metadata Metadata key (pda of ['metadata', program id, mint id])
+ * @property [_writable_] reservationList
+ * @property [**signer**] payer
+ * @property [**signer**] updateAuthority
+ * @property [] masterEdition
+ * @property [] resource
+ * @property [] metadata
  * @category Instructions
  * @category DeprecatedCreateReservationList
  * @category generated
  */
 export type DeprecatedCreateReservationListInstructionAccounts = {
-  reservationList: web3.PublicKey;
-  payer: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-  masterEdition: web3.PublicKey;
-  resource: web3.PublicKey;
-  metadata: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  reservationList: web3.PublicKey
+  payer: web3.PublicKey
+  updateAuthority: web3.PublicKey
+  masterEdition: web3.PublicKey
+  resource: web3.PublicKey
+  metadata: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const deprecatedCreateReservationListInstructionDiscriminator = 6;
+export const deprecatedCreateReservationListInstructionDiscriminator = 6
 
 /**
  * Creates a _DeprecatedCreateReservationList_ instruction.
@@ -52,11 +55,12 @@ export const deprecatedCreateReservationListInstructionDiscriminator = 6;
  */
 export function createDeprecatedCreateReservationListInstruction(
   accounts: DeprecatedCreateReservationListInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = DeprecatedCreateReservationListStruct.serialize({
-    instructionDiscriminator: deprecatedCreateReservationListInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      deprecatedCreateReservationListInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.reservationList,
@@ -98,12 +102,12 @@ export function createDeprecatedCreateReservationListInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

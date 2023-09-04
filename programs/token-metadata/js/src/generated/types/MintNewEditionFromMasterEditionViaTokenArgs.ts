@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type MintNewEditionFromMasterEditionViaTokenArgs = {
-  edition: beet.bignum;
-};
+  edition: beet.bignum
+}
 
 /**
  * @category userTypes
@@ -17,5 +17,5 @@ export type MintNewEditionFromMasterEditionViaTokenArgs = {
 export const mintNewEditionFromMasterEditionViaTokenArgsBeet =
   new beet.BeetArgsStruct<MintNewEditionFromMasterEditionViaTokenArgs>(
     [['edition', beet.u64]],
-    'MintNewEditionFromMasterEditionViaTokenArgs',
-  );
+    'MintNewEditionFromMasterEditionViaTokenArgs'
+  )

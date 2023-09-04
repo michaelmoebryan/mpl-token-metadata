@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { Uses, usesBeet } from './Uses';
+import * as beet from '@metaplex-foundation/beet'
+import { Uses, usesBeet } from './Uses'
 /**
  * This type is used to derive the {@link UsesToggle} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link UsesToggle} type instead.
@@ -17,10 +17,10 @@ import { Uses, usesBeet } from './Uses';
  * @private
  */
 export type UsesToggleRecord = {
-  None: void /* scalar variant */;
-  Clear: void /* scalar variant */;
-  Set: { fields: [Uses] };
-};
+  None: void /* scalar variant */
+  Clear: void /* scalar variant */
+  Set: { fields: [Uses] }
+}
 
 /**
  * Union type respresenting the UsesToggle data enum defined in Rust.
@@ -33,14 +33,17 @@ export type UsesToggleRecord = {
  * @category enums
  * @category generated
  */
-export type UsesToggle = beet.DataEnumKeyAsKind<UsesToggleRecord>;
+export type UsesToggle = beet.DataEnumKeyAsKind<UsesToggleRecord>
 
-export const isUsesToggleNone = (x: UsesToggle): x is UsesToggle & { __kind: 'None' } =>
-  x.__kind === 'None';
-export const isUsesToggleClear = (x: UsesToggle): x is UsesToggle & { __kind: 'Clear' } =>
-  x.__kind === 'Clear';
-export const isUsesToggleSet = (x: UsesToggle): x is UsesToggle & { __kind: 'Set' } =>
-  x.__kind === 'Set';
+export const isUsesToggleNone = (
+  x: UsesToggle
+): x is UsesToggle & { __kind: 'None' } => x.__kind === 'None'
+export const isUsesToggleClear = (
+  x: UsesToggle
+): x is UsesToggle & { __kind: 'Clear' } => x.__kind === 'Clear'
+export const isUsesToggleSet = (
+  x: UsesToggle
+): x is UsesToggle & { __kind: 'Set' } => x.__kind === 'Set'
 
 /**
  * @category userTypes
@@ -53,7 +56,7 @@ export const usesToggleBeet = beet.dataEnum<UsesToggleRecord>([
     'Set',
     new beet.BeetArgsStruct<UsesToggleRecord['Set']>(
       [['fields', beet.fixedSizeTuple([usesBeet])]],
-      'UsesToggleRecord["Set"]',
+      'UsesToggleRecord["Set"]'
     ),
   ],
-]) as beet.FixableBeet<UsesToggle, UsesToggle>;
+]) as beet.FixableBeet<UsesToggle, UsesToggle>

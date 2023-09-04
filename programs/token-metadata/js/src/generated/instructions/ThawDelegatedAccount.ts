@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -15,28 +15,31 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const ThawDelegatedAccountStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'ThawDelegatedAccountInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'ThawDelegatedAccountInstructionArgs'
+)
 /**
  * Accounts required by the _ThawDelegatedAccount_ instruction
  *
- * @property [_writable_, **signer**] delegate Delegate
- * @property [_writable_] tokenAccount Token account to thaw
- * @property [] edition Edition
- * @property [] mint Token mint
+ * @property [_writable_, **signer**] delegate
+ * @property [_writable_] tokenAccount
+ * @property [] edition
+ * @property [] mint
  * @category Instructions
  * @category ThawDelegatedAccount
  * @category generated
  */
 export type ThawDelegatedAccountInstructionAccounts = {
-  delegate: web3.PublicKey;
-  tokenAccount: web3.PublicKey;
-  edition: web3.PublicKey;
-  mint: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-};
+  delegate: web3.PublicKey
+  tokenAccount: web3.PublicKey
+  edition: web3.PublicKey
+  mint: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+}
 
-export const thawDelegatedAccountInstructionDiscriminator = 27;
+export const thawDelegatedAccountInstructionDiscriminator = 27
 
 /**
  * Creates a _ThawDelegatedAccount_ instruction.
@@ -48,11 +51,11 @@ export const thawDelegatedAccountInstructionDiscriminator = 27;
  */
 export function createThawDelegatedAccountInstruction(
   accounts: ThawDelegatedAccountInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = ThawDelegatedAccountStruct.serialize({
     instructionDiscriminator: thawDelegatedAccountInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.delegate,
@@ -79,12 +82,12 @@ export function createThawDelegatedAccountInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

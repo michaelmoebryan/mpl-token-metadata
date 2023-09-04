@@ -5,17 +5,23 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
-import { Data, dataBeet } from '../types/Data';
-import { TokenStandard, tokenStandardBeet } from '../types/TokenStandard';
-import { Collection, collectionBeet } from '../types/Collection';
-import { Uses, usesBeet } from '../types/Uses';
-import { CollectionDetails, collectionDetailsBeet } from '../types/CollectionDetails';
-import { ProgrammableConfig, programmableConfigBeet } from '../types/ProgrammableConfig';
-import * as customSerializer from '../../custom/metadata-deserializer';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
+import { Data, dataBeet } from '../types/Data'
+import { TokenStandard, tokenStandardBeet } from '../types/TokenStandard'
+import { Collection, collectionBeet } from '../types/Collection'
+import { Uses, usesBeet } from '../types/Uses'
+import {
+  CollectionDetails,
+  collectionDetailsBeet,
+} from '../types/CollectionDetails'
+import {
+  ProgrammableConfig,
+  programmableConfigBeet,
+} from '../types/ProgrammableConfig'
+import * as customSerializer from '../../custom/metadata-deserializer'
 
 /**
  * Arguments used to create {@link Metadata}
@@ -23,19 +29,19 @@ import * as customSerializer from '../../custom/metadata-deserializer';
  * @category generated
  */
 export type MetadataArgs = {
-  key: Key;
-  updateAuthority: web3.PublicKey;
-  mint: web3.PublicKey;
-  data: Data;
-  primarySaleHappened: boolean;
-  isMutable: boolean;
-  editionNonce: beet.COption<number>;
-  tokenStandard: beet.COption<TokenStandard>;
-  collection: beet.COption<Collection>;
-  uses: beet.COption<Uses>;
-  collectionDetails: beet.COption<CollectionDetails>;
-  programmableConfig: beet.COption<ProgrammableConfig>;
-};
+  key: Key
+  updateAuthority: web3.PublicKey
+  mint: web3.PublicKey
+  data: Data
+  primarySaleHappened: boolean
+  isMutable: boolean
+  editionNonce: beet.COption<number>
+  tokenStandard: beet.COption<TokenStandard>
+  collection: beet.COption<Collection>
+  uses: beet.COption<Uses>
+  collectionDetails: beet.COption<CollectionDetails>
+  programmableConfig: beet.COption<ProgrammableConfig>
+}
 /**
  * Holds the data for the {@link Metadata} Account and provides de/serialization
  * functionality for that data
@@ -56,7 +62,7 @@ export class Metadata implements MetadataArgs {
     readonly collection: beet.COption<Collection>,
     readonly uses: beet.COption<Uses>,
     readonly collectionDetails: beet.COption<CollectionDetails>,
-    readonly programmableConfig: beet.COption<ProgrammableConfig>,
+    readonly programmableConfig: beet.COption<ProgrammableConfig>
   ) {}
 
   /**
@@ -75,16 +81,19 @@ export class Metadata implements MetadataArgs {
       args.collection,
       args.uses,
       args.collectionDetails,
-      args.programmableConfig,
-    );
+      args.programmableConfig
+    )
   }
 
   /**
    * Deserializes the {@link Metadata} from the data of the provided {@link web3.AccountInfo}.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static fromAccountInfo(accountInfo: web3.AccountInfo<Buffer>, offset = 0): [Metadata, number] {
-    return Metadata.deserialize(accountInfo.data, offset);
+  static fromAccountInfo(
+    accountInfo: web3.AccountInfo<Buffer>,
+    offset = 0
+  ): [Metadata, number] {
+    return Metadata.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -96,13 +105,16 @@ export class Metadata implements MetadataArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<Metadata> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find Metadata account at ${address}`);
+      throw new Error(`Unable to find Metadata account at ${address}`)
     }
-    return Metadata.fromAccountInfo(accountInfo, 0)[0];
+    return Metadata.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -112,9 +124,11 @@ export class Metadata implements MetadataArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, metadataBeet);
+    return beetSolana.GpaBuilder.fromStruct(programId, metadataBeet)
   }
 
   /**
@@ -122,7 +136,7 @@ export class Metadata implements MetadataArgs {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [Metadata, number] {
-    return resolvedDeserialize(buf, offset);
+    return resolvedDeserialize(buf, offset)
   }
 
   /**
@@ -130,7 +144,7 @@ export class Metadata implements MetadataArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return resolvedSerialize(this);
+    return resolvedSerialize(this)
   }
 
   /**
@@ -141,8 +155,8 @@ export class Metadata implements MetadataArgs {
    * depends on them
    */
   static byteSize(args: MetadataArgs) {
-    const instance = Metadata.fromArgs(args);
-    return metadataBeet.toFixedFromValue(instance).byteSize;
+    const instance = Metadata.fromArgs(args)
+    return metadataBeet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -156,9 +170,12 @@ export class Metadata implements MetadataArgs {
   static async getMinimumBalanceForRentExemption(
     args: MetadataArgs,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(Metadata.byteSize(args), commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      Metadata.byteSize(args),
+      commitment
+    )
   }
 
   /**
@@ -179,7 +196,7 @@ export class Metadata implements MetadataArgs {
       uses: this.uses,
       collectionDetails: this.collectionDetails,
       programmableConfig: this.programmableConfig,
-    };
+    }
   }
 }
 
@@ -203,19 +220,19 @@ export const metadataBeet = new beet.FixableBeetStruct<Metadata, MetadataArgs>(
     ['programmableConfig', beet.coption(programmableConfigBeet)],
   ],
   Metadata.fromArgs,
-  'Metadata',
-);
+  'Metadata'
+)
 
 const serializer = customSerializer as unknown as {
-  serialize: typeof metadataBeet.serialize;
-  deserialize: typeof metadataBeet.deserialize;
-};
+  serialize: typeof metadataBeet.serialize
+  deserialize: typeof metadataBeet.deserialize
+}
 
 const resolvedSerialize =
   typeof serializer.serialize === 'function'
     ? serializer.serialize.bind(serializer)
-    : metadataBeet.serialize.bind(metadataBeet);
+    : metadataBeet.serialize.bind(metadataBeet)
 const resolvedDeserialize =
   typeof serializer.deserialize === 'function'
     ? serializer.deserialize.bind(serializer)
-    : metadataBeet.deserialize.bind(metadataBeet);
+    : metadataBeet.deserialize.bind(metadataBeet)

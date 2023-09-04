@@ -5,14 +5,14 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import * as beet from '@metaplex-foundation/beet';
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import * as beet from '@metaplex-foundation/beet'
 export type ReservationV1 = {
-  address: web3.PublicKey;
-  spotsRemaining: number;
-  totalSpots: number;
-};
+  address: web3.PublicKey
+  spotsRemaining: number
+  totalSpots: number
+}
 
 /**
  * @category userTypes
@@ -24,5 +24,5 @@ export const reservationV1Beet = new beet.BeetArgsStruct<ReservationV1>(
     ['spotsRemaining', beet.u8],
     ['totalSpots', beet.u8],
   ],
-  'ReservationV1',
-);
+  'ReservationV1'
+)

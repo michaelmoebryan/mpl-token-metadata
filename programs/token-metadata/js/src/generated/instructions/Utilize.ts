@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { UtilizeArgs, utilizeArgsBeet } from '../types/UtilizeArgs';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import { UtilizeArgs, utilizeArgsBeet } from '../types/UtilizeArgs'
 
 /**
  * @category Instructions
@@ -16,8 +16,8 @@ import { UtilizeArgs, utilizeArgsBeet } from '../types/UtilizeArgs';
  * @category generated
  */
 export type UtilizeInstructionArgs = {
-  utilizeArgs: UtilizeArgs;
-};
+  utilizeArgs: UtilizeArgs
+}
 /**
  * @category Instructions
  * @category Utilize
@@ -25,44 +25,44 @@ export type UtilizeInstructionArgs = {
  */
 export const UtilizeStruct = new beet.BeetArgsStruct<
   UtilizeInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['utilizeArgs', utilizeArgsBeet],
   ],
-  'UtilizeInstructionArgs',
-);
+  'UtilizeInstructionArgs'
+)
 /**
  * Accounts required by the _Utilize_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [_writable_] tokenAccount Token Account Of NFT
- * @property [_writable_] mint Mint of the Metadata
- * @property [_writable_, **signer**] useAuthority A Use Authority / Can be the current Owner of the NFT
- * @property [] owner Owner
- * @property [_writable_] useAuthorityRecord (optional) Use Authority Record PDA If present the program Assumes a delegated use authority
- * @property [] burner (optional) Program As Signer (Burner)
+ * @property [_writable_] metadata
+ * @property [_writable_] tokenAccount
+ * @property [_writable_] mint
+ * @property [_writable_, **signer**] useAuthority
+ * @property [] owner
+ * @property [_writable_] useAuthorityRecord (optional)
+ * @property [] burner (optional)
  * @category Instructions
  * @category Utilize
  * @category generated
  */
 export type UtilizeInstructionAccounts = {
-  metadata: web3.PublicKey;
-  tokenAccount: web3.PublicKey;
-  mint: web3.PublicKey;
-  useAuthority: web3.PublicKey;
-  owner: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  ataProgram?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-  useAuthorityRecord?: web3.PublicKey;
-  burner?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  tokenAccount: web3.PublicKey
+  mint: web3.PublicKey
+  useAuthority: web3.PublicKey
+  owner: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  ataProgram?: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+  useAuthorityRecord?: web3.PublicKey
+  burner?: web3.PublicKey
+}
 
-export const utilizeInstructionDiscriminator = 19;
+export const utilizeInstructionDiscriminator = 19
 
 /**
  * Creates a _Utilize_ instruction.
@@ -82,12 +82,12 @@ export const utilizeInstructionDiscriminator = 19;
 export function createUtilizeInstruction(
   accounts: UtilizeInstructionAccounts,
   args: UtilizeInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UtilizeStruct.serialize({
     instructionDiscriminator: utilizeInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -134,32 +134,32 @@ export function createUtilizeInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.useAuthorityRecord != null) {
     keys.push({
       pubkey: accounts.useAuthorityRecord,
       isWritable: true,
       isSigner: false,
-    });
+    })
   }
   if (accounts.burner != null) {
     if (accounts.useAuthorityRecord == null) {
       throw new Error(
-        "When providing 'burner' then 'accounts.useAuthorityRecord' need(s) to be provided as well.",
-      );
+        "When providing 'burner' then 'accounts.useAuthorityRecord' need(s) to be provided as well."
+      )
     }
     keys.push({
       pubkey: accounts.burner,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

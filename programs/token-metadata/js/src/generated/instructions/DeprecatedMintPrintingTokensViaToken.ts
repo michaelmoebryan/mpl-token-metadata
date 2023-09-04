@@ -5,45 +5,47 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category DeprecatedMintPrintingTokensViaToken
  * @category generated
  */
-export const DeprecatedMintPrintingTokensViaTokenStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'DeprecatedMintPrintingTokensViaTokenInstructionArgs');
+export const DeprecatedMintPrintingTokensViaTokenStruct =
+  new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
+    [['instructionDiscriminator', beet.u8]],
+    'DeprecatedMintPrintingTokensViaTokenInstructionArgs'
+  )
 /**
  * Accounts required by the _DeprecatedMintPrintingTokensViaToken_ instruction
  *
- * @property [_writable_] destination Destination account
- * @property [_writable_] token Token account containing one time authorization token
- * @property [_writable_] oneTimePrintingAuthorizationMint One time authorization mint
- * @property [_writable_] printingMint Printing mint
- * @property [**signer**] burnAuthority Burn authority
- * @property [] metadata Metadata key (pda of ['metadata', program id, mint id])
- * @property [] masterEdition Master Edition V1 key (pda of ['metadata', program id, mint id, 'edition'])
+ * @property [_writable_] destination
+ * @property [_writable_] token
+ * @property [_writable_] oneTimePrintingAuthorizationMint
+ * @property [_writable_] printingMint
+ * @property [**signer**] burnAuthority
+ * @property [] metadata
+ * @property [] masterEdition
  * @category Instructions
  * @category DeprecatedMintPrintingTokensViaToken
  * @category generated
  */
 export type DeprecatedMintPrintingTokensViaTokenInstructionAccounts = {
-  destination: web3.PublicKey;
-  token: web3.PublicKey;
-  oneTimePrintingAuthorizationMint: web3.PublicKey;
-  printingMint: web3.PublicKey;
-  burnAuthority: web3.PublicKey;
-  metadata: web3.PublicKey;
-  masterEdition: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  destination: web3.PublicKey
+  token: web3.PublicKey
+  oneTimePrintingAuthorizationMint: web3.PublicKey
+  printingMint: web3.PublicKey
+  burnAuthority: web3.PublicKey
+  metadata: web3.PublicKey
+  masterEdition: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const deprecatedMintPrintingTokensViaTokenInstructionDiscriminator = 8;
+export const deprecatedMintPrintingTokensViaTokenInstructionDiscriminator = 8
 
 /**
  * Creates a _DeprecatedMintPrintingTokensViaToken_ instruction.
@@ -55,11 +57,12 @@ export const deprecatedMintPrintingTokensViaTokenInstructionDiscriminator = 8;
  */
 export function createDeprecatedMintPrintingTokensViaTokenInstruction(
   accounts: DeprecatedMintPrintingTokensViaTokenInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = DeprecatedMintPrintingTokensViaTokenStruct.serialize({
-    instructionDiscriminator: deprecatedMintPrintingTokensViaTokenInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      deprecatedMintPrintingTokensViaTokenInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.destination,
@@ -106,12 +109,12 @@ export function createDeprecatedMintPrintingTokensViaTokenInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

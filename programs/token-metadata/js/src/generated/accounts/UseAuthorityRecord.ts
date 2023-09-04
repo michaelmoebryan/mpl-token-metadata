@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link UseAuthorityRecord}
@@ -16,10 +16,10 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type UseAuthorityRecordArgs = {
-  key: Key;
-  allowedUses: beet.bignum;
-  bump: number;
-};
+  key: Key
+  allowedUses: beet.bignum
+  bump: number
+}
 /**
  * Holds the data for the {@link UseAuthorityRecord} Account and provides de/serialization
  * functionality for that data
@@ -31,14 +31,14 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
   private constructor(
     readonly key: Key,
     readonly allowedUses: beet.bignum,
-    readonly bump: number,
+    readonly bump: number
   ) {}
 
   /**
    * Creates a {@link UseAuthorityRecord} instance from the provided args.
    */
   static fromArgs(args: UseAuthorityRecordArgs) {
-    return new UseAuthorityRecord(args.key, args.allowedUses, args.bump);
+    return new UseAuthorityRecord(args.key, args.allowedUses, args.bump)
   }
 
   /**
@@ -47,9 +47,9 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [UseAuthorityRecord, number] {
-    return UseAuthorityRecord.deserialize(accountInfo.data, offset);
+    return UseAuthorityRecord.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -61,13 +61,16 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<UseAuthorityRecord> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find UseAuthorityRecord account at ${address}`);
+      throw new Error(`Unable to find UseAuthorityRecord account at ${address}`)
     }
-    return UseAuthorityRecord.fromAccountInfo(accountInfo, 0)[0];
+    return UseAuthorityRecord.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -77,9 +80,11 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, useAuthorityRecordBeet);
+    return beetSolana.GpaBuilder.fromStruct(programId, useAuthorityRecordBeet)
   }
 
   /**
@@ -87,7 +92,7 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [UseAuthorityRecord, number] {
-    return useAuthorityRecordBeet.deserialize(buf, offset);
+    return useAuthorityRecordBeet.deserialize(buf, offset)
   }
 
   /**
@@ -95,7 +100,7 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return useAuthorityRecordBeet.serialize(this);
+    return useAuthorityRecordBeet.serialize(this)
   }
 
   /**
@@ -103,7 +108,7 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    * {@link UseAuthorityRecord}
    */
   static get byteSize() {
-    return useAuthorityRecordBeet.byteSize;
+    return useAuthorityRecordBeet.byteSize
   }
 
   /**
@@ -114,9 +119,12 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    */
   static async getMinimumBalanceForRentExemption(
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(UseAuthorityRecord.byteSize, commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      UseAuthorityRecord.byteSize,
+      commitment
+    )
   }
 
   /**
@@ -124,7 +132,7 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
    * hold {@link UseAuthorityRecord} data.
    */
   static hasCorrectByteSize(buf: Buffer, offset = 0) {
-    return buf.byteLength - offset === UseAuthorityRecord.byteSize;
+    return buf.byteLength - offset === UseAuthorityRecord.byteSize
   }
 
   /**
@@ -135,18 +143,18 @@ export class UseAuthorityRecord implements UseAuthorityRecordArgs {
     return {
       key: 'Key.' + Key[this.key],
       allowedUses: (() => {
-        const x = <{ toNumber: () => number }>this.allowedUses;
+        const x = <{ toNumber: () => number }>this.allowedUses
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
       bump: this.bump,
-    };
+    }
   }
 }
 
@@ -164,5 +172,5 @@ export const useAuthorityRecordBeet = new beet.BeetStruct<
     ['bump', beet.u8],
   ],
   UseAuthorityRecord.fromArgs,
-  'UseAuthorityRecord',
-);
+  'UseAuthorityRecord'
+)

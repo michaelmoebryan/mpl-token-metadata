@@ -5,33 +5,32 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category SignMetadata
  * @category generated
  */
-export const SignMetadataStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'SignMetadataInstructionArgs',
-);
+export const SignMetadataStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'SignMetadataInstructionArgs')
 /**
  * Accounts required by the _SignMetadata_ instruction
  *
- * @property [_writable_] metadata Metadata (pda of ['metadata', program id, mint id])
- * @property [**signer**] creator Creator
+ * @property [_writable_] metadata
+ * @property [**signer**] creator
  * @category Instructions
  * @category SignMetadata
  * @category generated
  */
 export type SignMetadataInstructionAccounts = {
-  metadata: web3.PublicKey;
-  creator: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  creator: web3.PublicKey
+}
 
-export const signMetadataInstructionDiscriminator = 7;
+export const signMetadataInstructionDiscriminator = 7
 
 /**
  * Creates a _SignMetadata_ instruction.
@@ -43,11 +42,11 @@ export const signMetadataInstructionDiscriminator = 7;
  */
 export function createSignMetadataInstruction(
   accounts: SignMetadataInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = SignMetadataStruct.serialize({
     instructionDiscriminator: signMetadataInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -59,12 +58,12 @@ export function createSignMetadataInstruction(
       isWritable: false,
       isSigner: true,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

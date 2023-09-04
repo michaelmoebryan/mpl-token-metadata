@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,33 +14,36 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const ApproveCollectionAuthorityStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'ApproveCollectionAuthorityInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'ApproveCollectionAuthorityInstructionArgs'
+)
 /**
  * Accounts required by the _ApproveCollectionAuthority_ instruction
  *
- * @property [_writable_] collectionAuthorityRecord Collection Authority Record PDA
- * @property [] newCollectionAuthority A Collection Authority
- * @property [_writable_, **signer**] updateAuthority Update Authority of Collection NFT
- * @property [_writable_, **signer**] payer Payer
- * @property [] metadata Collection Metadata account
- * @property [] mint Mint of Collection Metadata
+ * @property [_writable_] collectionAuthorityRecord
+ * @property [] newCollectionAuthority
+ * @property [_writable_, **signer**] updateAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [] metadata
+ * @property [] mint
  * @category Instructions
  * @category ApproveCollectionAuthority
  * @category generated
  */
 export type ApproveCollectionAuthorityInstructionAccounts = {
-  collectionAuthorityRecord: web3.PublicKey;
-  newCollectionAuthority: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  metadata: web3.PublicKey;
-  mint: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  collectionAuthorityRecord: web3.PublicKey
+  newCollectionAuthority: web3.PublicKey
+  updateAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  metadata: web3.PublicKey
+  mint: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const approveCollectionAuthorityInstructionDiscriminator = 23;
+export const approveCollectionAuthorityInstructionDiscriminator = 23
 
 /**
  * Creates a _ApproveCollectionAuthority_ instruction.
@@ -57,11 +60,12 @@ export const approveCollectionAuthorityInstructionDiscriminator = 23;
  */
 export function createApproveCollectionAuthorityInstruction(
   accounts: ApproveCollectionAuthorityInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = ApproveCollectionAuthorityStruct.serialize({
-    instructionDiscriminator: approveCollectionAuthorityInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      approveCollectionAuthorityInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.collectionAuthorityRecord,
@@ -98,20 +102,20 @@ export function createApproveCollectionAuthorityInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.rent != null) {
     keys.push({
       pubkey: accounts.rent,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

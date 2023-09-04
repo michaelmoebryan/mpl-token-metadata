@@ -5,11 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import * as beet from '@metaplex-foundation/beet';
-import { Key, keyBeet } from '../types/Key';
-import { EscrowAuthority, escrowAuthorityBeet } from '../types/EscrowAuthority';
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import * as beet from '@metaplex-foundation/beet'
+import { Key, keyBeet } from '../types/Key'
+import { EscrowAuthority, escrowAuthorityBeet } from '../types/EscrowAuthority'
 
 /**
  * Arguments used to create {@link TokenOwnedEscrow}
@@ -17,11 +17,11 @@ import { EscrowAuthority, escrowAuthorityBeet } from '../types/EscrowAuthority';
  * @category generated
  */
 export type TokenOwnedEscrowArgs = {
-  key: Key;
-  baseToken: web3.PublicKey;
-  authority: EscrowAuthority;
-  bump: number;
-};
+  key: Key
+  baseToken: web3.PublicKey
+  authority: EscrowAuthority
+  bump: number
+}
 /**
  * Holds the data for the {@link TokenOwnedEscrow} Account and provides de/serialization
  * functionality for that data
@@ -34,14 +34,19 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
     readonly key: Key,
     readonly baseToken: web3.PublicKey,
     readonly authority: EscrowAuthority,
-    readonly bump: number,
+    readonly bump: number
   ) {}
 
   /**
    * Creates a {@link TokenOwnedEscrow} instance from the provided args.
    */
   static fromArgs(args: TokenOwnedEscrowArgs) {
-    return new TokenOwnedEscrow(args.key, args.baseToken, args.authority, args.bump);
+    return new TokenOwnedEscrow(
+      args.key,
+      args.baseToken,
+      args.authority,
+      args.bump
+    )
   }
 
   /**
@@ -50,9 +55,9 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [TokenOwnedEscrow, number] {
-    return TokenOwnedEscrow.deserialize(accountInfo.data, offset);
+    return TokenOwnedEscrow.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -64,13 +69,16 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<TokenOwnedEscrow> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find TokenOwnedEscrow account at ${address}`);
+      throw new Error(`Unable to find TokenOwnedEscrow account at ${address}`)
     }
-    return TokenOwnedEscrow.fromAccountInfo(accountInfo, 0)[0];
+    return TokenOwnedEscrow.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -80,9 +88,11 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, tokenOwnedEscrowBeet);
+    return beetSolana.GpaBuilder.fromStruct(programId, tokenOwnedEscrowBeet)
   }
 
   /**
@@ -90,7 +100,7 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [TokenOwnedEscrow, number] {
-    return tokenOwnedEscrowBeet.deserialize(buf, offset);
+    return tokenOwnedEscrowBeet.deserialize(buf, offset)
   }
 
   /**
@@ -98,7 +108,7 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return tokenOwnedEscrowBeet.serialize(this);
+    return tokenOwnedEscrowBeet.serialize(this)
   }
 
   /**
@@ -109,8 +119,8 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
    * depends on them
    */
   static byteSize(args: TokenOwnedEscrowArgs) {
-    const instance = TokenOwnedEscrow.fromArgs(args);
-    return tokenOwnedEscrowBeet.toFixedFromValue(instance).byteSize;
+    const instance = TokenOwnedEscrow.fromArgs(args)
+    return tokenOwnedEscrowBeet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -124,12 +134,12 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
   static async getMinimumBalanceForRentExemption(
     args: TokenOwnedEscrowArgs,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
     return connection.getMinimumBalanceForRentExemption(
       TokenOwnedEscrow.byteSize(args),
-      commitment,
-    );
+      commitment
+    )
   }
 
   /**
@@ -142,7 +152,7 @@ export class TokenOwnedEscrow implements TokenOwnedEscrowArgs {
       baseToken: this.baseToken.toBase58(),
       authority: this.authority.__kind,
       bump: this.bump,
-    };
+    }
   }
 }
 
@@ -161,5 +171,5 @@ export const tokenOwnedEscrowBeet = new beet.FixableBeetStruct<
     ['bump', beet.u8],
   ],
   TokenOwnedEscrow.fromArgs,
-  'TokenOwnedEscrow',
-);
+  'TokenOwnedEscrow'
+)

@@ -5,17 +5,18 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { Payload, payloadBeet } from './Payload';
+import * as beet from '@metaplex-foundation/beet'
+import { Payload, payloadBeet } from './Payload'
 export type AuthorizationData = {
-  payload: Payload;
-};
+  payload: Payload
+}
 
 /**
  * @category userTypes
  * @category generated
  */
-export const authorizationDataBeet = new beet.FixableBeetArgsStruct<AuthorizationData>(
-  [['payload', payloadBeet]],
-  'AuthorizationData',
-);
+export const authorizationDataBeet =
+  new beet.FixableBeetArgsStruct<AuthorizationData>(
+    [['payload', payloadBeet]],
+    'AuthorizationData'
+  )

@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { AuthorizationData, authorizationDataBeet } from './AuthorizationData';
+import * as beet from '@metaplex-foundation/beet'
+import { AuthorizationData, authorizationDataBeet } from './AuthorizationData'
 /**
  * This type is used to derive the {@link TransferArgs} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link TransferArgs} type instead.
@@ -17,8 +17,11 @@ import { AuthorizationData, authorizationDataBeet } from './AuthorizationData';
  * @private
  */
 export type TransferArgsRecord = {
-  V1: { amount: beet.bignum; authorizationData: beet.COption<AuthorizationData> };
-};
+  V1: {
+    amount: beet.bignum
+    authorizationData: beet.COption<AuthorizationData>
+  }
+}
 
 /**
  * Union type respresenting the TransferArgs data enum defined in Rust.
@@ -31,10 +34,11 @@ export type TransferArgsRecord = {
  * @category enums
  * @category generated
  */
-export type TransferArgs = beet.DataEnumKeyAsKind<TransferArgsRecord>;
+export type TransferArgs = beet.DataEnumKeyAsKind<TransferArgsRecord>
 
-export const isTransferArgsV1 = (x: TransferArgs): x is TransferArgs & { __kind: 'V1' } =>
-  x.__kind === 'V1';
+export const isTransferArgsV1 = (
+  x: TransferArgs
+): x is TransferArgs & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -48,7 +52,7 @@ export const transferArgsBeet = beet.dataEnum<TransferArgsRecord>([
         ['amount', beet.u64],
         ['authorizationData', beet.coption(authorizationDataBeet)],
       ],
-      'TransferArgsRecord["V1"]',
+      'TransferArgsRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<TransferArgs, TransferArgs>;
+]) as beet.FixableBeet<TransferArgs, TransferArgs>

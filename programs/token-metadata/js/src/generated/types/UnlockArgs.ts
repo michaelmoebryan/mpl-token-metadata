@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { AuthorizationData, authorizationDataBeet } from './AuthorizationData';
+import * as beet from '@metaplex-foundation/beet'
+import { AuthorizationData, authorizationDataBeet } from './AuthorizationData'
 /**
  * This type is used to derive the {@link UnlockArgs} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link UnlockArgs} type instead.
@@ -17,8 +17,8 @@ import { AuthorizationData, authorizationDataBeet } from './AuthorizationData';
  * @private
  */
 export type UnlockArgsRecord = {
-  V1: { authorizationData: beet.COption<AuthorizationData> };
-};
+  V1: { authorizationData: beet.COption<AuthorizationData> }
+}
 
 /**
  * Union type respresenting the UnlockArgs data enum defined in Rust.
@@ -31,10 +31,11 @@ export type UnlockArgsRecord = {
  * @category enums
  * @category generated
  */
-export type UnlockArgs = beet.DataEnumKeyAsKind<UnlockArgsRecord>;
+export type UnlockArgs = beet.DataEnumKeyAsKind<UnlockArgsRecord>
 
-export const isUnlockArgsV1 = (x: UnlockArgs): x is UnlockArgs & { __kind: 'V1' } =>
-  x.__kind === 'V1';
+export const isUnlockArgsV1 = (
+  x: UnlockArgs
+): x is UnlockArgs & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -45,7 +46,7 @@ export const unlockArgsBeet = beet.dataEnum<UnlockArgsRecord>([
     'V1',
     new beet.FixableBeetArgsStruct<UnlockArgsRecord['V1']>(
       [['authorizationData', beet.coption(authorizationDataBeet)]],
-      'UnlockArgsRecord["V1"]',
+      'UnlockArgsRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<UnlockArgs, UnlockArgs>;
+]) as beet.FixableBeet<UnlockArgs, UnlockArgs>

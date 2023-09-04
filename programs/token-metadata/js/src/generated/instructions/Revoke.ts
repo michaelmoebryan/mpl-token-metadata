@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { RevokeArgs, revokeArgsBeet } from '../types/RevokeArgs';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import { RevokeArgs, revokeArgsBeet } from '../types/RevokeArgs'
 
 /**
  * @category Instructions
@@ -15,8 +15,8 @@ import { RevokeArgs, revokeArgsBeet } from '../types/RevokeArgs';
  * @category generated
  */
 export type RevokeInstructionArgs = {
-  revokeArgs: RevokeArgs;
-};
+  revokeArgs: RevokeArgs
+}
 /**
  * @category Instructions
  * @category Revoke
@@ -24,59 +24,61 @@ export type RevokeInstructionArgs = {
  */
 export const RevokeStruct = new beet.BeetArgsStruct<
   RevokeInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['revokeArgs', revokeArgsBeet],
   ],
-  'RevokeInstructionArgs',
-);
+  'RevokeInstructionArgs'
+)
 /**
  * Accounts required by the _Revoke_ instruction
  *
- * @property [_writable_] delegateRecord (optional) Delegate record account
- * @property [] delegate Owner of the delegated account
- * @property [_writable_] metadata Metadata account
- * @property [] masterEdition (optional) Master Edition account
- * @property [_writable_] tokenRecord (optional) Token record account
- * @property [] mint Mint of metadata
- * @property [_writable_] token (optional) Token account of mint
- * @property [**signer**] authority Update authority or token owner
- * @property [_writable_, **signer**] payer Payer
- * @property [] sysvarInstructions Instructions sysvar account
- * @property [] splTokenProgram (optional) SPL Token Program
- * @property [] authorizationRulesProgram (optional) Token Authorization Rules Program
- * @property [] authorizationRules (optional) Token Authorization Rules account
+ * @property [_writable_] delegateRecord (optional)
+ * @property [] delegate
+ * @property [_writable_] metadata
+ * @property [] masterEdition (optional)
+ * @property [_writable_] tokenRecord (optional)
+ * @property [] mint
+ * @property [_writable_] token (optional)
+ * @property [**signer**] authority
+ * @property [_writable_, **signer**] payer
+ * @property [] sysvarInstructions
+ * @property [] splTokenProgram (optional)
+ * @property [] authorizationRulesProgram (optional)
+ * @property [] authorizationRules (optional)
  * @category Instructions
  * @category Revoke
  * @category generated
  */
 export type RevokeInstructionAccounts = {
-  delegateRecord?: web3.PublicKey;
-  delegate: web3.PublicKey;
-  metadata: web3.PublicKey;
-  masterEdition?: web3.PublicKey;
-  tokenRecord?: web3.PublicKey;
-  mint: web3.PublicKey;
-  token?: web3.PublicKey;
-  authority: web3.PublicKey;
-  payer: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  splTokenProgram?: web3.PublicKey;
-  authorizationRulesProgram?: web3.PublicKey;
-  authorizationRules?: web3.PublicKey;
-};
+  delegateRecord?: web3.PublicKey
+  delegate: web3.PublicKey
+  metadata: web3.PublicKey
+  masterEdition?: web3.PublicKey
+  tokenRecord?: web3.PublicKey
+  mint: web3.PublicKey
+  token?: web3.PublicKey
+  authority: web3.PublicKey
+  payer: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  splTokenProgram?: web3.PublicKey
+  authorizationRulesProgram?: web3.PublicKey
+  authorizationRules?: web3.PublicKey
+}
 
-export const revokeInstructionDiscriminator = 45;
+export const revokeInstructionDiscriminator = 45
 
 /**
  * Creates a _Revoke_ instruction.
  *
- * Optional accounts that are not provided default to the program ID since
- * this was indicated in the IDL from which this instruction was generated.
+ * Optional accounts that are not provided will be omitted from the accounts
+ * array passed with the instruction.
+ * An optional account that is set cannot follow an optional account that is unset.
+ * Otherwise an Error is raised.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @param args to provide as instruction data to the program
@@ -88,89 +90,155 @@ export const revokeInstructionDiscriminator = 45;
 export function createRevokeInstruction(
   accounts: RevokeInstructionAccounts,
   args: RevokeInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = RevokeStruct.serialize({
     instructionDiscriminator: revokeInstructionDiscriminator,
     ...args,
-  });
-  const keys: web3.AccountMeta[] = [
-    {
-      pubkey: accounts.delegateRecord ?? programId,
-      isWritable: accounts.delegateRecord != null,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.delegate,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.metadata,
+  })
+  const keys: web3.AccountMeta[] = []
+
+  if (accounts.delegateRecord != null) {
+    keys.push({
+      pubkey: accounts.delegateRecord,
       isWritable: true,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.masterEdition ?? programId,
+    })
+  }
+  keys.push({
+    pubkey: accounts.delegate,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.metadata,
+    isWritable: true,
+    isSigner: false,
+  })
+  if (accounts.masterEdition != null) {
+    if (accounts.delegateRecord == null) {
+      throw new Error(
+        "When providing 'masterEdition' then 'accounts.delegateRecord' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.masterEdition,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.tokenRecord ?? programId,
-      isWritable: accounts.tokenRecord != null,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.mint,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.token ?? programId,
-      isWritable: accounts.token != null,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.authority,
-      isWritable: false,
-      isSigner: true,
-    },
-    {
-      pubkey: accounts.payer,
+    })
+  }
+  if (accounts.tokenRecord != null) {
+    if (accounts.delegateRecord == null || accounts.masterEdition == null) {
+      throw new Error(
+        "When providing 'tokenRecord' then 'accounts.delegateRecord', 'accounts.masterEdition' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.tokenRecord,
       isWritable: true,
-      isSigner: true,
-    },
-    {
-      pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+      isSigner: false,
+    })
+  }
+  keys.push({
+    pubkey: accounts.mint,
+    isWritable: false,
+    isSigner: false,
+  })
+  if (accounts.token != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.masterEdition == null ||
+      accounts.tokenRecord == null
+    ) {
+      throw new Error(
+        "When providing 'token' then 'accounts.delegateRecord', 'accounts.masterEdition', 'accounts.tokenRecord' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.token,
+      isWritable: true,
+      isSigner: false,
+    })
+  }
+  keys.push({
+    pubkey: accounts.authority,
+    isWritable: false,
+    isSigner: true,
+  })
+  keys.push({
+    pubkey: accounts.payer,
+    isWritable: true,
+    isSigner: true,
+  })
+  keys.push({
+    pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.sysvarInstructions,
+    isWritable: false,
+    isSigner: false,
+  })
+  if (accounts.splTokenProgram != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.masterEdition == null ||
+      accounts.tokenRecord == null ||
+      accounts.token == null
+    ) {
+      throw new Error(
+        "When providing 'splTokenProgram' then 'accounts.delegateRecord', 'accounts.masterEdition', 'accounts.tokenRecord', 'accounts.token' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.splTokenProgram,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.sysvarInstructions,
+    })
+  }
+  if (accounts.authorizationRulesProgram != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.masterEdition == null ||
+      accounts.tokenRecord == null ||
+      accounts.token == null ||
+      accounts.splTokenProgram == null
+    ) {
+      throw new Error(
+        "When providing 'authorizationRulesProgram' then 'accounts.delegateRecord', 'accounts.masterEdition', 'accounts.tokenRecord', 'accounts.token', 'accounts.splTokenProgram' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.authorizationRulesProgram,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.splTokenProgram ?? programId,
+    })
+  }
+  if (accounts.authorizationRules != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.masterEdition == null ||
+      accounts.tokenRecord == null ||
+      accounts.token == null ||
+      accounts.splTokenProgram == null ||
+      accounts.authorizationRulesProgram == null
+    ) {
+      throw new Error(
+        "When providing 'authorizationRules' then 'accounts.delegateRecord', 'accounts.masterEdition', 'accounts.tokenRecord', 'accounts.token', 'accounts.splTokenProgram', 'accounts.authorizationRulesProgram' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.authorizationRules,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.authorizationRulesProgram ?? programId,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.authorizationRules ?? programId,
-      isWritable: false,
-      isSigner: false,
-    },
-  ];
+    })
+  }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

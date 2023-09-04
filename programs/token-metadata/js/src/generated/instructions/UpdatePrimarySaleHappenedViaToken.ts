@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,25 +14,28 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const UpdatePrimarySaleHappenedViaTokenStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'UpdatePrimarySaleHappenedViaTokenInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'UpdatePrimarySaleHappenedViaTokenInstructionArgs'
+)
 /**
  * Accounts required by the _UpdatePrimarySaleHappenedViaToken_ instruction
  *
- * @property [_writable_] metadata Metadata key (pda of ['metadata', program id, mint id])
- * @property [**signer**] owner Owner on the token account
- * @property [] token Account containing tokens from the metadata's mint
+ * @property [_writable_] metadata
+ * @property [**signer**] owner
+ * @property [] token
  * @category Instructions
  * @category UpdatePrimarySaleHappenedViaToken
  * @category generated
  */
 export type UpdatePrimarySaleHappenedViaTokenInstructionAccounts = {
-  metadata: web3.PublicKey;
-  owner: web3.PublicKey;
-  token: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  owner: web3.PublicKey
+  token: web3.PublicKey
+}
 
-export const updatePrimarySaleHappenedViaTokenInstructionDiscriminator = 4;
+export const updatePrimarySaleHappenedViaTokenInstructionDiscriminator = 4
 
 /**
  * Creates a _UpdatePrimarySaleHappenedViaToken_ instruction.
@@ -44,11 +47,12 @@ export const updatePrimarySaleHappenedViaTokenInstructionDiscriminator = 4;
  */
 export function createUpdatePrimarySaleHappenedViaTokenInstruction(
   accounts: UpdatePrimarySaleHappenedViaTokenInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UpdatePrimarySaleHappenedViaTokenStruct.serialize({
-    instructionDiscriminator: updatePrimarySaleHappenedViaTokenInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      updatePrimarySaleHappenedViaTokenInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -65,12 +69,12 @@ export function createUpdatePrimarySaleHappenedViaTokenInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

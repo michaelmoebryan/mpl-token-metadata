@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link CollectionAuthorityRecord}
@@ -16,10 +16,10 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type CollectionAuthorityRecordArgs = {
-  key: Key;
-  bump: number;
-  updateAuthority: beet.COption<web3.PublicKey>;
-};
+  key: Key
+  bump: number
+  updateAuthority: beet.COption<web3.PublicKey>
+}
 /**
  * Holds the data for the {@link CollectionAuthorityRecord} Account and provides de/serialization
  * functionality for that data
@@ -27,18 +27,24 @@ export type CollectionAuthorityRecordArgs = {
  * @category Accounts
  * @category generated
  */
-export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs {
+export class CollectionAuthorityRecord
+  implements CollectionAuthorityRecordArgs
+{
   private constructor(
     readonly key: Key,
     readonly bump: number,
-    readonly updateAuthority: beet.COption<web3.PublicKey>,
+    readonly updateAuthority: beet.COption<web3.PublicKey>
   ) {}
 
   /**
    * Creates a {@link CollectionAuthorityRecord} instance from the provided args.
    */
   static fromArgs(args: CollectionAuthorityRecordArgs) {
-    return new CollectionAuthorityRecord(args.key, args.bump, args.updateAuthority);
+    return new CollectionAuthorityRecord(
+      args.key,
+      args.bump,
+      args.updateAuthority
+    )
   }
 
   /**
@@ -47,9 +53,9 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [CollectionAuthorityRecord, number] {
-    return CollectionAuthorityRecord.deserialize(accountInfo.data, offset);
+    return CollectionAuthorityRecord.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -61,13 +67,18 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<CollectionAuthorityRecord> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find CollectionAuthorityRecord account at ${address}`);
+      throw new Error(
+        `Unable to find CollectionAuthorityRecord account at ${address}`
+      )
     }
-    return CollectionAuthorityRecord.fromAccountInfo(accountInfo, 0)[0];
+    return CollectionAuthorityRecord.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -77,17 +88,25 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, collectionAuthorityRecordBeet);
+    return beetSolana.GpaBuilder.fromStruct(
+      programId,
+      collectionAuthorityRecordBeet
+    )
   }
 
   /**
    * Deserializes the {@link CollectionAuthorityRecord} from the provided data Buffer.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static deserialize(buf: Buffer, offset = 0): [CollectionAuthorityRecord, number] {
-    return collectionAuthorityRecordBeet.deserialize(buf, offset);
+  static deserialize(
+    buf: Buffer,
+    offset = 0
+  ): [CollectionAuthorityRecord, number] {
+    return collectionAuthorityRecordBeet.deserialize(buf, offset)
   }
 
   /**
@@ -95,7 +114,7 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return collectionAuthorityRecordBeet.serialize(this);
+    return collectionAuthorityRecordBeet.serialize(this)
   }
 
   /**
@@ -106,8 +125,8 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
    * depends on them
    */
   static byteSize(args: CollectionAuthorityRecordArgs) {
-    const instance = CollectionAuthorityRecord.fromArgs(args);
-    return collectionAuthorityRecordBeet.toFixedFromValue(instance).byteSize;
+    const instance = CollectionAuthorityRecord.fromArgs(args)
+    return collectionAuthorityRecordBeet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -121,12 +140,12 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
   static async getMinimumBalanceForRentExemption(
     args: CollectionAuthorityRecordArgs,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
     return connection.getMinimumBalanceForRentExemption(
       CollectionAuthorityRecord.byteSize(args),
-      commitment,
-    );
+      commitment
+    )
   }
 
   /**
@@ -138,7 +157,7 @@ export class CollectionAuthorityRecord implements CollectionAuthorityRecordArgs 
       key: 'Key.' + Key[this.key],
       bump: this.bump,
       updateAuthority: this.updateAuthority,
-    };
+    }
   }
 }
 
@@ -156,5 +175,5 @@ export const collectionAuthorityRecordBeet = new beet.FixableBeetStruct<
     ['updateAuthority', beet.coption(beetSolana.publicKey)],
   ],
   CollectionAuthorityRecord.fromArgs,
-  'CollectionAuthorityRecord',
-);
+  'CollectionAuthorityRecord'
+)

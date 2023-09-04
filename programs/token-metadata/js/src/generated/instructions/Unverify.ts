@@ -5,9 +5,12 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { VerificationArgs, verificationArgsBeet } from '../types/VerificationArgs';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import {
+  VerificationArgs,
+  verificationArgsBeet,
+} from '../types/VerificationArgs'
 
 /**
  * @category Instructions
@@ -15,8 +18,8 @@ import { VerificationArgs, verificationArgsBeet } from '../types/VerificationArg
  * @category generated
  */
 export type UnverifyInstructionArgs = {
-  verificationArgs: VerificationArgs;
-};
+  verificationArgs: VerificationArgs
+}
 /**
  * @category Instructions
  * @category Unverify
@@ -24,45 +27,47 @@ export type UnverifyInstructionArgs = {
  */
 export const UnverifyStruct = new beet.BeetArgsStruct<
   UnverifyInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['verificationArgs', verificationArgsBeet],
   ],
-  'UnverifyInstructionArgs',
-);
+  'UnverifyInstructionArgs'
+)
 /**
  * Accounts required by the _Unverify_ instruction
  *
- * @property [**signer**] authority Creator to verify, collection (or metadata if parent burned) update authority or delegate
- * @property [] delegateRecord (optional) Delegate record PDA
- * @property [_writable_] metadata Metadata account
- * @property [] collectionMint (optional) Mint of the Collection
- * @property [_writable_] collectionMetadata (optional) Metadata Account of the Collection
- * @property [] sysvarInstructions Instructions sysvar account
+ * @property [**signer**] authority
+ * @property [] delegateRecord (optional)
+ * @property [_writable_] metadata
+ * @property [] collectionMint (optional)
+ * @property [_writable_] collectionMetadata (optional)
+ * @property [] sysvarInstructions
  * @category Instructions
  * @category Unverify
  * @category generated
  */
 export type UnverifyInstructionAccounts = {
-  authority: web3.PublicKey;
-  delegateRecord?: web3.PublicKey;
-  metadata: web3.PublicKey;
-  collectionMint?: web3.PublicKey;
-  collectionMetadata?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-};
+  authority: web3.PublicKey
+  delegateRecord?: web3.PublicKey
+  metadata: web3.PublicKey
+  collectionMint?: web3.PublicKey
+  collectionMetadata?: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+}
 
-export const unverifyInstructionDiscriminator = 53;
+export const unverifyInstructionDiscriminator = 53
 
 /**
  * Creates a _Unverify_ instruction.
  *
- * Optional accounts that are not provided default to the program ID since
- * this was indicated in the IDL from which this instruction was generated.
+ * Optional accounts that are not provided will be omitted from the accounts
+ * array passed with the instruction.
+ * An optional account that is set cannot follow an optional account that is unset.
+ * Otherwise an Error is raised.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @param args to provide as instruction data to the program
@@ -74,54 +79,71 @@ export const unverifyInstructionDiscriminator = 53;
 export function createUnverifyInstruction(
   accounts: UnverifyInstructionAccounts,
   args: UnverifyInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UnverifyStruct.serialize({
     instructionDiscriminator: unverifyInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.authority,
       isWritable: false,
       isSigner: true,
     },
-    {
-      pubkey: accounts.delegateRecord ?? programId,
+  ]
+
+  if (accounts.delegateRecord != null) {
+    keys.push({
+      pubkey: accounts.delegateRecord,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.metadata,
+    })
+  }
+  keys.push({
+    pubkey: accounts.metadata,
+    isWritable: true,
+    isSigner: false,
+  })
+  if (accounts.collectionMint != null) {
+    if (accounts.delegateRecord == null) {
+      throw new Error(
+        "When providing 'collectionMint' then 'accounts.delegateRecord' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.collectionMint,
+      isWritable: false,
+      isSigner: false,
+    })
+  }
+  if (accounts.collectionMetadata != null) {
+    if (accounts.delegateRecord == null || accounts.collectionMint == null) {
+      throw new Error(
+        "When providing 'collectionMetadata' then 'accounts.delegateRecord', 'accounts.collectionMint' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.collectionMetadata,
       isWritable: true,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.collectionMint ?? programId,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.collectionMetadata ?? programId,
-      isWritable: accounts.collectionMetadata != null,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.sysvarInstructions,
-      isWritable: false,
-      isSigner: false,
-    },
-  ];
+    })
+  }
+  keys.push({
+    pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.sysvarInstructions,
+    isWritable: false,
+    isSigner: false,
+  })
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { CollectionDetails, collectionDetailsBeet } from './CollectionDetails';
+import * as beet from '@metaplex-foundation/beet'
+import { CollectionDetails, collectionDetailsBeet } from './CollectionDetails'
 /**
  * This type is used to derive the {@link CollectionDetailsToggle} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link CollectionDetailsToggle} type instead.
@@ -17,10 +17,10 @@ import { CollectionDetails, collectionDetailsBeet } from './CollectionDetails';
  * @private
  */
 export type CollectionDetailsToggleRecord = {
-  None: void /* scalar variant */;
-  Clear: void /* scalar variant */;
-  Set: { fields: [CollectionDetails] };
-};
+  None: void /* scalar variant */
+  Clear: void /* scalar variant */
+  Set: { fields: [CollectionDetails] }
+}
 
 /**
  * Union type respresenting the CollectionDetailsToggle data enum defined in Rust.
@@ -33,30 +33,32 @@ export type CollectionDetailsToggleRecord = {
  * @category enums
  * @category generated
  */
-export type CollectionDetailsToggle = beet.DataEnumKeyAsKind<CollectionDetailsToggleRecord>;
+export type CollectionDetailsToggle =
+  beet.DataEnumKeyAsKind<CollectionDetailsToggleRecord>
 
 export const isCollectionDetailsToggleNone = (
-  x: CollectionDetailsToggle,
-): x is CollectionDetailsToggle & { __kind: 'None' } => x.__kind === 'None';
+  x: CollectionDetailsToggle
+): x is CollectionDetailsToggle & { __kind: 'None' } => x.__kind === 'None'
 export const isCollectionDetailsToggleClear = (
-  x: CollectionDetailsToggle,
-): x is CollectionDetailsToggle & { __kind: 'Clear' } => x.__kind === 'Clear';
+  x: CollectionDetailsToggle
+): x is CollectionDetailsToggle & { __kind: 'Clear' } => x.__kind === 'Clear'
 export const isCollectionDetailsToggleSet = (
-  x: CollectionDetailsToggle,
-): x is CollectionDetailsToggle & { __kind: 'Set' } => x.__kind === 'Set';
+  x: CollectionDetailsToggle
+): x is CollectionDetailsToggle & { __kind: 'Set' } => x.__kind === 'Set'
 
 /**
  * @category userTypes
  * @category generated
  */
-export const collectionDetailsToggleBeet = beet.dataEnum<CollectionDetailsToggleRecord>([
-  ['None', beet.unit],
-  ['Clear', beet.unit],
-  [
-    'Set',
-    new beet.FixableBeetArgsStruct<CollectionDetailsToggleRecord['Set']>(
-      [['fields', beet.tuple([collectionDetailsBeet])]],
-      'CollectionDetailsToggleRecord["Set"]',
-    ),
-  ],
-]) as beet.FixableBeet<CollectionDetailsToggle, CollectionDetailsToggle>;
+export const collectionDetailsToggleBeet =
+  beet.dataEnum<CollectionDetailsToggleRecord>([
+    ['None', beet.unit],
+    ['Clear', beet.unit],
+    [
+      'Set',
+      new beet.FixableBeetArgsStruct<CollectionDetailsToggleRecord['Set']>(
+        [['fields', beet.tuple([collectionDetailsBeet])]],
+        'CollectionDetailsToggleRecord["Set"]'
+      ),
+    ],
+  ]) as beet.FixableBeet<CollectionDetailsToggle, CollectionDetailsToggle>

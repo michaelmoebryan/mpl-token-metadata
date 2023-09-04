@@ -5,64 +5,65 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category Migrate
  * @category generated
  */
-export const MigrateStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'MigrateInstructionArgs',
-);
+export const MigrateStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'MigrateInstructionArgs')
 /**
  * Accounts required by the _Migrate_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [_writable_] edition Edition account
- * @property [_writable_] token Token account
- * @property [] tokenOwner Token account owner
- * @property [] mint Mint account
- * @property [_writable_, **signer**] payer Payer
- * @property [**signer**] authority Update authority
- * @property [] collectionMetadata Collection metadata account
- * @property [] delegateRecord Delegate record account
- * @property [_writable_] tokenRecord Token record account
- * @property [] sysvarInstructions Instruction sysvar account
- * @property [] splTokenProgram SPL Token Program
- * @property [] authorizationRulesProgram (optional) Token Authorization Rules Program
- * @property [] authorizationRules (optional) Token Authorization Rules account
+ * @property [_writable_] metadata
+ * @property [_writable_] edition
+ * @property [_writable_] token
+ * @property [] tokenOwner
+ * @property [] mint
+ * @property [_writable_, **signer**] payer
+ * @property [**signer**] authority
+ * @property [] collectionMetadata
+ * @property [] delegateRecord
+ * @property [_writable_] tokenRecord
+ * @property [] sysvarInstructions
+ * @property [] splTokenProgram
+ * @property [] authorizationRulesProgram (optional)
+ * @property [] authorizationRules (optional)
  * @category Instructions
  * @category Migrate
  * @category generated
  */
 export type MigrateInstructionAccounts = {
-  metadata: web3.PublicKey;
-  edition: web3.PublicKey;
-  token: web3.PublicKey;
-  tokenOwner: web3.PublicKey;
-  mint: web3.PublicKey;
-  payer: web3.PublicKey;
-  authority: web3.PublicKey;
-  collectionMetadata: web3.PublicKey;
-  delegateRecord: web3.PublicKey;
-  tokenRecord: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  splTokenProgram: web3.PublicKey;
-  authorizationRulesProgram?: web3.PublicKey;
-  authorizationRules?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  edition: web3.PublicKey
+  token: web3.PublicKey
+  tokenOwner: web3.PublicKey
+  mint: web3.PublicKey
+  payer: web3.PublicKey
+  authority: web3.PublicKey
+  collectionMetadata: web3.PublicKey
+  delegateRecord: web3.PublicKey
+  tokenRecord: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  splTokenProgram: web3.PublicKey
+  authorizationRulesProgram?: web3.PublicKey
+  authorizationRules?: web3.PublicKey
+}
 
-export const migrateInstructionDiscriminator = 48;
+export const migrateInstructionDiscriminator = 48
 
 /**
  * Creates a _Migrate_ instruction.
  *
- * Optional accounts that are not provided default to the program ID since
- * this was indicated in the IDL from which this instruction was generated.
+ * Optional accounts that are not provided will be omitted from the accounts
+ * array passed with the instruction.
+ * An optional account that is set cannot follow an optional account that is unset.
+ * Otherwise an Error is raised.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @category Instructions
@@ -71,11 +72,11 @@ export const migrateInstructionDiscriminator = 48;
  */
 export function createMigrateInstruction(
   accounts: MigrateInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = MigrateStruct.serialize({
     instructionDiscriminator: migrateInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -142,22 +143,32 @@ export function createMigrateInstruction(
       isWritable: false,
       isSigner: false,
     },
-    {
-      pubkey: accounts.authorizationRulesProgram ?? programId,
+  ]
+
+  if (accounts.authorizationRulesProgram != null) {
+    keys.push({
+      pubkey: accounts.authorizationRulesProgram,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.authorizationRules ?? programId,
+    })
+  }
+  if (accounts.authorizationRules != null) {
+    if (accounts.authorizationRulesProgram == null) {
+      throw new Error(
+        "When providing 'authorizationRules' then 'accounts.authorizationRulesProgram' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.authorizationRules,
       isWritable: false,
       isSigner: false,
-    },
-  ];
+    })
+  }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { PrintArgs, printArgsBeet } from '../types/PrintArgs';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import { PrintArgs, printArgsBeet } from '../types/PrintArgs'
 
 /**
  * @category Instructions
@@ -15,8 +15,8 @@ import { PrintArgs, printArgsBeet } from '../types/PrintArgs';
  * @category generated
  */
 export type PrintInstructionArgs = {
-  printArgs: PrintArgs;
-};
+  printArgs: PrintArgs
+}
 /**
  * @category Instructions
  * @category Print
@@ -24,67 +24,69 @@ export type PrintInstructionArgs = {
  */
 export const PrintStruct = new beet.FixableBeetArgsStruct<
   PrintInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['printArgs', printArgsBeet],
   ],
-  'PrintInstructionArgs',
-);
+  'PrintInstructionArgs'
+)
 /**
  * Accounts required by the _Print_ instruction
  *
- * @property [_writable_] editionMetadata New Metadata key (pda of ['metadata', program id, mint id])
- * @property [_writable_] edition New Edition (pda of ['metadata', program id, mint id, 'edition'])
- * @property [_writable_] editionMint Mint of new token - THIS WILL TRANSFER AUTHORITY AWAY FROM THIS KEY
- * @property [] editionTokenAccountOwner Owner of the token account of new token
- * @property [_writable_] editionTokenAccount Token account of new token
- * @property [**signer**] editionMintAuthority Mint authority of new mint
- * @property [_writable_] editionTokenRecord (optional) Token record account
- * @property [_writable_] masterEdition Master Record Edition V2 (pda of ['metadata', program id, master metadata mint id, 'edition'])
- * @property [_writable_] editionMarkerPda Edition pda to mark creation - will be checked for pre-existence. (pda of ['metadata', program id, master metadata mint id, 'edition', edition_number]) where edition_number is NOT the edition number you pass in args but actually edition_number = floor(edition/EDITION_MARKER_BIT_SIZE).
- * @property [_writable_, **signer**] payer payer
- * @property [**signer**] masterTokenAccountOwner owner of token account containing master token
- * @property [] masterTokenAccount token account containing token from master metadata mint
- * @property [] masterMetadata Master record metadata account
- * @property [] updateAuthority The update authority of the master edition.
- * @property [] splTokenProgram Token program
- * @property [] splAtaProgram SPL Associated Token Account program
- * @property [] sysvarInstructions Instructions sysvar account
+ * @property [_writable_] editionMetadata
+ * @property [_writable_] edition
+ * @property [_writable_] editionMint
+ * @property [] editionTokenAccountOwner
+ * @property [_writable_] editionTokenAccount
+ * @property [**signer**] editionMintAuthority
+ * @property [_writable_] editionTokenRecord (optional)
+ * @property [_writable_] masterEdition
+ * @property [_writable_] editionMarkerPda
+ * @property [_writable_, **signer**] payer
+ * @property [**signer**] masterTokenAccountOwner
+ * @property [] masterTokenAccount
+ * @property [] masterMetadata
+ * @property [] updateAuthority
+ * @property [] splTokenProgram
+ * @property [] splAtaProgram
+ * @property [] sysvarInstructions
  * @category Instructions
  * @category Print
  * @category generated
  */
 export type PrintInstructionAccounts = {
-  editionMetadata: web3.PublicKey;
-  edition: web3.PublicKey;
-  editionMint: web3.PublicKey;
-  editionTokenAccountOwner: web3.PublicKey;
-  editionTokenAccount: web3.PublicKey;
-  editionMintAuthority: web3.PublicKey;
-  editionTokenRecord?: web3.PublicKey;
-  masterEdition: web3.PublicKey;
-  editionMarkerPda: web3.PublicKey;
-  payer: web3.PublicKey;
-  masterTokenAccountOwner: web3.PublicKey;
-  masterTokenAccount: web3.PublicKey;
-  masterMetadata: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-  splTokenProgram: web3.PublicKey;
-  splAtaProgram: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-};
+  editionMetadata: web3.PublicKey
+  edition: web3.PublicKey
+  editionMint: web3.PublicKey
+  editionTokenAccountOwner: web3.PublicKey
+  editionTokenAccount: web3.PublicKey
+  editionMintAuthority: web3.PublicKey
+  editionTokenRecord?: web3.PublicKey
+  masterEdition: web3.PublicKey
+  editionMarkerPda: web3.PublicKey
+  payer: web3.PublicKey
+  masterTokenAccountOwner: web3.PublicKey
+  masterTokenAccount: web3.PublicKey
+  masterMetadata: web3.PublicKey
+  updateAuthority: web3.PublicKey
+  splTokenProgram: web3.PublicKey
+  splAtaProgram: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  systemProgram?: web3.PublicKey
+}
 
-export const printInstructionDiscriminator = 55;
+export const printInstructionDiscriminator = 55
 
 /**
  * Creates a _Print_ instruction.
  *
- * Optional accounts that are not provided default to the program ID since
- * this was indicated in the IDL from which this instruction was generated.
+ * Optional accounts that are not provided will be omitted from the accounts
+ * array passed with the instruction.
+ * An optional account that is set cannot follow an optional account that is unset.
+ * Otherwise an Error is raised.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @param args to provide as instruction data to the program
@@ -96,12 +98,12 @@ export const printInstructionDiscriminator = 55;
 export function createPrintInstruction(
   accounts: PrintInstructionAccounts,
   args: PrintInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = PrintStruct.serialize({
     instructionDiscriminator: printInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.editionMetadata,
@@ -133,72 +135,75 @@ export function createPrintInstruction(
       isWritable: false,
       isSigner: true,
     },
-    {
-      pubkey: accounts.editionTokenRecord ?? programId,
-      isWritable: accounts.editionTokenRecord != null,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.masterEdition,
+  ]
+
+  if (accounts.editionTokenRecord != null) {
+    keys.push({
+      pubkey: accounts.editionTokenRecord,
       isWritable: true,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.editionMarkerPda,
-      isWritable: true,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.payer,
-      isWritable: true,
-      isSigner: true,
-    },
-    {
-      pubkey: accounts.masterTokenAccountOwner,
-      isWritable: false,
-      isSigner: true,
-    },
-    {
-      pubkey: accounts.masterTokenAccount,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.masterMetadata,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.updateAuthority,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.splTokenProgram,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.splAtaProgram,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.sysvarInstructions,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
-      isWritable: false,
-      isSigner: false,
-    },
-  ];
+    })
+  }
+  keys.push({
+    pubkey: accounts.masterEdition,
+    isWritable: true,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.editionMarkerPda,
+    isWritable: true,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.payer,
+    isWritable: true,
+    isSigner: true,
+  })
+  keys.push({
+    pubkey: accounts.masterTokenAccountOwner,
+    isWritable: false,
+    isSigner: true,
+  })
+  keys.push({
+    pubkey: accounts.masterTokenAccount,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.masterMetadata,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.updateAuthority,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.splTokenProgram,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.splAtaProgram,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.sysvarInstructions,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+    isWritable: false,
+    isSigner: false,
+  })
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

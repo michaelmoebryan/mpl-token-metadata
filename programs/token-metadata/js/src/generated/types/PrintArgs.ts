@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 /**
  * This type is used to derive the {@link PrintArgs} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link PrintArgs} type instead.
@@ -16,8 +16,8 @@ import * as beet from '@metaplex-foundation/beet';
  * @private
  */
 export type PrintArgsRecord = {
-  V1: { edition: beet.bignum };
-};
+  V1: { edition: beet.bignum }
+}
 
 /**
  * Union type respresenting the PrintArgs data enum defined in Rust.
@@ -30,9 +30,11 @@ export type PrintArgsRecord = {
  * @category enums
  * @category generated
  */
-export type PrintArgs = beet.DataEnumKeyAsKind<PrintArgsRecord>;
+export type PrintArgs = beet.DataEnumKeyAsKind<PrintArgsRecord>
 
-export const isPrintArgsV1 = (x: PrintArgs): x is PrintArgs & { __kind: 'V1' } => x.__kind === 'V1';
+export const isPrintArgsV1 = (
+  x: PrintArgs
+): x is PrintArgs & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -43,7 +45,7 @@ export const printArgsBeet = beet.dataEnum<PrintArgsRecord>([
     'V1',
     new beet.BeetArgsStruct<PrintArgsRecord['V1']>(
       [['edition', beet.u64]],
-      'PrintArgsRecord["V1"]',
+      'PrintArgsRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<PrintArgs, PrintArgs>;
+]) as beet.FixableBeet<PrintArgs, PrintArgs>

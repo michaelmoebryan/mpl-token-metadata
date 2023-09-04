@@ -5,13 +5,13 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 import {
   TransferOutOfEscrowArgs,
   transferOutOfEscrowArgsBeet,
-} from '../types/TransferOutOfEscrowArgs';
+} from '../types/TransferOutOfEscrowArgs'
 
 /**
  * @category Instructions
@@ -19,8 +19,8 @@ import {
  * @category generated
  */
 export type TransferOutOfEscrowInstructionArgs = {
-  transferOutOfEscrowArgs: TransferOutOfEscrowArgs;
-};
+  transferOutOfEscrowArgs: TransferOutOfEscrowArgs
+}
 /**
  * @category Instructions
  * @category TransferOutOfEscrow
@@ -28,49 +28,49 @@ export type TransferOutOfEscrowInstructionArgs = {
  */
 export const TransferOutOfEscrowStruct = new beet.BeetArgsStruct<
   TransferOutOfEscrowInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['transferOutOfEscrowArgs', transferOutOfEscrowArgsBeet],
   ],
-  'TransferOutOfEscrowInstructionArgs',
-);
+  'TransferOutOfEscrowInstructionArgs'
+)
 /**
  * Accounts required by the _TransferOutOfEscrow_ instruction
  *
- * @property [] escrow Escrow account
- * @property [_writable_] metadata Metadata account
- * @property [_writable_, **signer**] payer Wallet paying for the transaction and new account
- * @property [] attributeMint Mint account for the new attribute
- * @property [_writable_] attributeSrc Token account source for the new attribute
- * @property [_writable_] attributeDst Token account, owned by TM, destination for the new attribute
- * @property [] escrowMint Mint account that the escrow is attached
- * @property [] escrowAccount Token account that holds the token the escrow is attached to
- * @property [] sysvarInstructions Instructions sysvar account
- * @property [**signer**] authority (optional) Authority/creator of the escrow account
+ * @property [] escrow
+ * @property [_writable_] metadata
+ * @property [_writable_, **signer**] payer
+ * @property [] attributeMint
+ * @property [_writable_] attributeSrc
+ * @property [_writable_] attributeDst
+ * @property [] escrowMint
+ * @property [] escrowAccount
+ * @property [] sysvarInstructions
+ * @property [**signer**] authority (optional)
  * @category Instructions
  * @category TransferOutOfEscrow
  * @category generated
  */
 export type TransferOutOfEscrowInstructionAccounts = {
-  escrow: web3.PublicKey;
-  metadata: web3.PublicKey;
-  payer: web3.PublicKey;
-  attributeMint: web3.PublicKey;
-  attributeSrc: web3.PublicKey;
-  attributeDst: web3.PublicKey;
-  escrowMint: web3.PublicKey;
-  escrowAccount: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  ataProgram?: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  authority?: web3.PublicKey;
-};
+  escrow: web3.PublicKey
+  metadata: web3.PublicKey
+  payer: web3.PublicKey
+  attributeMint: web3.PublicKey
+  attributeSrc: web3.PublicKey
+  attributeDst: web3.PublicKey
+  escrowMint: web3.PublicKey
+  escrowAccount: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  ataProgram?: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  authority?: web3.PublicKey
+}
 
-export const transferOutOfEscrowInstructionDiscriminator = 40;
+export const transferOutOfEscrowInstructionDiscriminator = 40
 
 /**
  * Creates a _TransferOutOfEscrow_ instruction.
@@ -90,12 +90,12 @@ export const transferOutOfEscrowInstructionDiscriminator = 40;
 export function createTransferOutOfEscrowInstruction(
   accounts: TransferOutOfEscrowInstructionAccounts,
   args: TransferOutOfEscrowInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = TransferOutOfEscrowStruct.serialize({
     instructionDiscriminator: transferOutOfEscrowInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.escrow,
@@ -157,20 +157,20 @@ export function createTransferOutOfEscrowInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.authority != null) {
     keys.push({
       pubkey: accounts.authority,
       isWritable: false,
       isSigner: true,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

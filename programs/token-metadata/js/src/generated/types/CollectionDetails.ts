@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 /**
  * This type is used to derive the {@link CollectionDetails} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link CollectionDetails} type instead.
@@ -16,8 +16,8 @@ import * as beet from '@metaplex-foundation/beet';
  * @private
  */
 export type CollectionDetailsRecord = {
-  V1: { size: beet.bignum };
-};
+  V1: { size: beet.bignum }
+}
 
 /**
  * Union type respresenting the CollectionDetails data enum defined in Rust.
@@ -30,11 +30,11 @@ export type CollectionDetailsRecord = {
  * @category enums
  * @category generated
  */
-export type CollectionDetails = beet.DataEnumKeyAsKind<CollectionDetailsRecord>;
+export type CollectionDetails = beet.DataEnumKeyAsKind<CollectionDetailsRecord>
 
 export const isCollectionDetailsV1 = (
-  x: CollectionDetails,
-): x is CollectionDetails & { __kind: 'V1' } => x.__kind === 'V1';
+  x: CollectionDetails
+): x is CollectionDetails & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -45,7 +45,7 @@ export const collectionDetailsBeet = beet.dataEnum<CollectionDetailsRecord>([
     'V1',
     new beet.BeetArgsStruct<CollectionDetailsRecord['V1']>(
       [['size', beet.u64]],
-      'CollectionDetailsRecord["V1"]',
+      'CollectionDetailsRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<CollectionDetails, CollectionDetails>;
+]) as beet.FixableBeet<CollectionDetails, CollectionDetails>

@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -17,48 +17,49 @@ import * as web3 from '@solana/web3.js';
 export const DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenStruct =
   new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
     [['instructionDiscriminator', beet.u8]],
-    'DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionArgs',
-  );
+    'DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionArgs'
+  )
 /**
  * Accounts required by the _DeprecatedMintNewEditionFromMasterEditionViaPrintingToken_ instruction
  *
- * @property [_writable_] metadata New Metadata key (pda of ['metadata', program id, mint id])
- * @property [_writable_] edition New Edition V1 (pda of ['metadata', program id, mint id, 'edition'])
- * @property [_writable_] masterEdition Master Record Edition V1 (pda of ['metadata', program id, master metadata mint id, 'edition'])
- * @property [_writable_] mint Mint of new token - THIS WILL TRANSFER AUTHORITY AWAY FROM THIS KEY
- * @property [**signer**] mintAuthority Mint authority of new mint
- * @property [_writable_] printingMint Printing Mint of master record edition
- * @property [_writable_] masterTokenAccount Token account containing Printing mint token to be transferred
- * @property [_writable_] editionMarker Edition pda to mark creation - will be checked for pre-existence. (pda of ['metadata', program id, master mint id, edition_number])
- * @property [**signer**] burnAuthority Burn authority for this token
- * @property [**signer**] payer payer
- * @property [] masterUpdateAuthority update authority info for new metadata account
- * @property [] masterMetadata Master record metadata account
- * @property [_writable_] reservationList (optional) Reservation List - If present, and you are on this list, you can get an edition number given by your position on the list.
+ * @property [_writable_] metadata
+ * @property [_writable_] edition
+ * @property [_writable_] masterEdition
+ * @property [_writable_] mint
+ * @property [**signer**] mintAuthority
+ * @property [_writable_] printingMint
+ * @property [_writable_] masterTokenAccount
+ * @property [_writable_] editionMarker
+ * @property [**signer**] burnAuthority
+ * @property [**signer**] payer
+ * @property [] masterUpdateAuthority
+ * @property [] masterMetadata
+ * @property [_writable_] reservationList (optional)
  * @category Instructions
  * @category DeprecatedMintNewEditionFromMasterEditionViaPrintingToken
  * @category generated
  */
-export type DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionAccounts = {
-  metadata: web3.PublicKey;
-  edition: web3.PublicKey;
-  masterEdition: web3.PublicKey;
-  mint: web3.PublicKey;
-  mintAuthority: web3.PublicKey;
-  printingMint: web3.PublicKey;
-  masterTokenAccount: web3.PublicKey;
-  editionMarker: web3.PublicKey;
-  burnAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  masterUpdateAuthority: web3.PublicKey;
-  masterMetadata: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-  reservationList?: web3.PublicKey;
-};
+export type DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionAccounts =
+  {
+    metadata: web3.PublicKey
+    edition: web3.PublicKey
+    masterEdition: web3.PublicKey
+    mint: web3.PublicKey
+    mintAuthority: web3.PublicKey
+    printingMint: web3.PublicKey
+    masterTokenAccount: web3.PublicKey
+    editionMarker: web3.PublicKey
+    burnAuthority: web3.PublicKey
+    payer: web3.PublicKey
+    masterUpdateAuthority: web3.PublicKey
+    masterMetadata: web3.PublicKey
+    tokenProgram?: web3.PublicKey
+    systemProgram?: web3.PublicKey
+    rent?: web3.PublicKey
+    reservationList?: web3.PublicKey
+  }
 
-export const deprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionDiscriminator = 3;
+export const deprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionDiscriminator = 3
 
 /**
  * Creates a _DeprecatedMintNewEditionFromMasterEditionViaPrintingToken_ instruction.
@@ -75,12 +76,13 @@ export const deprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructio
  */
 export function createDeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstruction(
   accounts: DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
-  const [data] = DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenStruct.serialize({
-    instructionDiscriminator:
-      deprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionDiscriminator,
-  });
+  const [data] =
+    DeprecatedMintNewEditionFromMasterEditionViaPrintingTokenStruct.serialize({
+      instructionDiscriminator:
+        deprecatedMintNewEditionFromMasterEditionViaPrintingTokenInstructionDiscriminator,
+    })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -157,20 +159,20 @@ export function createDeprecatedMintNewEditionFromMasterEditionViaPrintingTokenI
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.reservationList != null) {
     keys.push({
       pubkey: accounts.reservationList,
       isWritable: true,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

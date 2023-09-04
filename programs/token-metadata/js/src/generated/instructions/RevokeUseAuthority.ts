@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -15,34 +15,34 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const RevokeUseAuthorityStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'RevokeUseAuthorityInstructionArgs');
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'RevokeUseAuthorityInstructionArgs')
 /**
  * Accounts required by the _RevokeUseAuthority_ instruction
  *
- * @property [_writable_] useAuthorityRecord Use Authority Record PDA
- * @property [_writable_, **signer**] owner Owner
- * @property [] user A Use Authority
- * @property [_writable_] ownerTokenAccount Owned Token Account Of Mint
- * @property [] mint Mint of Metadata
- * @property [] metadata Metadata account
+ * @property [_writable_] useAuthorityRecord
+ * @property [_writable_, **signer**] owner
+ * @property [] user
+ * @property [_writable_] ownerTokenAccount
+ * @property [] mint
+ * @property [] metadata
  * @category Instructions
  * @category RevokeUseAuthority
  * @category generated
  */
 export type RevokeUseAuthorityInstructionAccounts = {
-  useAuthorityRecord: web3.PublicKey;
-  owner: web3.PublicKey;
-  user: web3.PublicKey;
-  ownerTokenAccount: web3.PublicKey;
-  mint: web3.PublicKey;
-  metadata: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  useAuthorityRecord: web3.PublicKey
+  owner: web3.PublicKey
+  user: web3.PublicKey
+  ownerTokenAccount: web3.PublicKey
+  mint: web3.PublicKey
+  metadata: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const revokeUseAuthorityInstructionDiscriminator = 21;
+export const revokeUseAuthorityInstructionDiscriminator = 21
 
 /**
  * Creates a _RevokeUseAuthority_ instruction.
@@ -59,11 +59,11 @@ export const revokeUseAuthorityInstructionDiscriminator = 21;
  */
 export function createRevokeUseAuthorityInstruction(
   accounts: RevokeUseAuthorityInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = RevokeUseAuthorityStruct.serialize({
     instructionDiscriminator: revokeUseAuthorityInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.useAuthorityRecord,
@@ -105,20 +105,20 @@ export function createRevokeUseAuthorityInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.rent != null) {
     keys.push({
       pubkey: accounts.rent,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type SeedsVec = {
-  seeds: Uint8Array[];
-};
+  seeds: Uint8Array[]
+}
 
 /**
  * @category userTypes
@@ -16,5 +16,5 @@ export type SeedsVec = {
  */
 export const seedsVecBeet = new beet.FixableBeetArgsStruct<SeedsVec>(
   [['seeds', beet.array(beet.bytes)]],
-  'SeedsVec',
-);
+  'SeedsVec'
+)

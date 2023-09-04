@@ -5,14 +5,14 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { DataV2, dataV2Beet } from './DataV2';
-import { CollectionDetails, collectionDetailsBeet } from './CollectionDetails';
+import * as beet from '@metaplex-foundation/beet'
+import { DataV2, dataV2Beet } from './DataV2'
+import { CollectionDetails, collectionDetailsBeet } from './CollectionDetails'
 export type CreateMetadataAccountArgsV3 = {
-  data: DataV2;
-  isMutable: boolean;
-  collectionDetails: beet.COption<CollectionDetails>;
-};
+  data: DataV2
+  isMutable: boolean
+  collectionDetails: beet.COption<CollectionDetails>
+}
 
 /**
  * @category userTypes
@@ -25,5 +25,5 @@ export const createMetadataAccountArgsV3Beet =
       ['isMutable', beet.bool],
       ['collectionDetails', beet.coption(collectionDetailsBeet)],
     ],
-    'CreateMetadataAccountArgsV3',
-  );
+    'CreateMetadataAccountArgsV3'
+  )

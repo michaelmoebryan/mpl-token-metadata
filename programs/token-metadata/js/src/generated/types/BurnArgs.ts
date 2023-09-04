@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 /**
  * This type is used to derive the {@link BurnArgs} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link BurnArgs} type instead.
@@ -16,8 +16,8 @@ import * as beet from '@metaplex-foundation/beet';
  * @private
  */
 export type BurnArgsRecord = {
-  V1: { amount: beet.bignum };
-};
+  V1: { amount: beet.bignum }
+}
 
 /**
  * Union type respresenting the BurnArgs data enum defined in Rust.
@@ -30,9 +30,10 @@ export type BurnArgsRecord = {
  * @category enums
  * @category generated
  */
-export type BurnArgs = beet.DataEnumKeyAsKind<BurnArgsRecord>;
+export type BurnArgs = beet.DataEnumKeyAsKind<BurnArgsRecord>
 
-export const isBurnArgsV1 = (x: BurnArgs): x is BurnArgs & { __kind: 'V1' } => x.__kind === 'V1';
+export const isBurnArgsV1 = (x: BurnArgs): x is BurnArgs & { __kind: 'V1' } =>
+  x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -41,6 +42,9 @@ export const isBurnArgsV1 = (x: BurnArgs): x is BurnArgs & { __kind: 'V1' } => x
 export const burnArgsBeet = beet.dataEnum<BurnArgsRecord>([
   [
     'V1',
-    new beet.BeetArgsStruct<BurnArgsRecord['V1']>([['amount', beet.u64]], 'BurnArgsRecord["V1"]'),
+    new beet.BeetArgsStruct<BurnArgsRecord['V1']>(
+      [['amount', beet.u64]],
+      'BurnArgsRecord["V1"]'
+    ),
   ],
-]) as beet.FixableBeet<BurnArgs, BurnArgs>;
+]) as beet.FixableBeet<BurnArgs, BurnArgs>

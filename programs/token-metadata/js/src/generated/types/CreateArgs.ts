@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { AssetData, assetDataBeet } from './AssetData';
-import { PrintSupply, printSupplyBeet } from './PrintSupply';
+import * as beet from '@metaplex-foundation/beet'
+import { AssetData, assetDataBeet } from './AssetData'
+import { PrintSupply, printSupplyBeet } from './PrintSupply'
 /**
  * This type is used to derive the {@link CreateArgs} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link CreateArgs} type instead.
@@ -19,11 +19,11 @@ import { PrintSupply, printSupplyBeet } from './PrintSupply';
  */
 export type CreateArgsRecord = {
   V1: {
-    assetData: AssetData;
-    decimals: beet.COption<number>;
-    printSupply: beet.COption<PrintSupply>;
-  };
-};
+    assetData: AssetData
+    decimals: beet.COption<number>
+    printSupply: beet.COption<PrintSupply>
+  }
+}
 
 /**
  * Union type respresenting the CreateArgs data enum defined in Rust.
@@ -36,10 +36,11 @@ export type CreateArgsRecord = {
  * @category enums
  * @category generated
  */
-export type CreateArgs = beet.DataEnumKeyAsKind<CreateArgsRecord>;
+export type CreateArgs = beet.DataEnumKeyAsKind<CreateArgsRecord>
 
-export const isCreateArgsV1 = (x: CreateArgs): x is CreateArgs & { __kind: 'V1' } =>
-  x.__kind === 'V1';
+export const isCreateArgsV1 = (
+  x: CreateArgs
+): x is CreateArgs & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -54,7 +55,7 @@ export const createArgsBeet = beet.dataEnum<CreateArgsRecord>([
         ['decimals', beet.coption(beet.u8)],
         ['printSupply', beet.coption(printSupplyBeet)],
       ],
-      'CreateArgsRecord["V1"]',
+      'CreateArgsRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<CreateArgs, CreateArgs>;
+]) as beet.FixableBeet<CreateArgs, CreateArgs>

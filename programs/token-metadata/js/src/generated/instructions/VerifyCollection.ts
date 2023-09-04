@@ -5,43 +5,42 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category VerifyCollection
  * @category generated
  */
-export const VerifyCollectionStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'VerifyCollectionInstructionArgs',
-);
+export const VerifyCollectionStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'VerifyCollectionInstructionArgs')
 /**
  * Accounts required by the _VerifyCollection_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [_writable_, **signer**] collectionAuthority Collection Update authority
- * @property [_writable_, **signer**] payer payer
- * @property [] collectionMint Mint of the Collection
- * @property [] collection Metadata Account of the Collection
- * @property [] collectionMasterEditionAccount MasterEdition2 Account of the Collection Token
- * @property [] collectionAuthorityRecord (optional) Collection Authority Record PDA
+ * @property [_writable_] metadata
+ * @property [_writable_, **signer**] collectionAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [] collectionMint
+ * @property [] collection
+ * @property [] collectionMasterEditionAccount
+ * @property [] collectionAuthorityRecord (optional)
  * @category Instructions
  * @category VerifyCollection
  * @category generated
  */
 export type VerifyCollectionInstructionAccounts = {
-  metadata: web3.PublicKey;
-  collectionAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  collectionMint: web3.PublicKey;
-  collection: web3.PublicKey;
-  collectionMasterEditionAccount: web3.PublicKey;
-  collectionAuthorityRecord?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  collectionAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  collectionMint: web3.PublicKey
+  collection: web3.PublicKey
+  collectionMasterEditionAccount: web3.PublicKey
+  collectionAuthorityRecord?: web3.PublicKey
+}
 
-export const verifyCollectionInstructionDiscriminator = 18;
+export const verifyCollectionInstructionDiscriminator = 18
 
 /**
  * Creates a _VerifyCollection_ instruction.
@@ -58,11 +57,11 @@ export const verifyCollectionInstructionDiscriminator = 18;
  */
 export function createVerifyCollectionInstruction(
   accounts: VerifyCollectionInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = VerifyCollectionStruct.serialize({
     instructionDiscriminator: verifyCollectionInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -94,20 +93,20 @@ export function createVerifyCollectionInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.collectionAuthorityRecord != null) {
     keys.push({
       pubkey: accounts.collectionAuthorityRecord,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

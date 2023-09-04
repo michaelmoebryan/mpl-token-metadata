@@ -5,33 +5,32 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category Collect
  * @category generated
  */
-export const CollectStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'CollectInstructionArgs',
-);
+export const CollectStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'CollectInstructionArgs')
 /**
  * Accounts required by the _Collect_ instruction
  *
- * @property [**signer**] authority Authority to collect fees
- * @property [] pdaAccount PDA to retrieve fees from
+ * @property [**signer**] authority
+ * @property [] pdaAccount
  * @category Instructions
  * @category Collect
  * @category generated
  */
 export type CollectInstructionAccounts = {
-  authority: web3.PublicKey;
-  pdaAccount: web3.PublicKey;
-};
+  authority: web3.PublicKey
+  pdaAccount: web3.PublicKey
+}
 
-export const collectInstructionDiscriminator = 54;
+export const collectInstructionDiscriminator = 54
 
 /**
  * Creates a _Collect_ instruction.
@@ -43,11 +42,11 @@ export const collectInstructionDiscriminator = 54;
  */
 export function createCollectInstruction(
   accounts: CollectInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = CollectStruct.serialize({
     instructionDiscriminator: collectInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.authority,
@@ -59,12 +58,12 @@ export function createCollectInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

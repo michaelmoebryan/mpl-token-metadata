@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
 /**
  * This type is used to derive the {@link EscrowAuthority} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link EscrowAuthority} type instead.
@@ -18,9 +18,9 @@ import * as beetSolana from '@metaplex-foundation/beet-solana';
  * @private
  */
 export type EscrowAuthorityRecord = {
-  TokenOwner: void /* scalar variant */;
-  Creator: { fields: [web3.PublicKey] };
-};
+  TokenOwner: void /* scalar variant */
+  Creator: { fields: [web3.PublicKey] }
+}
 
 /**
  * Union type respresenting the EscrowAuthority data enum defined in Rust.
@@ -33,14 +33,14 @@ export type EscrowAuthorityRecord = {
  * @category enums
  * @category generated
  */
-export type EscrowAuthority = beet.DataEnumKeyAsKind<EscrowAuthorityRecord>;
+export type EscrowAuthority = beet.DataEnumKeyAsKind<EscrowAuthorityRecord>
 
 export const isEscrowAuthorityTokenOwner = (
-  x: EscrowAuthority,
-): x is EscrowAuthority & { __kind: 'TokenOwner' } => x.__kind === 'TokenOwner';
+  x: EscrowAuthority
+): x is EscrowAuthority & { __kind: 'TokenOwner' } => x.__kind === 'TokenOwner'
 export const isEscrowAuthorityCreator = (
-  x: EscrowAuthority,
-): x is EscrowAuthority & { __kind: 'Creator' } => x.__kind === 'Creator';
+  x: EscrowAuthority
+): x is EscrowAuthority & { __kind: 'Creator' } => x.__kind === 'Creator'
 
 /**
  * @category userTypes
@@ -52,7 +52,7 @@ export const escrowAuthorityBeet = beet.dataEnum<EscrowAuthorityRecord>([
     'Creator',
     new beet.BeetArgsStruct<EscrowAuthorityRecord['Creator']>(
       [['fields', beet.fixedSizeTuple([beetSolana.publicKey])]],
-      'EscrowAuthorityRecord["Creator"]',
+      'EscrowAuthorityRecord["Creator"]'
     ),
   ],
-]) as beet.FixableBeet<EscrowAuthority, EscrowAuthority>;
+]) as beet.FixableBeet<EscrowAuthority, EscrowAuthority>

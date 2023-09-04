@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,25 +14,28 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const ConvertMasterEditionV1ToV2Struct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'ConvertMasterEditionV1ToV2InstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'ConvertMasterEditionV1ToV2InstructionArgs'
+)
 /**
  * Accounts required by the _ConvertMasterEditionV1ToV2_ instruction
  *
- * @property [_writable_] masterEdition Master Record Edition V1 (pda of ['metadata', program id, master metadata mint id, 'edition'])
- * @property [_writable_] oneTimeAuth One time authorization mint
- * @property [_writable_] printingMint Printing mint
+ * @property [_writable_] masterEdition
+ * @property [_writable_] oneTimeAuth
+ * @property [_writable_] printingMint
  * @category Instructions
  * @category ConvertMasterEditionV1ToV2
  * @category generated
  */
 export type ConvertMasterEditionV1ToV2InstructionAccounts = {
-  masterEdition: web3.PublicKey;
-  oneTimeAuth: web3.PublicKey;
-  printingMint: web3.PublicKey;
-};
+  masterEdition: web3.PublicKey
+  oneTimeAuth: web3.PublicKey
+  printingMint: web3.PublicKey
+}
 
-export const convertMasterEditionV1ToV2InstructionDiscriminator = 12;
+export const convertMasterEditionV1ToV2InstructionDiscriminator = 12
 
 /**
  * Creates a _ConvertMasterEditionV1ToV2_ instruction.
@@ -44,11 +47,12 @@ export const convertMasterEditionV1ToV2InstructionDiscriminator = 12;
  */
 export function createConvertMasterEditionV1ToV2Instruction(
   accounts: ConvertMasterEditionV1ToV2InstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = ConvertMasterEditionV1ToV2Struct.serialize({
-    instructionDiscriminator: convertMasterEditionV1ToV2InstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      convertMasterEditionV1ToV2InstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.masterEdition,
@@ -65,12 +69,12 @@ export function createConvertMasterEditionV1ToV2Instruction(
       isWritable: true,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,16 +5,17 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type SetCollectionSizeArgs = {
-  size: beet.bignum;
-};
+  size: beet.bignum
+}
 
 /**
  * @category userTypes
  * @category generated
  */
-export const setCollectionSizeArgsBeet = new beet.BeetArgsStruct<SetCollectionSizeArgs>(
-  [['size', beet.u64]],
-  'SetCollectionSizeArgs',
-);
+export const setCollectionSizeArgsBeet =
+  new beet.BeetArgsStruct<SetCollectionSizeArgs>(
+    [['size', beet.u64]],
+    'SetCollectionSizeArgs'
+  )

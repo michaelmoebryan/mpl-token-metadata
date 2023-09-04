@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link Edition}
@@ -16,10 +16,10 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type EditionArgs = {
-  key: Key;
-  parent: web3.PublicKey;
-  edition: beet.bignum;
-};
+  key: Key
+  parent: web3.PublicKey
+  edition: beet.bignum
+}
 /**
  * Holds the data for the {@link Edition} Account and provides de/serialization
  * functionality for that data
@@ -31,22 +31,25 @@ export class Edition implements EditionArgs {
   private constructor(
     readonly key: Key,
     readonly parent: web3.PublicKey,
-    readonly edition: beet.bignum,
+    readonly edition: beet.bignum
   ) {}
 
   /**
    * Creates a {@link Edition} instance from the provided args.
    */
   static fromArgs(args: EditionArgs) {
-    return new Edition(args.key, args.parent, args.edition);
+    return new Edition(args.key, args.parent, args.edition)
   }
 
   /**
    * Deserializes the {@link Edition} from the data of the provided {@link web3.AccountInfo}.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static fromAccountInfo(accountInfo: web3.AccountInfo<Buffer>, offset = 0): [Edition, number] {
-    return Edition.deserialize(accountInfo.data, offset);
+  static fromAccountInfo(
+    accountInfo: web3.AccountInfo<Buffer>,
+    offset = 0
+  ): [Edition, number] {
+    return Edition.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -58,13 +61,16 @@ export class Edition implements EditionArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<Edition> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find Edition account at ${address}`);
+      throw new Error(`Unable to find Edition account at ${address}`)
     }
-    return Edition.fromAccountInfo(accountInfo, 0)[0];
+    return Edition.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -74,9 +80,11 @@ export class Edition implements EditionArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, editionBeet);
+    return beetSolana.GpaBuilder.fromStruct(programId, editionBeet)
   }
 
   /**
@@ -84,7 +92,7 @@ export class Edition implements EditionArgs {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [Edition, number] {
-    return editionBeet.deserialize(buf, offset);
+    return editionBeet.deserialize(buf, offset)
   }
 
   /**
@@ -92,7 +100,7 @@ export class Edition implements EditionArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return editionBeet.serialize(this);
+    return editionBeet.serialize(this)
   }
 
   /**
@@ -100,7 +108,7 @@ export class Edition implements EditionArgs {
    * {@link Edition}
    */
   static get byteSize() {
-    return editionBeet.byteSize;
+    return editionBeet.byteSize
   }
 
   /**
@@ -111,9 +119,12 @@ export class Edition implements EditionArgs {
    */
   static async getMinimumBalanceForRentExemption(
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(Edition.byteSize, commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      Edition.byteSize,
+      commitment
+    )
   }
 
   /**
@@ -121,7 +132,7 @@ export class Edition implements EditionArgs {
    * hold {@link Edition} data.
    */
   static hasCorrectByteSize(buf: Buffer, offset = 0) {
-    return buf.byteLength - offset === Edition.byteSize;
+    return buf.byteLength - offset === Edition.byteSize
   }
 
   /**
@@ -133,17 +144,17 @@ export class Edition implements EditionArgs {
       key: 'Key.' + Key[this.key],
       parent: this.parent.toBase58(),
       edition: (() => {
-        const x = <{ toNumber: () => number }>this.edition;
+        const x = <{ toNumber: () => number }>this.edition
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
-    };
+    }
   }
 }
 
@@ -158,5 +169,5 @@ export const editionBeet = new beet.BeetStruct<Edition, EditionArgs>(
     ['edition', beet.u64],
   ],
   Edition.fromArgs,
-  'Edition',
-);
+  'Edition'
+)

@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,31 +14,31 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const UnverifyCollectionStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'UnverifyCollectionInstructionArgs');
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'UnverifyCollectionInstructionArgs')
 /**
  * Accounts required by the _UnverifyCollection_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [_writable_, **signer**] collectionAuthority Collection Authority
- * @property [] collectionMint Mint of the Collection
- * @property [] collection Metadata Account of the Collection
- * @property [] collectionMasterEditionAccount MasterEdition2 Account of the Collection Token
- * @property [] collectionAuthorityRecord (optional) Collection Authority Record PDA
+ * @property [_writable_] metadata
+ * @property [_writable_, **signer**] collectionAuthority
+ * @property [] collectionMint
+ * @property [] collection
+ * @property [] collectionMasterEditionAccount
+ * @property [] collectionAuthorityRecord (optional)
  * @category Instructions
  * @category UnverifyCollection
  * @category generated
  */
 export type UnverifyCollectionInstructionAccounts = {
-  metadata: web3.PublicKey;
-  collectionAuthority: web3.PublicKey;
-  collectionMint: web3.PublicKey;
-  collection: web3.PublicKey;
-  collectionMasterEditionAccount: web3.PublicKey;
-  collectionAuthorityRecord?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  collectionAuthority: web3.PublicKey
+  collectionMint: web3.PublicKey
+  collection: web3.PublicKey
+  collectionMasterEditionAccount: web3.PublicKey
+  collectionAuthorityRecord?: web3.PublicKey
+}
 
-export const unverifyCollectionInstructionDiscriminator = 22;
+export const unverifyCollectionInstructionDiscriminator = 22
 
 /**
  * Creates a _UnverifyCollection_ instruction.
@@ -55,11 +55,11 @@ export const unverifyCollectionInstructionDiscriminator = 22;
  */
 export function createUnverifyCollectionInstruction(
   accounts: UnverifyCollectionInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UnverifyCollectionStruct.serialize({
     instructionDiscriminator: unverifyCollectionInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -86,20 +86,20 @@ export function createUnverifyCollectionInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.collectionAuthorityRecord != null) {
     keys.push({
       pubkey: accounts.collectionAuthorityRecord,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

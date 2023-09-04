@@ -5,11 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
-import { Reservation, reservationBeet } from '../types/Reservation';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
+import { Reservation, reservationBeet } from '../types/Reservation'
 
 /**
  * Arguments used to create {@link ReservationListV2}
@@ -17,13 +17,13 @@ import { Reservation, reservationBeet } from '../types/Reservation';
  * @category generated
  */
 export type ReservationListV2Args = {
-  key: Key;
-  masterEdition: web3.PublicKey;
-  supplySnapshot: beet.COption<beet.bignum>;
-  reservations: Reservation[];
-  totalReservationSpots: beet.bignum;
-  currentReservationSpots: beet.bignum;
-};
+  key: Key
+  masterEdition: web3.PublicKey
+  supplySnapshot: beet.COption<beet.bignum>
+  reservations: Reservation[]
+  totalReservationSpots: beet.bignum
+  currentReservationSpots: beet.bignum
+}
 /**
  * Holds the data for the {@link ReservationListV2} Account and provides de/serialization
  * functionality for that data
@@ -38,7 +38,7 @@ export class ReservationListV2 implements ReservationListV2Args {
     readonly supplySnapshot: beet.COption<beet.bignum>,
     readonly reservations: Reservation[],
     readonly totalReservationSpots: beet.bignum,
-    readonly currentReservationSpots: beet.bignum,
+    readonly currentReservationSpots: beet.bignum
   ) {}
 
   /**
@@ -51,8 +51,8 @@ export class ReservationListV2 implements ReservationListV2Args {
       args.supplySnapshot,
       args.reservations,
       args.totalReservationSpots,
-      args.currentReservationSpots,
-    );
+      args.currentReservationSpots
+    )
   }
 
   /**
@@ -61,9 +61,9 @@ export class ReservationListV2 implements ReservationListV2Args {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [ReservationListV2, number] {
-    return ReservationListV2.deserialize(accountInfo.data, offset);
+    return ReservationListV2.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -75,13 +75,16 @@ export class ReservationListV2 implements ReservationListV2Args {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<ReservationListV2> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find ReservationListV2 account at ${address}`);
+      throw new Error(`Unable to find ReservationListV2 account at ${address}`)
     }
-    return ReservationListV2.fromAccountInfo(accountInfo, 0)[0];
+    return ReservationListV2.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -91,9 +94,11 @@ export class ReservationListV2 implements ReservationListV2Args {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, reservationListV2Beet);
+    return beetSolana.GpaBuilder.fromStruct(programId, reservationListV2Beet)
   }
 
   /**
@@ -101,7 +106,7 @@ export class ReservationListV2 implements ReservationListV2Args {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [ReservationListV2, number] {
-    return reservationListV2Beet.deserialize(buf, offset);
+    return reservationListV2Beet.deserialize(buf, offset)
   }
 
   /**
@@ -109,7 +114,7 @@ export class ReservationListV2 implements ReservationListV2Args {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return reservationListV2Beet.serialize(this);
+    return reservationListV2Beet.serialize(this)
   }
 
   /**
@@ -120,8 +125,8 @@ export class ReservationListV2 implements ReservationListV2Args {
    * depends on them
    */
   static byteSize(args: ReservationListV2Args) {
-    const instance = ReservationListV2.fromArgs(args);
-    return reservationListV2Beet.toFixedFromValue(instance).byteSize;
+    const instance = ReservationListV2.fromArgs(args)
+    return reservationListV2Beet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -135,12 +140,12 @@ export class ReservationListV2 implements ReservationListV2Args {
   static async getMinimumBalanceForRentExemption(
     args: ReservationListV2Args,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
     return connection.getMinimumBalanceForRentExemption(
       ReservationListV2.byteSize(args),
-      commitment,
-    );
+      commitment
+    )
   }
 
   /**
@@ -154,28 +159,28 @@ export class ReservationListV2 implements ReservationListV2Args {
       supplySnapshot: this.supplySnapshot,
       reservations: this.reservations,
       totalReservationSpots: (() => {
-        const x = <{ toNumber: () => number }>this.totalReservationSpots;
+        const x = <{ toNumber: () => number }>this.totalReservationSpots
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
       currentReservationSpots: (() => {
-        const x = <{ toNumber: () => number }>this.currentReservationSpots;
+        const x = <{ toNumber: () => number }>this.currentReservationSpots
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
-    };
+    }
   }
 }
 
@@ -196,5 +201,5 @@ export const reservationListV2Beet = new beet.FixableBeetStruct<
     ['currentReservationSpots', beet.u64],
   ],
   ReservationListV2.fromArgs,
-  'ReservationListV2',
-);
+  'ReservationListV2'
+)

@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,36 +14,39 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const CreateEscrowAccountStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'CreateEscrowAccountInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'CreateEscrowAccountInstructionArgs'
+)
 /**
  * Accounts required by the _CreateEscrowAccount_ instruction
  *
- * @property [_writable_] escrow Escrow account
- * @property [_writable_] metadata Metadata account
- * @property [] mint Mint account
- * @property [] tokenAccount Token account of the token
- * @property [] edition Edition account
- * @property [_writable_, **signer**] payer Wallet paying for the transaction and new account
- * @property [] sysvarInstructions Instructions sysvar account
- * @property [**signer**] authority (optional) Authority/creator of the escrow account
+ * @property [_writable_] escrow
+ * @property [_writable_] metadata
+ * @property [] mint
+ * @property [] tokenAccount
+ * @property [] edition
+ * @property [_writable_, **signer**] payer
+ * @property [] sysvarInstructions
+ * @property [**signer**] authority (optional)
  * @category Instructions
  * @category CreateEscrowAccount
  * @category generated
  */
 export type CreateEscrowAccountInstructionAccounts = {
-  escrow: web3.PublicKey;
-  metadata: web3.PublicKey;
-  mint: web3.PublicKey;
-  tokenAccount: web3.PublicKey;
-  edition: web3.PublicKey;
-  payer: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  authority?: web3.PublicKey;
-};
+  escrow: web3.PublicKey
+  metadata: web3.PublicKey
+  mint: web3.PublicKey
+  tokenAccount: web3.PublicKey
+  edition: web3.PublicKey
+  payer: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  authority?: web3.PublicKey
+}
 
-export const createEscrowAccountInstructionDiscriminator = 38;
+export const createEscrowAccountInstructionDiscriminator = 38
 
 /**
  * Creates a _CreateEscrowAccount_ instruction.
@@ -60,11 +63,11 @@ export const createEscrowAccountInstructionDiscriminator = 38;
  */
 export function createCreateEscrowAccountInstruction(
   accounts: CreateEscrowAccountInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = CreateEscrowAccountStruct.serialize({
     instructionDiscriminator: createEscrowAccountInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.escrow,
@@ -106,20 +109,20 @@ export function createCreateEscrowAccountInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.authority != null) {
     keys.push({
       pubkey: accounts.authority,
       isWritable: false,
       isSigner: true,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

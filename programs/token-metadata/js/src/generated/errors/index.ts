@@ -5,11 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-type ErrorWithCode = Error & { code: number };
-type MaybeErrorWithCode = ErrorWithCode | null | undefined;
+type ErrorWithCode = Error & { code: number }
+type MaybeErrorWithCode = ErrorWithCode | null | undefined
 
-const createErrorFromCodeLookup: Map<number, () => ErrorWithCode> = new Map();
-const createErrorFromNameLookup: Map<string, () => ErrorWithCode> = new Map();
+const createErrorFromCodeLookup: Map<number, () => ErrorWithCode> = new Map()
+const createErrorFromNameLookup: Map<string, () => ErrorWithCode> = new Map()
 
 /**
  * InstructionUnpackError: ''
@@ -18,18 +18,21 @@ const createErrorFromNameLookup: Map<string, () => ErrorWithCode> = new Map();
  * @category generated
  */
 export class InstructionUnpackErrorError extends Error {
-  readonly code: number = 0x0;
-  readonly name: string = 'InstructionUnpackError';
+  readonly code: number = 0x0
+  readonly name: string = 'InstructionUnpackError'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InstructionUnpackErrorError);
+      Error.captureStackTrace(this, InstructionUnpackErrorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x0, () => new InstructionUnpackErrorError());
-createErrorFromNameLookup.set('InstructionUnpackError', () => new InstructionUnpackErrorError());
+createErrorFromCodeLookup.set(0x0, () => new InstructionUnpackErrorError())
+createErrorFromNameLookup.set(
+  'InstructionUnpackError',
+  () => new InstructionUnpackErrorError()
+)
 
 /**
  * InstructionPackError: ''
@@ -38,18 +41,21 @@ createErrorFromNameLookup.set('InstructionUnpackError', () => new InstructionUnp
  * @category generated
  */
 export class InstructionPackErrorError extends Error {
-  readonly code: number = 0x1;
-  readonly name: string = 'InstructionPackError';
+  readonly code: number = 0x1
+  readonly name: string = 'InstructionPackError'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InstructionPackErrorError);
+      Error.captureStackTrace(this, InstructionPackErrorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1, () => new InstructionPackErrorError());
-createErrorFromNameLookup.set('InstructionPackError', () => new InstructionPackErrorError());
+createErrorFromCodeLookup.set(0x1, () => new InstructionPackErrorError())
+createErrorFromNameLookup.set(
+  'InstructionPackError',
+  () => new InstructionPackErrorError()
+)
 
 /**
  * NotRentExempt: 'Lamport balance below rent-exempt threshold'
@@ -58,18 +64,18 @@ createErrorFromNameLookup.set('InstructionPackError', () => new InstructionPackE
  * @category generated
  */
 export class NotRentExemptError extends Error {
-  readonly code: number = 0x2;
-  readonly name: string = 'NotRentExempt';
+  readonly code: number = 0x2
+  readonly name: string = 'NotRentExempt'
   constructor() {
-    super('Lamport balance below rent-exempt threshold');
+    super('Lamport balance below rent-exempt threshold')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotRentExemptError);
+      Error.captureStackTrace(this, NotRentExemptError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2, () => new NotRentExemptError());
-createErrorFromNameLookup.set('NotRentExempt', () => new NotRentExemptError());
+createErrorFromCodeLookup.set(0x2, () => new NotRentExemptError())
+createErrorFromNameLookup.set('NotRentExempt', () => new NotRentExemptError())
 
 /**
  * AlreadyInitialized: 'Already initialized'
@@ -78,18 +84,21 @@ createErrorFromNameLookup.set('NotRentExempt', () => new NotRentExemptError());
  * @category generated
  */
 export class AlreadyInitializedError extends Error {
-  readonly code: number = 0x3;
-  readonly name: string = 'AlreadyInitialized';
+  readonly code: number = 0x3
+  readonly name: string = 'AlreadyInitialized'
   constructor() {
-    super('Already initialized');
+    super('Already initialized')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AlreadyInitializedError);
+      Error.captureStackTrace(this, AlreadyInitializedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3, () => new AlreadyInitializedError());
-createErrorFromNameLookup.set('AlreadyInitialized', () => new AlreadyInitializedError());
+createErrorFromCodeLookup.set(0x3, () => new AlreadyInitializedError())
+createErrorFromNameLookup.set(
+  'AlreadyInitialized',
+  () => new AlreadyInitializedError()
+)
 
 /**
  * Uninitialized: 'Uninitialized'
@@ -98,18 +107,18 @@ createErrorFromNameLookup.set('AlreadyInitialized', () => new AlreadyInitialized
  * @category generated
  */
 export class UninitializedError extends Error {
-  readonly code: number = 0x4;
-  readonly name: string = 'Uninitialized';
+  readonly code: number = 0x4
+  readonly name: string = 'Uninitialized'
   constructor() {
-    super('Uninitialized');
+    super('Uninitialized')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UninitializedError);
+      Error.captureStackTrace(this, UninitializedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4, () => new UninitializedError());
-createErrorFromNameLookup.set('Uninitialized', () => new UninitializedError());
+createErrorFromCodeLookup.set(0x4, () => new UninitializedError())
+createErrorFromNameLookup.set('Uninitialized', () => new UninitializedError())
 
 /**
  * InvalidMetadataKey: ' Metadata's key must match seed of ['metadata', program id, mint] provided'
@@ -118,18 +127,23 @@ createErrorFromNameLookup.set('Uninitialized', () => new UninitializedError());
  * @category generated
  */
 export class InvalidMetadataKeyError extends Error {
-  readonly code: number = 0x5;
-  readonly name: string = 'InvalidMetadataKey';
+  readonly code: number = 0x5
+  readonly name: string = 'InvalidMetadataKey'
   constructor() {
-    super(" Metadata's key must match seed of ['metadata', program id, mint] provided");
+    super(
+      " Metadata's key must match seed of ['metadata', program id, mint] provided"
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMetadataKeyError);
+      Error.captureStackTrace(this, InvalidMetadataKeyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5, () => new InvalidMetadataKeyError());
-createErrorFromNameLookup.set('InvalidMetadataKey', () => new InvalidMetadataKeyError());
+createErrorFromCodeLookup.set(0x5, () => new InvalidMetadataKeyError())
+createErrorFromNameLookup.set(
+  'InvalidMetadataKey',
+  () => new InvalidMetadataKeyError()
+)
 
 /**
  * InvalidEditionKey: 'Edition's key must match seed of ['metadata', program id, name, 'edition'] provided'
@@ -138,18 +152,23 @@ createErrorFromNameLookup.set('InvalidMetadataKey', () => new InvalidMetadataKey
  * @category generated
  */
 export class InvalidEditionKeyError extends Error {
-  readonly code: number = 0x6;
-  readonly name: string = 'InvalidEditionKey';
+  readonly code: number = 0x6
+  readonly name: string = 'InvalidEditionKey'
   constructor() {
-    super("Edition's key must match seed of ['metadata', program id, name, 'edition'] provided");
+    super(
+      "Edition's key must match seed of ['metadata', program id, name, 'edition'] provided"
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidEditionKeyError);
+      Error.captureStackTrace(this, InvalidEditionKeyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6, () => new InvalidEditionKeyError());
-createErrorFromNameLookup.set('InvalidEditionKey', () => new InvalidEditionKeyError());
+createErrorFromCodeLookup.set(0x6, () => new InvalidEditionKeyError())
+createErrorFromNameLookup.set(
+  'InvalidEditionKey',
+  () => new InvalidEditionKeyError()
+)
 
 /**
  * UpdateAuthorityIncorrect: 'Update Authority given does not match'
@@ -158,21 +177,21 @@ createErrorFromNameLookup.set('InvalidEditionKey', () => new InvalidEditionKeyEr
  * @category generated
  */
 export class UpdateAuthorityIncorrectError extends Error {
-  readonly code: number = 0x7;
-  readonly name: string = 'UpdateAuthorityIncorrect';
+  readonly code: number = 0x7
+  readonly name: string = 'UpdateAuthorityIncorrect'
   constructor() {
-    super('Update Authority given does not match');
+    super('Update Authority given does not match')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UpdateAuthorityIncorrectError);
+      Error.captureStackTrace(this, UpdateAuthorityIncorrectError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7, () => new UpdateAuthorityIncorrectError());
+createErrorFromCodeLookup.set(0x7, () => new UpdateAuthorityIncorrectError())
 createErrorFromNameLookup.set(
   'UpdateAuthorityIncorrect',
-  () => new UpdateAuthorityIncorrectError(),
-);
+  () => new UpdateAuthorityIncorrectError()
+)
 
 /**
  * UpdateAuthorityIsNotSigner: 'Update Authority needs to be signer to update metadata'
@@ -181,21 +200,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class UpdateAuthorityIsNotSignerError extends Error {
-  readonly code: number = 0x8;
-  readonly name: string = 'UpdateAuthorityIsNotSigner';
+  readonly code: number = 0x8
+  readonly name: string = 'UpdateAuthorityIsNotSigner'
   constructor() {
-    super('Update Authority needs to be signer to update metadata');
+    super('Update Authority needs to be signer to update metadata')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UpdateAuthorityIsNotSignerError);
+      Error.captureStackTrace(this, UpdateAuthorityIsNotSignerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8, () => new UpdateAuthorityIsNotSignerError());
+createErrorFromCodeLookup.set(0x8, () => new UpdateAuthorityIsNotSignerError())
 createErrorFromNameLookup.set(
   'UpdateAuthorityIsNotSigner',
-  () => new UpdateAuthorityIsNotSignerError(),
-);
+  () => new UpdateAuthorityIsNotSignerError()
+)
 
 /**
  * NotMintAuthority: 'You must be the mint authority and signer on this transaction'
@@ -204,18 +223,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class NotMintAuthorityError extends Error {
-  readonly code: number = 0x9;
-  readonly name: string = 'NotMintAuthority';
+  readonly code: number = 0x9
+  readonly name: string = 'NotMintAuthority'
   constructor() {
-    super('You must be the mint authority and signer on this transaction');
+    super('You must be the mint authority and signer on this transaction')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotMintAuthorityError);
+      Error.captureStackTrace(this, NotMintAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9, () => new NotMintAuthorityError());
-createErrorFromNameLookup.set('NotMintAuthority', () => new NotMintAuthorityError());
+createErrorFromCodeLookup.set(0x9, () => new NotMintAuthorityError())
+createErrorFromNameLookup.set(
+  'NotMintAuthority',
+  () => new NotMintAuthorityError()
+)
 
 /**
  * InvalidMintAuthority: 'Mint authority provided does not match the authority on the mint'
@@ -224,18 +246,21 @@ createErrorFromNameLookup.set('NotMintAuthority', () => new NotMintAuthorityErro
  * @category generated
  */
 export class InvalidMintAuthorityError extends Error {
-  readonly code: number = 0xa;
-  readonly name: string = 'InvalidMintAuthority';
+  readonly code: number = 0xa
+  readonly name: string = 'InvalidMintAuthority'
   constructor() {
-    super('Mint authority provided does not match the authority on the mint');
+    super('Mint authority provided does not match the authority on the mint')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMintAuthorityError);
+      Error.captureStackTrace(this, InvalidMintAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa, () => new InvalidMintAuthorityError());
-createErrorFromNameLookup.set('InvalidMintAuthority', () => new InvalidMintAuthorityError());
+createErrorFromCodeLookup.set(0xa, () => new InvalidMintAuthorityError())
+createErrorFromNameLookup.set(
+  'InvalidMintAuthority',
+  () => new InvalidMintAuthorityError()
+)
 
 /**
  * NameTooLong: 'Name too long'
@@ -244,18 +269,18 @@ createErrorFromNameLookup.set('InvalidMintAuthority', () => new InvalidMintAutho
  * @category generated
  */
 export class NameTooLongError extends Error {
-  readonly code: number = 0xb;
-  readonly name: string = 'NameTooLong';
+  readonly code: number = 0xb
+  readonly name: string = 'NameTooLong'
   constructor() {
-    super('Name too long');
+    super('Name too long')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NameTooLongError);
+      Error.captureStackTrace(this, NameTooLongError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb, () => new NameTooLongError());
-createErrorFromNameLookup.set('NameTooLong', () => new NameTooLongError());
+createErrorFromCodeLookup.set(0xb, () => new NameTooLongError())
+createErrorFromNameLookup.set('NameTooLong', () => new NameTooLongError())
 
 /**
  * SymbolTooLong: 'Symbol too long'
@@ -264,18 +289,18 @@ createErrorFromNameLookup.set('NameTooLong', () => new NameTooLongError());
  * @category generated
  */
 export class SymbolTooLongError extends Error {
-  readonly code: number = 0xc;
-  readonly name: string = 'SymbolTooLong';
+  readonly code: number = 0xc
+  readonly name: string = 'SymbolTooLong'
   constructor() {
-    super('Symbol too long');
+    super('Symbol too long')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, SymbolTooLongError);
+      Error.captureStackTrace(this, SymbolTooLongError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xc, () => new SymbolTooLongError());
-createErrorFromNameLookup.set('SymbolTooLong', () => new SymbolTooLongError());
+createErrorFromCodeLookup.set(0xc, () => new SymbolTooLongError())
+createErrorFromNameLookup.set('SymbolTooLong', () => new SymbolTooLongError())
 
 /**
  * UriTooLong: 'URI too long'
@@ -284,18 +309,18 @@ createErrorFromNameLookup.set('SymbolTooLong', () => new SymbolTooLongError());
  * @category generated
  */
 export class UriTooLongError extends Error {
-  readonly code: number = 0xd;
-  readonly name: string = 'UriTooLong';
+  readonly code: number = 0xd
+  readonly name: string = 'UriTooLong'
   constructor() {
-    super('URI too long');
+    super('URI too long')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UriTooLongError);
+      Error.captureStackTrace(this, UriTooLongError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xd, () => new UriTooLongError());
-createErrorFromNameLookup.set('UriTooLong', () => new UriTooLongError());
+createErrorFromCodeLookup.set(0xd, () => new UriTooLongError())
+createErrorFromNameLookup.set('UriTooLong', () => new UriTooLongError())
 
 /**
  * UpdateAuthorityMustBeEqualToMetadataAuthorityAndSigner: ''
@@ -304,24 +329,28 @@ createErrorFromNameLookup.set('UriTooLong', () => new UriTooLongError());
  * @category generated
  */
 export class UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError extends Error {
-  readonly code: number = 0xe;
-  readonly name: string = 'UpdateAuthorityMustBeEqualToMetadataAuthorityAndSigner';
+  readonly code: number = 0xe
+  readonly name: string =
+    'UpdateAuthorityMustBeEqualToMetadataAuthorityAndSigner'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError);
+      Error.captureStackTrace(
+        this,
+        UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError
+      )
     }
   }
 }
 
 createErrorFromCodeLookup.set(
   0xe,
-  () => new UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError(),
-);
+  () => new UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError()
+)
 createErrorFromNameLookup.set(
   'UpdateAuthorityMustBeEqualToMetadataAuthorityAndSigner',
-  () => new UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError(),
-);
+  () => new UpdateAuthorityMustBeEqualToMetadataAuthorityAndSignerError()
+)
 
 /**
  * MintMismatch: 'Mint given does not match mint on Metadata'
@@ -330,18 +359,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MintMismatchError extends Error {
-  readonly code: number = 0xf;
-  readonly name: string = 'MintMismatch';
+  readonly code: number = 0xf
+  readonly name: string = 'MintMismatch'
   constructor() {
-    super('Mint given does not match mint on Metadata');
+    super('Mint given does not match mint on Metadata')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MintMismatchError);
+      Error.captureStackTrace(this, MintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xf, () => new MintMismatchError());
-createErrorFromNameLookup.set('MintMismatch', () => new MintMismatchError());
+createErrorFromCodeLookup.set(0xf, () => new MintMismatchError())
+createErrorFromNameLookup.set('MintMismatch', () => new MintMismatchError())
 
 /**
  * EditionsMustHaveExactlyOneToken: 'Editions must have exactly one token'
@@ -350,21 +379,24 @@ createErrorFromNameLookup.set('MintMismatch', () => new MintMismatchError());
  * @category generated
  */
 export class EditionsMustHaveExactlyOneTokenError extends Error {
-  readonly code: number = 0x10;
-  readonly name: string = 'EditionsMustHaveExactlyOneToken';
+  readonly code: number = 0x10
+  readonly name: string = 'EditionsMustHaveExactlyOneToken'
   constructor() {
-    super('Editions must have exactly one token');
+    super('Editions must have exactly one token')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EditionsMustHaveExactlyOneTokenError);
+      Error.captureStackTrace(this, EditionsMustHaveExactlyOneTokenError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x10, () => new EditionsMustHaveExactlyOneTokenError());
+createErrorFromCodeLookup.set(
+  0x10,
+  () => new EditionsMustHaveExactlyOneTokenError()
+)
 createErrorFromNameLookup.set(
   'EditionsMustHaveExactlyOneToken',
-  () => new EditionsMustHaveExactlyOneTokenError(),
-);
+  () => new EditionsMustHaveExactlyOneTokenError()
+)
 
 /**
  * MaxEditionsMintedAlready: ''
@@ -373,21 +405,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MaxEditionsMintedAlreadyError extends Error {
-  readonly code: number = 0x11;
-  readonly name: string = 'MaxEditionsMintedAlready';
+  readonly code: number = 0x11
+  readonly name: string = 'MaxEditionsMintedAlready'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MaxEditionsMintedAlreadyError);
+      Error.captureStackTrace(this, MaxEditionsMintedAlreadyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x11, () => new MaxEditionsMintedAlreadyError());
+createErrorFromCodeLookup.set(0x11, () => new MaxEditionsMintedAlreadyError())
 createErrorFromNameLookup.set(
   'MaxEditionsMintedAlready',
-  () => new MaxEditionsMintedAlreadyError(),
-);
+  () => new MaxEditionsMintedAlreadyError()
+)
 
 /**
  * TokenMintToFailed: ''
@@ -396,18 +428,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class TokenMintToFailedError extends Error {
-  readonly code: number = 0x12;
-  readonly name: string = 'TokenMintToFailed';
+  readonly code: number = 0x12
+  readonly name: string = 'TokenMintToFailed'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenMintToFailedError);
+      Error.captureStackTrace(this, TokenMintToFailedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x12, () => new TokenMintToFailedError());
-createErrorFromNameLookup.set('TokenMintToFailed', () => new TokenMintToFailedError());
+createErrorFromCodeLookup.set(0x12, () => new TokenMintToFailedError())
+createErrorFromNameLookup.set(
+  'TokenMintToFailed',
+  () => new TokenMintToFailedError()
+)
 
 /**
  * MasterRecordMismatch: ''
@@ -416,18 +451,21 @@ createErrorFromNameLookup.set('TokenMintToFailed', () => new TokenMintToFailedEr
  * @category generated
  */
 export class MasterRecordMismatchError extends Error {
-  readonly code: number = 0x13;
-  readonly name: string = 'MasterRecordMismatch';
+  readonly code: number = 0x13
+  readonly name: string = 'MasterRecordMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MasterRecordMismatchError);
+      Error.captureStackTrace(this, MasterRecordMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x13, () => new MasterRecordMismatchError());
-createErrorFromNameLookup.set('MasterRecordMismatch', () => new MasterRecordMismatchError());
+createErrorFromCodeLookup.set(0x13, () => new MasterRecordMismatchError())
+createErrorFromNameLookup.set(
+  'MasterRecordMismatch',
+  () => new MasterRecordMismatchError()
+)
 
 /**
  * DestinationMintMismatch: ''
@@ -436,18 +474,21 @@ createErrorFromNameLookup.set('MasterRecordMismatch', () => new MasterRecordMism
  * @category generated
  */
 export class DestinationMintMismatchError extends Error {
-  readonly code: number = 0x14;
-  readonly name: string = 'DestinationMintMismatch';
+  readonly code: number = 0x14
+  readonly name: string = 'DestinationMintMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DestinationMintMismatchError);
+      Error.captureStackTrace(this, DestinationMintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x14, () => new DestinationMintMismatchError());
-createErrorFromNameLookup.set('DestinationMintMismatch', () => new DestinationMintMismatchError());
+createErrorFromCodeLookup.set(0x14, () => new DestinationMintMismatchError())
+createErrorFromNameLookup.set(
+  'DestinationMintMismatch',
+  () => new DestinationMintMismatchError()
+)
 
 /**
  * EditionAlreadyMinted: ''
@@ -456,18 +497,21 @@ createErrorFromNameLookup.set('DestinationMintMismatch', () => new DestinationMi
  * @category generated
  */
 export class EditionAlreadyMintedError extends Error {
-  readonly code: number = 0x15;
-  readonly name: string = 'EditionAlreadyMinted';
+  readonly code: number = 0x15
+  readonly name: string = 'EditionAlreadyMinted'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EditionAlreadyMintedError);
+      Error.captureStackTrace(this, EditionAlreadyMintedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x15, () => new EditionAlreadyMintedError());
-createErrorFromNameLookup.set('EditionAlreadyMinted', () => new EditionAlreadyMintedError());
+createErrorFromCodeLookup.set(0x15, () => new EditionAlreadyMintedError())
+createErrorFromNameLookup.set(
+  'EditionAlreadyMinted',
+  () => new EditionAlreadyMintedError()
+)
 
 /**
  * PrintingMintDecimalsShouldBeZero: ''
@@ -476,21 +520,24 @@ createErrorFromNameLookup.set('EditionAlreadyMinted', () => new EditionAlreadyMi
  * @category generated
  */
 export class PrintingMintDecimalsShouldBeZeroError extends Error {
-  readonly code: number = 0x16;
-  readonly name: string = 'PrintingMintDecimalsShouldBeZero';
+  readonly code: number = 0x16
+  readonly name: string = 'PrintingMintDecimalsShouldBeZero'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintingMintDecimalsShouldBeZeroError);
+      Error.captureStackTrace(this, PrintingMintDecimalsShouldBeZeroError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x16, () => new PrintingMintDecimalsShouldBeZeroError());
+createErrorFromCodeLookup.set(
+  0x16,
+  () => new PrintingMintDecimalsShouldBeZeroError()
+)
 createErrorFromNameLookup.set(
   'PrintingMintDecimalsShouldBeZero',
-  () => new PrintingMintDecimalsShouldBeZeroError(),
-);
+  () => new PrintingMintDecimalsShouldBeZeroError()
+)
 
 /**
  * OneTimePrintingAuthorizationMintDecimalsShouldBeZero: ''
@@ -499,24 +546,27 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError extends Error {
-  readonly code: number = 0x17;
-  readonly name: string = 'OneTimePrintingAuthorizationMintDecimalsShouldBeZero';
+  readonly code: number = 0x17
+  readonly name: string = 'OneTimePrintingAuthorizationMintDecimalsShouldBeZero'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError);
+      Error.captureStackTrace(
+        this,
+        OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError
+      )
     }
   }
 }
 
 createErrorFromCodeLookup.set(
   0x17,
-  () => new OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError(),
-);
+  () => new OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError()
+)
 createErrorFromNameLookup.set(
   'OneTimePrintingAuthorizationMintDecimalsShouldBeZero',
-  () => new OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError(),
-);
+  () => new OneTimePrintingAuthorizationMintDecimalsShouldBeZeroError()
+)
 
 /**
  * EditionMintDecimalsShouldBeZero: 'EditionMintDecimalsShouldBeZero'
@@ -525,21 +575,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class EditionMintDecimalsShouldBeZeroError extends Error {
-  readonly code: number = 0x18;
-  readonly name: string = 'EditionMintDecimalsShouldBeZero';
+  readonly code: number = 0x18
+  readonly name: string = 'EditionMintDecimalsShouldBeZero'
   constructor() {
-    super('EditionMintDecimalsShouldBeZero');
+    super('EditionMintDecimalsShouldBeZero')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EditionMintDecimalsShouldBeZeroError);
+      Error.captureStackTrace(this, EditionMintDecimalsShouldBeZeroError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x18, () => new EditionMintDecimalsShouldBeZeroError());
+createErrorFromCodeLookup.set(
+  0x18,
+  () => new EditionMintDecimalsShouldBeZeroError()
+)
 createErrorFromNameLookup.set(
   'EditionMintDecimalsShouldBeZero',
-  () => new EditionMintDecimalsShouldBeZeroError(),
-);
+  () => new EditionMintDecimalsShouldBeZeroError()
+)
 
 /**
  * TokenBurnFailed: ''
@@ -548,18 +601,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class TokenBurnFailedError extends Error {
-  readonly code: number = 0x19;
-  readonly name: string = 'TokenBurnFailed';
+  readonly code: number = 0x19
+  readonly name: string = 'TokenBurnFailed'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenBurnFailedError);
+      Error.captureStackTrace(this, TokenBurnFailedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x19, () => new TokenBurnFailedError());
-createErrorFromNameLookup.set('TokenBurnFailed', () => new TokenBurnFailedError());
+createErrorFromCodeLookup.set(0x19, () => new TokenBurnFailedError())
+createErrorFromNameLookup.set(
+  'TokenBurnFailed',
+  () => new TokenBurnFailedError()
+)
 
 /**
  * TokenAccountOneTimeAuthMintMismatch: ''
@@ -568,21 +624,24 @@ createErrorFromNameLookup.set('TokenBurnFailed', () => new TokenBurnFailedError(
  * @category generated
  */
 export class TokenAccountOneTimeAuthMintMismatchError extends Error {
-  readonly code: number = 0x1a;
-  readonly name: string = 'TokenAccountOneTimeAuthMintMismatch';
+  readonly code: number = 0x1a
+  readonly name: string = 'TokenAccountOneTimeAuthMintMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenAccountOneTimeAuthMintMismatchError);
+      Error.captureStackTrace(this, TokenAccountOneTimeAuthMintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1a, () => new TokenAccountOneTimeAuthMintMismatchError());
+createErrorFromCodeLookup.set(
+  0x1a,
+  () => new TokenAccountOneTimeAuthMintMismatchError()
+)
 createErrorFromNameLookup.set(
   'TokenAccountOneTimeAuthMintMismatch',
-  () => new TokenAccountOneTimeAuthMintMismatchError(),
-);
+  () => new TokenAccountOneTimeAuthMintMismatchError()
+)
 
 /**
  * DerivedKeyInvalid: 'Derived key invalid'
@@ -591,18 +650,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class DerivedKeyInvalidError extends Error {
-  readonly code: number = 0x1b;
-  readonly name: string = 'DerivedKeyInvalid';
+  readonly code: number = 0x1b
+  readonly name: string = 'DerivedKeyInvalid'
   constructor() {
-    super('Derived key invalid');
+    super('Derived key invalid')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DerivedKeyInvalidError);
+      Error.captureStackTrace(this, DerivedKeyInvalidError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1b, () => new DerivedKeyInvalidError());
-createErrorFromNameLookup.set('DerivedKeyInvalid', () => new DerivedKeyInvalidError());
+createErrorFromCodeLookup.set(0x1b, () => new DerivedKeyInvalidError())
+createErrorFromNameLookup.set(
+  'DerivedKeyInvalid',
+  () => new DerivedKeyInvalidError()
+)
 
 /**
  * PrintingMintMismatch: 'The Printing mint does not match that on the master edition!'
@@ -611,18 +673,21 @@ createErrorFromNameLookup.set('DerivedKeyInvalid', () => new DerivedKeyInvalidEr
  * @category generated
  */
 export class PrintingMintMismatchError extends Error {
-  readonly code: number = 0x1c;
-  readonly name: string = 'PrintingMintMismatch';
+  readonly code: number = 0x1c
+  readonly name: string = 'PrintingMintMismatch'
   constructor() {
-    super('The Printing mint does not match that on the master edition!');
+    super('The Printing mint does not match that on the master edition!')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintingMintMismatchError);
+      Error.captureStackTrace(this, PrintingMintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1c, () => new PrintingMintMismatchError());
-createErrorFromNameLookup.set('PrintingMintMismatch', () => new PrintingMintMismatchError());
+createErrorFromCodeLookup.set(0x1c, () => new PrintingMintMismatchError())
+createErrorFromNameLookup.set(
+  'PrintingMintMismatch',
+  () => new PrintingMintMismatchError()
+)
 
 /**
  * OneTimePrintingAuthMintMismatch: 'The One Time Printing Auth mint does not match that on the master edition!'
@@ -631,21 +696,26 @@ createErrorFromNameLookup.set('PrintingMintMismatch', () => new PrintingMintMism
  * @category generated
  */
 export class OneTimePrintingAuthMintMismatchError extends Error {
-  readonly code: number = 0x1d;
-  readonly name: string = 'OneTimePrintingAuthMintMismatch';
+  readonly code: number = 0x1d
+  readonly name: string = 'OneTimePrintingAuthMintMismatch'
   constructor() {
-    super('The One Time Printing Auth mint does not match that on the master edition!');
+    super(
+      'The One Time Printing Auth mint does not match that on the master edition!'
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, OneTimePrintingAuthMintMismatchError);
+      Error.captureStackTrace(this, OneTimePrintingAuthMintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1d, () => new OneTimePrintingAuthMintMismatchError());
+createErrorFromCodeLookup.set(
+  0x1d,
+  () => new OneTimePrintingAuthMintMismatchError()
+)
 createErrorFromNameLookup.set(
   'OneTimePrintingAuthMintMismatch',
-  () => new OneTimePrintingAuthMintMismatchError(),
-);
+  () => new OneTimePrintingAuthMintMismatchError()
+)
 
 /**
  * TokenAccountMintMismatch: 'The mint of the token account does not match the Printing mint!'
@@ -654,21 +724,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class TokenAccountMintMismatchError extends Error {
-  readonly code: number = 0x1e;
-  readonly name: string = 'TokenAccountMintMismatch';
+  readonly code: number = 0x1e
+  readonly name: string = 'TokenAccountMintMismatch'
   constructor() {
-    super('The mint of the token account does not match the Printing mint!');
+    super('The mint of the token account does not match the Printing mint!')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenAccountMintMismatchError);
+      Error.captureStackTrace(this, TokenAccountMintMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1e, () => new TokenAccountMintMismatchError());
+createErrorFromCodeLookup.set(0x1e, () => new TokenAccountMintMismatchError())
 createErrorFromNameLookup.set(
   'TokenAccountMintMismatch',
-  () => new TokenAccountMintMismatchError(),
-);
+  () => new TokenAccountMintMismatchError()
+)
 
 /**
  * TokenAccountMintMismatchV2: 'The mint of the token account does not match the master metadata mint!'
@@ -677,21 +747,23 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class TokenAccountMintMismatchV2Error extends Error {
-  readonly code: number = 0x1f;
-  readonly name: string = 'TokenAccountMintMismatchV2';
+  readonly code: number = 0x1f
+  readonly name: string = 'TokenAccountMintMismatchV2'
   constructor() {
-    super('The mint of the token account does not match the master metadata mint!');
+    super(
+      'The mint of the token account does not match the master metadata mint!'
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenAccountMintMismatchV2Error);
+      Error.captureStackTrace(this, TokenAccountMintMismatchV2Error)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x1f, () => new TokenAccountMintMismatchV2Error());
+createErrorFromCodeLookup.set(0x1f, () => new TokenAccountMintMismatchV2Error())
 createErrorFromNameLookup.set(
   'TokenAccountMintMismatchV2',
-  () => new TokenAccountMintMismatchV2Error(),
-);
+  () => new TokenAccountMintMismatchV2Error()
+)
 
 /**
  * NotEnoughTokens: 'Not enough tokens to mint a limited edition'
@@ -700,18 +772,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class NotEnoughTokensError extends Error {
-  readonly code: number = 0x20;
-  readonly name: string = 'NotEnoughTokens';
+  readonly code: number = 0x20
+  readonly name: string = 'NotEnoughTokens'
   constructor() {
-    super('Not enough tokens to mint a limited edition');
+    super('Not enough tokens to mint a limited edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotEnoughTokensError);
+      Error.captureStackTrace(this, NotEnoughTokensError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x20, () => new NotEnoughTokensError());
-createErrorFromNameLookup.set('NotEnoughTokens', () => new NotEnoughTokensError());
+createErrorFromCodeLookup.set(0x20, () => new NotEnoughTokensError())
+createErrorFromNameLookup.set(
+  'NotEnoughTokens',
+  () => new NotEnoughTokensError()
+)
 
 /**
  * PrintingMintAuthorizationAccountMismatch: ''
@@ -720,21 +795,27 @@ createErrorFromNameLookup.set('NotEnoughTokens', () => new NotEnoughTokensError(
  * @category generated
  */
 export class PrintingMintAuthorizationAccountMismatchError extends Error {
-  readonly code: number = 0x21;
-  readonly name: string = 'PrintingMintAuthorizationAccountMismatch';
+  readonly code: number = 0x21
+  readonly name: string = 'PrintingMintAuthorizationAccountMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintingMintAuthorizationAccountMismatchError);
+      Error.captureStackTrace(
+        this,
+        PrintingMintAuthorizationAccountMismatchError
+      )
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x21, () => new PrintingMintAuthorizationAccountMismatchError());
+createErrorFromCodeLookup.set(
+  0x21,
+  () => new PrintingMintAuthorizationAccountMismatchError()
+)
 createErrorFromNameLookup.set(
   'PrintingMintAuthorizationAccountMismatch',
-  () => new PrintingMintAuthorizationAccountMismatchError(),
-);
+  () => new PrintingMintAuthorizationAccountMismatchError()
+)
 
 /**
  * AuthorizationTokenAccountOwnerMismatch: ''
@@ -743,21 +824,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class AuthorizationTokenAccountOwnerMismatchError extends Error {
-  readonly code: number = 0x22;
-  readonly name: string = 'AuthorizationTokenAccountOwnerMismatch';
+  readonly code: number = 0x22
+  readonly name: string = 'AuthorizationTokenAccountOwnerMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AuthorizationTokenAccountOwnerMismatchError);
+      Error.captureStackTrace(this, AuthorizationTokenAccountOwnerMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x22, () => new AuthorizationTokenAccountOwnerMismatchError());
+createErrorFromCodeLookup.set(
+  0x22,
+  () => new AuthorizationTokenAccountOwnerMismatchError()
+)
 createErrorFromNameLookup.set(
   'AuthorizationTokenAccountOwnerMismatch',
-  () => new AuthorizationTokenAccountOwnerMismatchError(),
-);
+  () => new AuthorizationTokenAccountOwnerMismatchError()
+)
 
 /**
  * Disabled: ''
@@ -766,18 +850,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class DisabledError extends Error {
-  readonly code: number = 0x23;
-  readonly name: string = 'Disabled';
+  readonly code: number = 0x23
+  readonly name: string = 'Disabled'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DisabledError);
+      Error.captureStackTrace(this, DisabledError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x23, () => new DisabledError());
-createErrorFromNameLookup.set('Disabled', () => new DisabledError());
+createErrorFromCodeLookup.set(0x23, () => new DisabledError())
+createErrorFromNameLookup.set('Disabled', () => new DisabledError())
 
 /**
  * CreatorsTooLong: 'Creators list too long'
@@ -786,18 +870,21 @@ createErrorFromNameLookup.set('Disabled', () => new DisabledError());
  * @category generated
  */
 export class CreatorsTooLongError extends Error {
-  readonly code: number = 0x24;
-  readonly name: string = 'CreatorsTooLong';
+  readonly code: number = 0x24
+  readonly name: string = 'CreatorsTooLong'
   constructor() {
-    super('Creators list too long');
+    super('Creators list too long')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CreatorsTooLongError);
+      Error.captureStackTrace(this, CreatorsTooLongError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x24, () => new CreatorsTooLongError());
-createErrorFromNameLookup.set('CreatorsTooLong', () => new CreatorsTooLongError());
+createErrorFromCodeLookup.set(0x24, () => new CreatorsTooLongError())
+createErrorFromNameLookup.set(
+  'CreatorsTooLong',
+  () => new CreatorsTooLongError()
+)
 
 /**
  * CreatorsMustBeAtleastOne: 'Creators must be at least one if set'
@@ -806,21 +893,21 @@ createErrorFromNameLookup.set('CreatorsTooLong', () => new CreatorsTooLongError(
  * @category generated
  */
 export class CreatorsMustBeAtleastOneError extends Error {
-  readonly code: number = 0x25;
-  readonly name: string = 'CreatorsMustBeAtleastOne';
+  readonly code: number = 0x25
+  readonly name: string = 'CreatorsMustBeAtleastOne'
   constructor() {
-    super('Creators must be at least one if set');
+    super('Creators must be at least one if set')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CreatorsMustBeAtleastOneError);
+      Error.captureStackTrace(this, CreatorsMustBeAtleastOneError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x25, () => new CreatorsMustBeAtleastOneError());
+createErrorFromCodeLookup.set(0x25, () => new CreatorsMustBeAtleastOneError())
 createErrorFromNameLookup.set(
   'CreatorsMustBeAtleastOne',
-  () => new CreatorsMustBeAtleastOneError(),
-);
+  () => new CreatorsMustBeAtleastOneError()
+)
 
 /**
  * MustBeOneOfCreators: ''
@@ -829,18 +916,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MustBeOneOfCreatorsError extends Error {
-  readonly code: number = 0x26;
-  readonly name: string = 'MustBeOneOfCreators';
+  readonly code: number = 0x26
+  readonly name: string = 'MustBeOneOfCreators'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MustBeOneOfCreatorsError);
+      Error.captureStackTrace(this, MustBeOneOfCreatorsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x26, () => new MustBeOneOfCreatorsError());
-createErrorFromNameLookup.set('MustBeOneOfCreators', () => new MustBeOneOfCreatorsError());
+createErrorFromCodeLookup.set(0x26, () => new MustBeOneOfCreatorsError())
+createErrorFromNameLookup.set(
+  'MustBeOneOfCreators',
+  () => new MustBeOneOfCreatorsError()
+)
 
 /**
  * NoCreatorsPresentOnMetadata: 'This metadata does not have creators'
@@ -849,21 +939,24 @@ createErrorFromNameLookup.set('MustBeOneOfCreators', () => new MustBeOneOfCreato
  * @category generated
  */
 export class NoCreatorsPresentOnMetadataError extends Error {
-  readonly code: number = 0x27;
-  readonly name: string = 'NoCreatorsPresentOnMetadata';
+  readonly code: number = 0x27
+  readonly name: string = 'NoCreatorsPresentOnMetadata'
   constructor() {
-    super('This metadata does not have creators');
+    super('This metadata does not have creators')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NoCreatorsPresentOnMetadataError);
+      Error.captureStackTrace(this, NoCreatorsPresentOnMetadataError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x27, () => new NoCreatorsPresentOnMetadataError());
+createErrorFromCodeLookup.set(
+  0x27,
+  () => new NoCreatorsPresentOnMetadataError()
+)
 createErrorFromNameLookup.set(
   'NoCreatorsPresentOnMetadata',
-  () => new NoCreatorsPresentOnMetadataError(),
-);
+  () => new NoCreatorsPresentOnMetadataError()
+)
 
 /**
  * CreatorNotFound: 'This creator address was not found'
@@ -872,18 +965,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CreatorNotFoundError extends Error {
-  readonly code: number = 0x28;
-  readonly name: string = 'CreatorNotFound';
+  readonly code: number = 0x28
+  readonly name: string = 'CreatorNotFound'
   constructor() {
-    super('This creator address was not found');
+    super('This creator address was not found')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CreatorNotFoundError);
+      Error.captureStackTrace(this, CreatorNotFoundError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x28, () => new CreatorNotFoundError());
-createErrorFromNameLookup.set('CreatorNotFound', () => new CreatorNotFoundError());
+createErrorFromCodeLookup.set(0x28, () => new CreatorNotFoundError())
+createErrorFromNameLookup.set(
+  'CreatorNotFound',
+  () => new CreatorNotFoundError()
+)
 
 /**
  * InvalidBasisPoints: 'Basis points cannot be more than 10000'
@@ -892,18 +988,21 @@ createErrorFromNameLookup.set('CreatorNotFound', () => new CreatorNotFoundError(
  * @category generated
  */
 export class InvalidBasisPointsError extends Error {
-  readonly code: number = 0x29;
-  readonly name: string = 'InvalidBasisPoints';
+  readonly code: number = 0x29
+  readonly name: string = 'InvalidBasisPoints'
   constructor() {
-    super('Basis points cannot be more than 10000');
+    super('Basis points cannot be more than 10000')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidBasisPointsError);
+      Error.captureStackTrace(this, InvalidBasisPointsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x29, () => new InvalidBasisPointsError());
-createErrorFromNameLookup.set('InvalidBasisPoints', () => new InvalidBasisPointsError());
+createErrorFromCodeLookup.set(0x29, () => new InvalidBasisPointsError())
+createErrorFromNameLookup.set(
+  'InvalidBasisPoints',
+  () => new InvalidBasisPointsError()
+)
 
 /**
  * PrimarySaleCanOnlyBeFlippedToTrue: 'Primary sale can only be flipped to true and is immutable'
@@ -912,21 +1011,24 @@ createErrorFromNameLookup.set('InvalidBasisPoints', () => new InvalidBasisPoints
  * @category generated
  */
 export class PrimarySaleCanOnlyBeFlippedToTrueError extends Error {
-  readonly code: number = 0x2a;
-  readonly name: string = 'PrimarySaleCanOnlyBeFlippedToTrue';
+  readonly code: number = 0x2a
+  readonly name: string = 'PrimarySaleCanOnlyBeFlippedToTrue'
   constructor() {
-    super('Primary sale can only be flipped to true and is immutable');
+    super('Primary sale can only be flipped to true and is immutable')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrimarySaleCanOnlyBeFlippedToTrueError);
+      Error.captureStackTrace(this, PrimarySaleCanOnlyBeFlippedToTrueError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2a, () => new PrimarySaleCanOnlyBeFlippedToTrueError());
+createErrorFromCodeLookup.set(
+  0x2a,
+  () => new PrimarySaleCanOnlyBeFlippedToTrueError()
+)
 createErrorFromNameLookup.set(
   'PrimarySaleCanOnlyBeFlippedToTrue',
-  () => new PrimarySaleCanOnlyBeFlippedToTrueError(),
-);
+  () => new PrimarySaleCanOnlyBeFlippedToTrueError()
+)
 
 /**
  * OwnerMismatch: 'Owner does not match that on the account given'
@@ -935,18 +1037,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class OwnerMismatchError extends Error {
-  readonly code: number = 0x2b;
-  readonly name: string = 'OwnerMismatch';
+  readonly code: number = 0x2b
+  readonly name: string = 'OwnerMismatch'
   constructor() {
-    super('Owner does not match that on the account given');
+    super('Owner does not match that on the account given')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, OwnerMismatchError);
+      Error.captureStackTrace(this, OwnerMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2b, () => new OwnerMismatchError());
-createErrorFromNameLookup.set('OwnerMismatch', () => new OwnerMismatchError());
+createErrorFromCodeLookup.set(0x2b, () => new OwnerMismatchError())
+createErrorFromNameLookup.set('OwnerMismatch', () => new OwnerMismatchError())
 
 /**
  * NoBalanceInAccountForAuthorization: 'This account has no tokens to be used for authorization'
@@ -955,21 +1057,24 @@ createErrorFromNameLookup.set('OwnerMismatch', () => new OwnerMismatchError());
  * @category generated
  */
 export class NoBalanceInAccountForAuthorizationError extends Error {
-  readonly code: number = 0x2c;
-  readonly name: string = 'NoBalanceInAccountForAuthorization';
+  readonly code: number = 0x2c
+  readonly name: string = 'NoBalanceInAccountForAuthorization'
   constructor() {
-    super('This account has no tokens to be used for authorization');
+    super('This account has no tokens to be used for authorization')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NoBalanceInAccountForAuthorizationError);
+      Error.captureStackTrace(this, NoBalanceInAccountForAuthorizationError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2c, () => new NoBalanceInAccountForAuthorizationError());
+createErrorFromCodeLookup.set(
+  0x2c,
+  () => new NoBalanceInAccountForAuthorizationError()
+)
 createErrorFromNameLookup.set(
   'NoBalanceInAccountForAuthorization',
-  () => new NoBalanceInAccountForAuthorizationError(),
-);
+  () => new NoBalanceInAccountForAuthorizationError()
+)
 
 /**
  * ShareTotalMustBe100: 'Share total must equal 100 for creator array'
@@ -978,18 +1083,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class ShareTotalMustBe100Error extends Error {
-  readonly code: number = 0x2d;
-  readonly name: string = 'ShareTotalMustBe100';
+  readonly code: number = 0x2d
+  readonly name: string = 'ShareTotalMustBe100'
   constructor() {
-    super('Share total must equal 100 for creator array');
+    super('Share total must equal 100 for creator array')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ShareTotalMustBe100Error);
+      Error.captureStackTrace(this, ShareTotalMustBe100Error)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2d, () => new ShareTotalMustBe100Error());
-createErrorFromNameLookup.set('ShareTotalMustBe100', () => new ShareTotalMustBe100Error());
+createErrorFromCodeLookup.set(0x2d, () => new ShareTotalMustBe100Error())
+createErrorFromNameLookup.set(
+  'ShareTotalMustBe100',
+  () => new ShareTotalMustBe100Error()
+)
 
 /**
  * ReservationExists: ''
@@ -998,18 +1106,21 @@ createErrorFromNameLookup.set('ShareTotalMustBe100', () => new ShareTotalMustBe1
  * @category generated
  */
 export class ReservationExistsError extends Error {
-  readonly code: number = 0x2e;
-  readonly name: string = 'ReservationExists';
+  readonly code: number = 0x2e
+  readonly name: string = 'ReservationExists'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationExistsError);
+      Error.captureStackTrace(this, ReservationExistsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2e, () => new ReservationExistsError());
-createErrorFromNameLookup.set('ReservationExists', () => new ReservationExistsError());
+createErrorFromCodeLookup.set(0x2e, () => new ReservationExistsError())
+createErrorFromNameLookup.set(
+  'ReservationExists',
+  () => new ReservationExistsError()
+)
 
 /**
  * ReservationDoesNotExist: ''
@@ -1018,18 +1129,21 @@ createErrorFromNameLookup.set('ReservationExists', () => new ReservationExistsEr
  * @category generated
  */
 export class ReservationDoesNotExistError extends Error {
-  readonly code: number = 0x2f;
-  readonly name: string = 'ReservationDoesNotExist';
+  readonly code: number = 0x2f
+  readonly name: string = 'ReservationDoesNotExist'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationDoesNotExistError);
+      Error.captureStackTrace(this, ReservationDoesNotExistError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x2f, () => new ReservationDoesNotExistError());
-createErrorFromNameLookup.set('ReservationDoesNotExist', () => new ReservationDoesNotExistError());
+createErrorFromCodeLookup.set(0x2f, () => new ReservationDoesNotExistError())
+createErrorFromNameLookup.set(
+  'ReservationDoesNotExist',
+  () => new ReservationDoesNotExistError()
+)
 
 /**
  * ReservationNotSet: ''
@@ -1038,18 +1152,21 @@ createErrorFromNameLookup.set('ReservationDoesNotExist', () => new ReservationDo
  * @category generated
  */
 export class ReservationNotSetError extends Error {
-  readonly code: number = 0x30;
-  readonly name: string = 'ReservationNotSet';
+  readonly code: number = 0x30
+  readonly name: string = 'ReservationNotSet'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationNotSetError);
+      Error.captureStackTrace(this, ReservationNotSetError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x30, () => new ReservationNotSetError());
-createErrorFromNameLookup.set('ReservationNotSet', () => new ReservationNotSetError());
+createErrorFromCodeLookup.set(0x30, () => new ReservationNotSetError())
+createErrorFromNameLookup.set(
+  'ReservationNotSet',
+  () => new ReservationNotSetError()
+)
 
 /**
  * ReservationAlreadyMade: ''
@@ -1058,18 +1175,21 @@ createErrorFromNameLookup.set('ReservationNotSet', () => new ReservationNotSetEr
  * @category generated
  */
 export class ReservationAlreadyMadeError extends Error {
-  readonly code: number = 0x31;
-  readonly name: string = 'ReservationAlreadyMade';
+  readonly code: number = 0x31
+  readonly name: string = 'ReservationAlreadyMade'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationAlreadyMadeError);
+      Error.captureStackTrace(this, ReservationAlreadyMadeError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x31, () => new ReservationAlreadyMadeError());
-createErrorFromNameLookup.set('ReservationAlreadyMade', () => new ReservationAlreadyMadeError());
+createErrorFromCodeLookup.set(0x31, () => new ReservationAlreadyMadeError())
+createErrorFromNameLookup.set(
+  'ReservationAlreadyMade',
+  () => new ReservationAlreadyMadeError()
+)
 
 /**
  * BeyondMaxAddressSize: ''
@@ -1078,18 +1198,21 @@ createErrorFromNameLookup.set('ReservationAlreadyMade', () => new ReservationAlr
  * @category generated
  */
 export class BeyondMaxAddressSizeError extends Error {
-  readonly code: number = 0x32;
-  readonly name: string = 'BeyondMaxAddressSize';
+  readonly code: number = 0x32
+  readonly name: string = 'BeyondMaxAddressSize'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, BeyondMaxAddressSizeError);
+      Error.captureStackTrace(this, BeyondMaxAddressSizeError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x32, () => new BeyondMaxAddressSizeError());
-createErrorFromNameLookup.set('BeyondMaxAddressSize', () => new BeyondMaxAddressSizeError());
+createErrorFromCodeLookup.set(0x32, () => new BeyondMaxAddressSizeError())
+createErrorFromNameLookup.set(
+  'BeyondMaxAddressSize',
+  () => new BeyondMaxAddressSizeError()
+)
 
 /**
  * NumericalOverflowError: 'NumericalOverflowError'
@@ -1098,18 +1221,21 @@ createErrorFromNameLookup.set('BeyondMaxAddressSize', () => new BeyondMaxAddress
  * @category generated
  */
 export class NumericalOverflowErrorError extends Error {
-  readonly code: number = 0x33;
-  readonly name: string = 'NumericalOverflowError';
+  readonly code: number = 0x33
+  readonly name: string = 'NumericalOverflowError'
   constructor() {
-    super('NumericalOverflowError');
+    super('NumericalOverflowError')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NumericalOverflowErrorError);
+      Error.captureStackTrace(this, NumericalOverflowErrorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x33, () => new NumericalOverflowErrorError());
-createErrorFromNameLookup.set('NumericalOverflowError', () => new NumericalOverflowErrorError());
+createErrorFromCodeLookup.set(0x33, () => new NumericalOverflowErrorError())
+createErrorFromNameLookup.set(
+  'NumericalOverflowError',
+  () => new NumericalOverflowErrorError()
+)
 
 /**
  * ReservationBreachesMaximumSupply: ''
@@ -1118,21 +1244,24 @@ createErrorFromNameLookup.set('NumericalOverflowError', () => new NumericalOverf
  * @category generated
  */
 export class ReservationBreachesMaximumSupplyError extends Error {
-  readonly code: number = 0x34;
-  readonly name: string = 'ReservationBreachesMaximumSupply';
+  readonly code: number = 0x34
+  readonly name: string = 'ReservationBreachesMaximumSupply'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationBreachesMaximumSupplyError);
+      Error.captureStackTrace(this, ReservationBreachesMaximumSupplyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x34, () => new ReservationBreachesMaximumSupplyError());
+createErrorFromCodeLookup.set(
+  0x34,
+  () => new ReservationBreachesMaximumSupplyError()
+)
 createErrorFromNameLookup.set(
   'ReservationBreachesMaximumSupply',
-  () => new ReservationBreachesMaximumSupplyError(),
-);
+  () => new ReservationBreachesMaximumSupplyError()
+)
 
 /**
  * AddressNotInReservation: ''
@@ -1141,18 +1270,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class AddressNotInReservationError extends Error {
-  readonly code: number = 0x35;
-  readonly name: string = 'AddressNotInReservation';
+  readonly code: number = 0x35
+  readonly name: string = 'AddressNotInReservation'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AddressNotInReservationError);
+      Error.captureStackTrace(this, AddressNotInReservationError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x35, () => new AddressNotInReservationError());
-createErrorFromNameLookup.set('AddressNotInReservation', () => new AddressNotInReservationError());
+createErrorFromCodeLookup.set(0x35, () => new AddressNotInReservationError())
+createErrorFromNameLookup.set(
+  'AddressNotInReservation',
+  () => new AddressNotInReservationError()
+)
 
 /**
  * CannotVerifyAnotherCreator: 'You cannot unilaterally verify another creator, they must sign'
@@ -1161,21 +1293,21 @@ createErrorFromNameLookup.set('AddressNotInReservation', () => new AddressNotInR
  * @category generated
  */
 export class CannotVerifyAnotherCreatorError extends Error {
-  readonly code: number = 0x36;
-  readonly name: string = 'CannotVerifyAnotherCreator';
+  readonly code: number = 0x36
+  readonly name: string = 'CannotVerifyAnotherCreator'
   constructor() {
-    super('You cannot unilaterally verify another creator, they must sign');
+    super('You cannot unilaterally verify another creator, they must sign')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotVerifyAnotherCreatorError);
+      Error.captureStackTrace(this, CannotVerifyAnotherCreatorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x36, () => new CannotVerifyAnotherCreatorError());
+createErrorFromCodeLookup.set(0x36, () => new CannotVerifyAnotherCreatorError())
 createErrorFromNameLookup.set(
   'CannotVerifyAnotherCreator',
-  () => new CannotVerifyAnotherCreatorError(),
-);
+  () => new CannotVerifyAnotherCreatorError()
+)
 
 /**
  * CannotUnverifyAnotherCreator: 'You cannot unilaterally unverify another creator'
@@ -1184,21 +1316,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotUnverifyAnotherCreatorError extends Error {
-  readonly code: number = 0x37;
-  readonly name: string = 'CannotUnverifyAnotherCreator';
+  readonly code: number = 0x37
+  readonly name: string = 'CannotUnverifyAnotherCreator'
   constructor() {
-    super('You cannot unilaterally unverify another creator');
+    super('You cannot unilaterally unverify another creator')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotUnverifyAnotherCreatorError);
+      Error.captureStackTrace(this, CannotUnverifyAnotherCreatorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x37, () => new CannotUnverifyAnotherCreatorError());
+createErrorFromCodeLookup.set(
+  0x37,
+  () => new CannotUnverifyAnotherCreatorError()
+)
 createErrorFromNameLookup.set(
   'CannotUnverifyAnotherCreator',
-  () => new CannotUnverifyAnotherCreatorError(),
-);
+  () => new CannotUnverifyAnotherCreatorError()
+)
 
 /**
  * SpotMismatch: ''
@@ -1207,18 +1342,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class SpotMismatchError extends Error {
-  readonly code: number = 0x38;
-  readonly name: string = 'SpotMismatch';
+  readonly code: number = 0x38
+  readonly name: string = 'SpotMismatch'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, SpotMismatchError);
+      Error.captureStackTrace(this, SpotMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x38, () => new SpotMismatchError());
-createErrorFromNameLookup.set('SpotMismatch', () => new SpotMismatchError());
+createErrorFromCodeLookup.set(0x38, () => new SpotMismatchError())
+createErrorFromNameLookup.set('SpotMismatch', () => new SpotMismatchError())
 
 /**
  * IncorrectOwner: 'Incorrect account owner'
@@ -1227,18 +1362,18 @@ createErrorFromNameLookup.set('SpotMismatch', () => new SpotMismatchError());
  * @category generated
  */
 export class IncorrectOwnerError extends Error {
-  readonly code: number = 0x39;
-  readonly name: string = 'IncorrectOwner';
+  readonly code: number = 0x39
+  readonly name: string = 'IncorrectOwner'
   constructor() {
-    super('Incorrect account owner');
+    super('Incorrect account owner')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, IncorrectOwnerError);
+      Error.captureStackTrace(this, IncorrectOwnerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x39, () => new IncorrectOwnerError());
-createErrorFromNameLookup.set('IncorrectOwner', () => new IncorrectOwnerError());
+createErrorFromCodeLookup.set(0x39, () => new IncorrectOwnerError())
+createErrorFromNameLookup.set('IncorrectOwner', () => new IncorrectOwnerError())
 
 /**
  * PrintingWouldBreachMaximumSupply: ''
@@ -1247,21 +1382,24 @@ createErrorFromNameLookup.set('IncorrectOwner', () => new IncorrectOwnerError())
  * @category generated
  */
 export class PrintingWouldBreachMaximumSupplyError extends Error {
-  readonly code: number = 0x3a;
-  readonly name: string = 'PrintingWouldBreachMaximumSupply';
+  readonly code: number = 0x3a
+  readonly name: string = 'PrintingWouldBreachMaximumSupply'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintingWouldBreachMaximumSupplyError);
+      Error.captureStackTrace(this, PrintingWouldBreachMaximumSupplyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3a, () => new PrintingWouldBreachMaximumSupplyError());
+createErrorFromCodeLookup.set(
+  0x3a,
+  () => new PrintingWouldBreachMaximumSupplyError()
+)
 createErrorFromNameLookup.set(
   'PrintingWouldBreachMaximumSupply',
-  () => new PrintingWouldBreachMaximumSupplyError(),
-);
+  () => new PrintingWouldBreachMaximumSupplyError()
+)
 
 /**
  * DataIsImmutable: 'Data is immutable'
@@ -1270,18 +1408,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class DataIsImmutableError extends Error {
-  readonly code: number = 0x3b;
-  readonly name: string = 'DataIsImmutable';
+  readonly code: number = 0x3b
+  readonly name: string = 'DataIsImmutable'
   constructor() {
-    super('Data is immutable');
+    super('Data is immutable')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DataIsImmutableError);
+      Error.captureStackTrace(this, DataIsImmutableError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3b, () => new DataIsImmutableError());
-createErrorFromNameLookup.set('DataIsImmutable', () => new DataIsImmutableError());
+createErrorFromCodeLookup.set(0x3b, () => new DataIsImmutableError())
+createErrorFromNameLookup.set(
+  'DataIsImmutable',
+  () => new DataIsImmutableError()
+)
 
 /**
  * DuplicateCreatorAddress: 'No duplicate creator addresses'
@@ -1290,18 +1431,21 @@ createErrorFromNameLookup.set('DataIsImmutable', () => new DataIsImmutableError(
  * @category generated
  */
 export class DuplicateCreatorAddressError extends Error {
-  readonly code: number = 0x3c;
-  readonly name: string = 'DuplicateCreatorAddress';
+  readonly code: number = 0x3c
+  readonly name: string = 'DuplicateCreatorAddress'
   constructor() {
-    super('No duplicate creator addresses');
+    super('No duplicate creator addresses')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DuplicateCreatorAddressError);
+      Error.captureStackTrace(this, DuplicateCreatorAddressError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3c, () => new DuplicateCreatorAddressError());
-createErrorFromNameLookup.set('DuplicateCreatorAddress', () => new DuplicateCreatorAddressError());
+createErrorFromCodeLookup.set(0x3c, () => new DuplicateCreatorAddressError())
+createErrorFromNameLookup.set(
+  'DuplicateCreatorAddress',
+  () => new DuplicateCreatorAddressError()
+)
 
 /**
  * ReservationSpotsRemainingShouldMatchTotalSpotsAtStart: ''
@@ -1310,24 +1454,28 @@ createErrorFromNameLookup.set('DuplicateCreatorAddress', () => new DuplicateCrea
  * @category generated
  */
 export class ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError extends Error {
-  readonly code: number = 0x3d;
-  readonly name: string = 'ReservationSpotsRemainingShouldMatchTotalSpotsAtStart';
+  readonly code: number = 0x3d
+  readonly name: string =
+    'ReservationSpotsRemainingShouldMatchTotalSpotsAtStart'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError);
+      Error.captureStackTrace(
+        this,
+        ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError
+      )
     }
   }
 }
 
 createErrorFromCodeLookup.set(
   0x3d,
-  () => new ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError(),
-);
+  () => new ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError()
+)
 createErrorFromNameLookup.set(
   'ReservationSpotsRemainingShouldMatchTotalSpotsAtStart',
-  () => new ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError(),
-);
+  () => new ReservationSpotsRemainingShouldMatchTotalSpotsAtStartError()
+)
 
 /**
  * InvalidTokenProgram: 'Invalid token program'
@@ -1336,18 +1484,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidTokenProgramError extends Error {
-  readonly code: number = 0x3e;
-  readonly name: string = 'InvalidTokenProgram';
+  readonly code: number = 0x3e
+  readonly name: string = 'InvalidTokenProgram'
   constructor() {
-    super('Invalid token program');
+    super('Invalid token program')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidTokenProgramError);
+      Error.captureStackTrace(this, InvalidTokenProgramError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3e, () => new InvalidTokenProgramError());
-createErrorFromNameLookup.set('InvalidTokenProgram', () => new InvalidTokenProgramError());
+createErrorFromCodeLookup.set(0x3e, () => new InvalidTokenProgramError())
+createErrorFromNameLookup.set(
+  'InvalidTokenProgram',
+  () => new InvalidTokenProgramError()
+)
 
 /**
  * DataTypeMismatch: 'Data type mismatch'
@@ -1356,18 +1507,21 @@ createErrorFromNameLookup.set('InvalidTokenProgram', () => new InvalidTokenProgr
  * @category generated
  */
 export class DataTypeMismatchError extends Error {
-  readonly code: number = 0x3f;
-  readonly name: string = 'DataTypeMismatch';
+  readonly code: number = 0x3f
+  readonly name: string = 'DataTypeMismatch'
   constructor() {
-    super('Data type mismatch');
+    super('Data type mismatch')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DataTypeMismatchError);
+      Error.captureStackTrace(this, DataTypeMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x3f, () => new DataTypeMismatchError());
-createErrorFromNameLookup.set('DataTypeMismatch', () => new DataTypeMismatchError());
+createErrorFromCodeLookup.set(0x3f, () => new DataTypeMismatchError())
+createErrorFromNameLookup.set(
+  'DataTypeMismatch',
+  () => new DataTypeMismatchError()
+)
 
 /**
  * BeyondAlottedAddressSize: ''
@@ -1376,21 +1530,21 @@ createErrorFromNameLookup.set('DataTypeMismatch', () => new DataTypeMismatchErro
  * @category generated
  */
 export class BeyondAlottedAddressSizeError extends Error {
-  readonly code: number = 0x40;
-  readonly name: string = 'BeyondAlottedAddressSize';
+  readonly code: number = 0x40
+  readonly name: string = 'BeyondAlottedAddressSize'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, BeyondAlottedAddressSizeError);
+      Error.captureStackTrace(this, BeyondAlottedAddressSizeError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x40, () => new BeyondAlottedAddressSizeError());
+createErrorFromCodeLookup.set(0x40, () => new BeyondAlottedAddressSizeError())
 createErrorFromNameLookup.set(
   'BeyondAlottedAddressSize',
-  () => new BeyondAlottedAddressSizeError(),
-);
+  () => new BeyondAlottedAddressSizeError()
+)
 
 /**
  * ReservationNotComplete: ''
@@ -1399,18 +1553,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class ReservationNotCompleteError extends Error {
-  readonly code: number = 0x41;
-  readonly name: string = 'ReservationNotComplete';
+  readonly code: number = 0x41
+  readonly name: string = 'ReservationNotComplete'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationNotCompleteError);
+      Error.captureStackTrace(this, ReservationNotCompleteError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x41, () => new ReservationNotCompleteError());
-createErrorFromNameLookup.set('ReservationNotComplete', () => new ReservationNotCompleteError());
+createErrorFromCodeLookup.set(0x41, () => new ReservationNotCompleteError())
+createErrorFromNameLookup.set(
+  'ReservationNotComplete',
+  () => new ReservationNotCompleteError()
+)
 
 /**
  * TriedToReplaceAnExistingReservation: ''
@@ -1419,21 +1576,24 @@ createErrorFromNameLookup.set('ReservationNotComplete', () => new ReservationNot
  * @category generated
  */
 export class TriedToReplaceAnExistingReservationError extends Error {
-  readonly code: number = 0x42;
-  readonly name: string = 'TriedToReplaceAnExistingReservation';
+  readonly code: number = 0x42
+  readonly name: string = 'TriedToReplaceAnExistingReservation'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TriedToReplaceAnExistingReservationError);
+      Error.captureStackTrace(this, TriedToReplaceAnExistingReservationError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x42, () => new TriedToReplaceAnExistingReservationError());
+createErrorFromCodeLookup.set(
+  0x42,
+  () => new TriedToReplaceAnExistingReservationError()
+)
 createErrorFromNameLookup.set(
   'TriedToReplaceAnExistingReservation',
-  () => new TriedToReplaceAnExistingReservationError(),
-);
+  () => new TriedToReplaceAnExistingReservationError()
+)
 
 /**
  * InvalidOperation: 'Invalid operation'
@@ -1442,18 +1602,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidOperationError extends Error {
-  readonly code: number = 0x43;
-  readonly name: string = 'InvalidOperation';
+  readonly code: number = 0x43
+  readonly name: string = 'InvalidOperation'
   constructor() {
-    super('Invalid operation');
+    super('Invalid operation')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidOperationError);
+      Error.captureStackTrace(this, InvalidOperationError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x43, () => new InvalidOperationError());
-createErrorFromNameLookup.set('InvalidOperation', () => new InvalidOperationError());
+createErrorFromCodeLookup.set(0x43, () => new InvalidOperationError())
+createErrorFromNameLookup.set(
+  'InvalidOperation',
+  () => new InvalidOperationError()
+)
 
 /**
  * InvalidOwner: 'Invalid Owner'
@@ -1462,18 +1625,18 @@ createErrorFromNameLookup.set('InvalidOperation', () => new InvalidOperationErro
  * @category generated
  */
 export class InvalidOwnerError extends Error {
-  readonly code: number = 0x44;
-  readonly name: string = 'InvalidOwner';
+  readonly code: number = 0x44
+  readonly name: string = 'InvalidOwner'
   constructor() {
-    super('Invalid Owner');
+    super('Invalid Owner')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidOwnerError);
+      Error.captureStackTrace(this, InvalidOwnerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x44, () => new InvalidOwnerError());
-createErrorFromNameLookup.set('InvalidOwner', () => new InvalidOwnerError());
+createErrorFromCodeLookup.set(0x44, () => new InvalidOwnerError())
+createErrorFromNameLookup.set('InvalidOwner', () => new InvalidOwnerError())
 
 /**
  * PrintingMintSupplyMustBeZeroForConversion: 'Printing mint supply must be zero for conversion'
@@ -1482,21 +1645,27 @@ createErrorFromNameLookup.set('InvalidOwner', () => new InvalidOwnerError());
  * @category generated
  */
 export class PrintingMintSupplyMustBeZeroForConversionError extends Error {
-  readonly code: number = 0x45;
-  readonly name: string = 'PrintingMintSupplyMustBeZeroForConversion';
+  readonly code: number = 0x45
+  readonly name: string = 'PrintingMintSupplyMustBeZeroForConversion'
   constructor() {
-    super('Printing mint supply must be zero for conversion');
+    super('Printing mint supply must be zero for conversion')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintingMintSupplyMustBeZeroForConversionError);
+      Error.captureStackTrace(
+        this,
+        PrintingMintSupplyMustBeZeroForConversionError
+      )
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x45, () => new PrintingMintSupplyMustBeZeroForConversionError());
+createErrorFromCodeLookup.set(
+  0x45,
+  () => new PrintingMintSupplyMustBeZeroForConversionError()
+)
 createErrorFromNameLookup.set(
   'PrintingMintSupplyMustBeZeroForConversion',
-  () => new PrintingMintSupplyMustBeZeroForConversionError(),
-);
+  () => new PrintingMintSupplyMustBeZeroForConversionError()
+)
 
 /**
  * OneTimeAuthMintSupplyMustBeZeroForConversion: 'One Time Auth mint supply must be zero for conversion'
@@ -1505,21 +1674,27 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class OneTimeAuthMintSupplyMustBeZeroForConversionError extends Error {
-  readonly code: number = 0x46;
-  readonly name: string = 'OneTimeAuthMintSupplyMustBeZeroForConversion';
+  readonly code: number = 0x46
+  readonly name: string = 'OneTimeAuthMintSupplyMustBeZeroForConversion'
   constructor() {
-    super('One Time Auth mint supply must be zero for conversion');
+    super('One Time Auth mint supply must be zero for conversion')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, OneTimeAuthMintSupplyMustBeZeroForConversionError);
+      Error.captureStackTrace(
+        this,
+        OneTimeAuthMintSupplyMustBeZeroForConversionError
+      )
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x46, () => new OneTimeAuthMintSupplyMustBeZeroForConversionError());
+createErrorFromCodeLookup.set(
+  0x46,
+  () => new OneTimeAuthMintSupplyMustBeZeroForConversionError()
+)
 createErrorFromNameLookup.set(
   'OneTimeAuthMintSupplyMustBeZeroForConversion',
-  () => new OneTimeAuthMintSupplyMustBeZeroForConversionError(),
-);
+  () => new OneTimeAuthMintSupplyMustBeZeroForConversionError()
+)
 
 /**
  * InvalidEditionIndex: 'You tried to insert one edition too many into an edition mark pda'
@@ -1528,18 +1703,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidEditionIndexError extends Error {
-  readonly code: number = 0x47;
-  readonly name: string = 'InvalidEditionIndex';
+  readonly code: number = 0x47
+  readonly name: string = 'InvalidEditionIndex'
   constructor() {
-    super('You tried to insert one edition too many into an edition mark pda');
+    super('You tried to insert one edition too many into an edition mark pda')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidEditionIndexError);
+      Error.captureStackTrace(this, InvalidEditionIndexError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x47, () => new InvalidEditionIndexError());
-createErrorFromNameLookup.set('InvalidEditionIndex', () => new InvalidEditionIndexError());
+createErrorFromCodeLookup.set(0x47, () => new InvalidEditionIndexError())
+createErrorFromNameLookup.set(
+  'InvalidEditionIndex',
+  () => new InvalidEditionIndexError()
+)
 
 /**
  * ReservationArrayShouldBeSizeOne: ''
@@ -1548,21 +1726,24 @@ createErrorFromNameLookup.set('InvalidEditionIndex', () => new InvalidEditionInd
  * @category generated
  */
 export class ReservationArrayShouldBeSizeOneError extends Error {
-  readonly code: number = 0x48;
-  readonly name: string = 'ReservationArrayShouldBeSizeOne';
+  readonly code: number = 0x48
+  readonly name: string = 'ReservationArrayShouldBeSizeOne'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationArrayShouldBeSizeOneError);
+      Error.captureStackTrace(this, ReservationArrayShouldBeSizeOneError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x48, () => new ReservationArrayShouldBeSizeOneError());
+createErrorFromCodeLookup.set(
+  0x48,
+  () => new ReservationArrayShouldBeSizeOneError()
+)
 createErrorFromNameLookup.set(
   'ReservationArrayShouldBeSizeOne',
-  () => new ReservationArrayShouldBeSizeOneError(),
-);
+  () => new ReservationArrayShouldBeSizeOneError()
+)
 
 /**
  * IsMutableCanOnlyBeFlippedToFalse: 'Is Mutable can only be flipped to false'
@@ -1571,21 +1752,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class IsMutableCanOnlyBeFlippedToFalseError extends Error {
-  readonly code: number = 0x49;
-  readonly name: string = 'IsMutableCanOnlyBeFlippedToFalse';
+  readonly code: number = 0x49
+  readonly name: string = 'IsMutableCanOnlyBeFlippedToFalse'
   constructor() {
-    super('Is Mutable can only be flipped to false');
+    super('Is Mutable can only be flipped to false')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, IsMutableCanOnlyBeFlippedToFalseError);
+      Error.captureStackTrace(this, IsMutableCanOnlyBeFlippedToFalseError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x49, () => new IsMutableCanOnlyBeFlippedToFalseError());
+createErrorFromCodeLookup.set(
+  0x49,
+  () => new IsMutableCanOnlyBeFlippedToFalseError()
+)
 createErrorFromNameLookup.set(
   'IsMutableCanOnlyBeFlippedToFalse',
-  () => new IsMutableCanOnlyBeFlippedToFalseError(),
-);
+  () => new IsMutableCanOnlyBeFlippedToFalseError()
+)
 
 /**
  * CollectionCannotBeVerifiedInThisInstruction: 'Collection cannot be verified in this instruction'
@@ -1594,21 +1778,27 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CollectionCannotBeVerifiedInThisInstructionError extends Error {
-  readonly code: number = 0x4a;
-  readonly name: string = 'CollectionCannotBeVerifiedInThisInstruction';
+  readonly code: number = 0x4a
+  readonly name: string = 'CollectionCannotBeVerifiedInThisInstruction'
   constructor() {
-    super('Collection cannot be verified in this instruction');
+    super('Collection cannot be verified in this instruction')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionCannotBeVerifiedInThisInstructionError);
+      Error.captureStackTrace(
+        this,
+        CollectionCannotBeVerifiedInThisInstructionError
+      )
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4a, () => new CollectionCannotBeVerifiedInThisInstructionError());
+createErrorFromCodeLookup.set(
+  0x4a,
+  () => new CollectionCannotBeVerifiedInThisInstructionError()
+)
 createErrorFromNameLookup.set(
   'CollectionCannotBeVerifiedInThisInstruction',
-  () => new CollectionCannotBeVerifiedInThisInstructionError(),
-);
+  () => new CollectionCannotBeVerifiedInThisInstructionError()
+)
 
 /**
  * Removed: 'This instruction was deprecated in a previous release and is now removed'
@@ -1617,18 +1807,20 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class RemovedError extends Error {
-  readonly code: number = 0x4b;
-  readonly name: string = 'Removed';
+  readonly code: number = 0x4b
+  readonly name: string = 'Removed'
   constructor() {
-    super('This instruction was deprecated in a previous release and is now removed');
+    super(
+      'This instruction was deprecated in a previous release and is now removed'
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, RemovedError);
+      Error.captureStackTrace(this, RemovedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4b, () => new RemovedError());
-createErrorFromNameLookup.set('Removed', () => new RemovedError());
+createErrorFromCodeLookup.set(0x4b, () => new RemovedError())
+createErrorFromNameLookup.set('Removed', () => new RemovedError())
 
 /**
  * MustBeBurned: ''
@@ -1637,18 +1829,18 @@ createErrorFromNameLookup.set('Removed', () => new RemovedError());
  * @category generated
  */
 export class MustBeBurnedError extends Error {
-  readonly code: number = 0x4c;
-  readonly name: string = 'MustBeBurned';
+  readonly code: number = 0x4c
+  readonly name: string = 'MustBeBurned'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MustBeBurnedError);
+      Error.captureStackTrace(this, MustBeBurnedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4c, () => new MustBeBurnedError());
-createErrorFromNameLookup.set('MustBeBurned', () => new MustBeBurnedError());
+createErrorFromCodeLookup.set(0x4c, () => new MustBeBurnedError())
+createErrorFromNameLookup.set('MustBeBurned', () => new MustBeBurnedError())
 
 /**
  * InvalidUseMethod: 'This use method is invalid'
@@ -1657,18 +1849,21 @@ createErrorFromNameLookup.set('MustBeBurned', () => new MustBeBurnedError());
  * @category generated
  */
 export class InvalidUseMethodError extends Error {
-  readonly code: number = 0x4d;
-  readonly name: string = 'InvalidUseMethod';
+  readonly code: number = 0x4d
+  readonly name: string = 'InvalidUseMethod'
   constructor() {
-    super('This use method is invalid');
+    super('This use method is invalid')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidUseMethodError);
+      Error.captureStackTrace(this, InvalidUseMethodError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4d, () => new InvalidUseMethodError());
-createErrorFromNameLookup.set('InvalidUseMethod', () => new InvalidUseMethodError());
+createErrorFromCodeLookup.set(0x4d, () => new InvalidUseMethodError())
+createErrorFromNameLookup.set(
+  'InvalidUseMethod',
+  () => new InvalidUseMethodError()
+)
 
 /**
  * CannotChangeUseMethodAfterFirstUse: 'Cannot Change Use Method after the first use'
@@ -1677,21 +1872,24 @@ createErrorFromNameLookup.set('InvalidUseMethod', () => new InvalidUseMethodErro
  * @category generated
  */
 export class CannotChangeUseMethodAfterFirstUseError extends Error {
-  readonly code: number = 0x4e;
-  readonly name: string = 'CannotChangeUseMethodAfterFirstUse';
+  readonly code: number = 0x4e
+  readonly name: string = 'CannotChangeUseMethodAfterFirstUse'
   constructor() {
-    super('Cannot Change Use Method after the first use');
+    super('Cannot Change Use Method after the first use')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotChangeUseMethodAfterFirstUseError);
+      Error.captureStackTrace(this, CannotChangeUseMethodAfterFirstUseError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4e, () => new CannotChangeUseMethodAfterFirstUseError());
+createErrorFromCodeLookup.set(
+  0x4e,
+  () => new CannotChangeUseMethodAfterFirstUseError()
+)
 createErrorFromNameLookup.set(
   'CannotChangeUseMethodAfterFirstUse',
-  () => new CannotChangeUseMethodAfterFirstUseError(),
-);
+  () => new CannotChangeUseMethodAfterFirstUseError()
+)
 
 /**
  * CannotChangeUsesAfterFirstUse: 'Cannot Change Remaining or Available uses after the first use'
@@ -1700,21 +1898,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotChangeUsesAfterFirstUseError extends Error {
-  readonly code: number = 0x4f;
-  readonly name: string = 'CannotChangeUsesAfterFirstUse';
+  readonly code: number = 0x4f
+  readonly name: string = 'CannotChangeUsesAfterFirstUse'
   constructor() {
-    super('Cannot Change Remaining or Available uses after the first use');
+    super('Cannot Change Remaining or Available uses after the first use')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotChangeUsesAfterFirstUseError);
+      Error.captureStackTrace(this, CannotChangeUsesAfterFirstUseError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x4f, () => new CannotChangeUsesAfterFirstUseError());
+createErrorFromCodeLookup.set(
+  0x4f,
+  () => new CannotChangeUsesAfterFirstUseError()
+)
 createErrorFromNameLookup.set(
   'CannotChangeUsesAfterFirstUse',
-  () => new CannotChangeUsesAfterFirstUseError(),
-);
+  () => new CannotChangeUsesAfterFirstUseError()
+)
 
 /**
  * CollectionNotFound: 'Collection Not Found on Metadata'
@@ -1723,18 +1924,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CollectionNotFoundError extends Error {
-  readonly code: number = 0x50;
-  readonly name: string = 'CollectionNotFound';
+  readonly code: number = 0x50
+  readonly name: string = 'CollectionNotFound'
   constructor() {
-    super('Collection Not Found on Metadata');
+    super('Collection Not Found on Metadata')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionNotFoundError);
+      Error.captureStackTrace(this, CollectionNotFoundError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x50, () => new CollectionNotFoundError());
-createErrorFromNameLookup.set('CollectionNotFound', () => new CollectionNotFoundError());
+createErrorFromCodeLookup.set(0x50, () => new CollectionNotFoundError())
+createErrorFromNameLookup.set(
+  'CollectionNotFound',
+  () => new CollectionNotFoundError()
+)
 
 /**
  * InvalidCollectionUpdateAuthority: 'Collection Update Authority is invalid'
@@ -1743,21 +1947,24 @@ createErrorFromNameLookup.set('CollectionNotFound', () => new CollectionNotFound
  * @category generated
  */
 export class InvalidCollectionUpdateAuthorityError extends Error {
-  readonly code: number = 0x51;
-  readonly name: string = 'InvalidCollectionUpdateAuthority';
+  readonly code: number = 0x51
+  readonly name: string = 'InvalidCollectionUpdateAuthority'
   constructor() {
-    super('Collection Update Authority is invalid');
+    super('Collection Update Authority is invalid')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidCollectionUpdateAuthorityError);
+      Error.captureStackTrace(this, InvalidCollectionUpdateAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x51, () => new InvalidCollectionUpdateAuthorityError());
+createErrorFromCodeLookup.set(
+  0x51,
+  () => new InvalidCollectionUpdateAuthorityError()
+)
 createErrorFromNameLookup.set(
   'InvalidCollectionUpdateAuthority',
-  () => new InvalidCollectionUpdateAuthorityError(),
-);
+  () => new InvalidCollectionUpdateAuthorityError()
+)
 
 /**
  * CollectionMustBeAUniqueMasterEdition: 'Collection Must Be a Unique Master Edition v2'
@@ -1766,21 +1973,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CollectionMustBeAUniqueMasterEditionError extends Error {
-  readonly code: number = 0x52;
-  readonly name: string = 'CollectionMustBeAUniqueMasterEdition';
+  readonly code: number = 0x52
+  readonly name: string = 'CollectionMustBeAUniqueMasterEdition'
   constructor() {
-    super('Collection Must Be a Unique Master Edition v2');
+    super('Collection Must Be a Unique Master Edition v2')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionMustBeAUniqueMasterEditionError);
+      Error.captureStackTrace(this, CollectionMustBeAUniqueMasterEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x52, () => new CollectionMustBeAUniqueMasterEditionError());
+createErrorFromCodeLookup.set(
+  0x52,
+  () => new CollectionMustBeAUniqueMasterEditionError()
+)
 createErrorFromNameLookup.set(
   'CollectionMustBeAUniqueMasterEdition',
-  () => new CollectionMustBeAUniqueMasterEditionError(),
-);
+  () => new CollectionMustBeAUniqueMasterEditionError()
+)
 
 /**
  * UseAuthorityRecordAlreadyExists: 'The Use Authority Record Already Exists, to modify it Revoke, then Approve'
@@ -1789,21 +1999,26 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class UseAuthorityRecordAlreadyExistsError extends Error {
-  readonly code: number = 0x53;
-  readonly name: string = 'UseAuthorityRecordAlreadyExists';
+  readonly code: number = 0x53
+  readonly name: string = 'UseAuthorityRecordAlreadyExists'
   constructor() {
-    super('The Use Authority Record Already Exists, to modify it Revoke, then Approve');
+    super(
+      'The Use Authority Record Already Exists, to modify it Revoke, then Approve'
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UseAuthorityRecordAlreadyExistsError);
+      Error.captureStackTrace(this, UseAuthorityRecordAlreadyExistsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x53, () => new UseAuthorityRecordAlreadyExistsError());
+createErrorFromCodeLookup.set(
+  0x53,
+  () => new UseAuthorityRecordAlreadyExistsError()
+)
 createErrorFromNameLookup.set(
   'UseAuthorityRecordAlreadyExists',
-  () => new UseAuthorityRecordAlreadyExistsError(),
-);
+  () => new UseAuthorityRecordAlreadyExistsError()
+)
 
 /**
  * UseAuthorityRecordAlreadyRevoked: 'The Use Authority Record is empty or already revoked'
@@ -1812,21 +2027,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class UseAuthorityRecordAlreadyRevokedError extends Error {
-  readonly code: number = 0x54;
-  readonly name: string = 'UseAuthorityRecordAlreadyRevoked';
+  readonly code: number = 0x54
+  readonly name: string = 'UseAuthorityRecordAlreadyRevoked'
   constructor() {
-    super('The Use Authority Record is empty or already revoked');
+    super('The Use Authority Record is empty or already revoked')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UseAuthorityRecordAlreadyRevokedError);
+      Error.captureStackTrace(this, UseAuthorityRecordAlreadyRevokedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x54, () => new UseAuthorityRecordAlreadyRevokedError());
+createErrorFromCodeLookup.set(
+  0x54,
+  () => new UseAuthorityRecordAlreadyRevokedError()
+)
 createErrorFromNameLookup.set(
   'UseAuthorityRecordAlreadyRevoked',
-  () => new UseAuthorityRecordAlreadyRevokedError(),
-);
+  () => new UseAuthorityRecordAlreadyRevokedError()
+)
 
 /**
  * Unusable: 'This token has no uses'
@@ -1835,18 +2053,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class UnusableError extends Error {
-  readonly code: number = 0x55;
-  readonly name: string = 'Unusable';
+  readonly code: number = 0x55
+  readonly name: string = 'Unusable'
   constructor() {
-    super('This token has no uses');
+    super('This token has no uses')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UnusableError);
+      Error.captureStackTrace(this, UnusableError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x55, () => new UnusableError());
-createErrorFromNameLookup.set('Unusable', () => new UnusableError());
+createErrorFromCodeLookup.set(0x55, () => new UnusableError())
+createErrorFromNameLookup.set('Unusable', () => new UnusableError())
 
 /**
  * NotEnoughUses: 'There are not enough Uses left on this token.'
@@ -1855,18 +2073,18 @@ createErrorFromNameLookup.set('Unusable', () => new UnusableError());
  * @category generated
  */
 export class NotEnoughUsesError extends Error {
-  readonly code: number = 0x56;
-  readonly name: string = 'NotEnoughUses';
+  readonly code: number = 0x56
+  readonly name: string = 'NotEnoughUses'
   constructor() {
-    super('There are not enough Uses left on this token.');
+    super('There are not enough Uses left on this token.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotEnoughUsesError);
+      Error.captureStackTrace(this, NotEnoughUsesError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x56, () => new NotEnoughUsesError());
-createErrorFromNameLookup.set('NotEnoughUses', () => new NotEnoughUsesError());
+createErrorFromCodeLookup.set(0x56, () => new NotEnoughUsesError())
+createErrorFromNameLookup.set('NotEnoughUses', () => new NotEnoughUsesError())
 
 /**
  * CollectionAuthorityRecordAlreadyExists: 'This Collection Authority Record Already Exists.'
@@ -1875,21 +2093,24 @@ createErrorFromNameLookup.set('NotEnoughUses', () => new NotEnoughUsesError());
  * @category generated
  */
 export class CollectionAuthorityRecordAlreadyExistsError extends Error {
-  readonly code: number = 0x57;
-  readonly name: string = 'CollectionAuthorityRecordAlreadyExists';
+  readonly code: number = 0x57
+  readonly name: string = 'CollectionAuthorityRecordAlreadyExists'
   constructor() {
-    super('This Collection Authority Record Already Exists.');
+    super('This Collection Authority Record Already Exists.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionAuthorityRecordAlreadyExistsError);
+      Error.captureStackTrace(this, CollectionAuthorityRecordAlreadyExistsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x57, () => new CollectionAuthorityRecordAlreadyExistsError());
+createErrorFromCodeLookup.set(
+  0x57,
+  () => new CollectionAuthorityRecordAlreadyExistsError()
+)
 createErrorFromNameLookup.set(
   'CollectionAuthorityRecordAlreadyExists',
-  () => new CollectionAuthorityRecordAlreadyExistsError(),
-);
+  () => new CollectionAuthorityRecordAlreadyExistsError()
+)
 
 /**
  * CollectionAuthorityDoesNotExist: 'This Collection Authority Record Does Not Exist.'
@@ -1898,21 +2119,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CollectionAuthorityDoesNotExistError extends Error {
-  readonly code: number = 0x58;
-  readonly name: string = 'CollectionAuthorityDoesNotExist';
+  readonly code: number = 0x58
+  readonly name: string = 'CollectionAuthorityDoesNotExist'
   constructor() {
-    super('This Collection Authority Record Does Not Exist.');
+    super('This Collection Authority Record Does Not Exist.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionAuthorityDoesNotExistError);
+      Error.captureStackTrace(this, CollectionAuthorityDoesNotExistError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x58, () => new CollectionAuthorityDoesNotExistError());
+createErrorFromCodeLookup.set(
+  0x58,
+  () => new CollectionAuthorityDoesNotExistError()
+)
 createErrorFromNameLookup.set(
   'CollectionAuthorityDoesNotExist',
-  () => new CollectionAuthorityDoesNotExistError(),
-);
+  () => new CollectionAuthorityDoesNotExistError()
+)
 
 /**
  * InvalidUseAuthorityRecord: 'This Use Authority Record is invalid.'
@@ -1921,21 +2145,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidUseAuthorityRecordError extends Error {
-  readonly code: number = 0x59;
-  readonly name: string = 'InvalidUseAuthorityRecord';
+  readonly code: number = 0x59
+  readonly name: string = 'InvalidUseAuthorityRecord'
   constructor() {
-    super('This Use Authority Record is invalid.');
+    super('This Use Authority Record is invalid.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidUseAuthorityRecordError);
+      Error.captureStackTrace(this, InvalidUseAuthorityRecordError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x59, () => new InvalidUseAuthorityRecordError());
+createErrorFromCodeLookup.set(0x59, () => new InvalidUseAuthorityRecordError())
 createErrorFromNameLookup.set(
   'InvalidUseAuthorityRecord',
-  () => new InvalidUseAuthorityRecordError(),
-);
+  () => new InvalidUseAuthorityRecordError()
+)
 
 /**
  * InvalidCollectionAuthorityRecord: ''
@@ -1944,21 +2168,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidCollectionAuthorityRecordError extends Error {
-  readonly code: number = 0x5a;
-  readonly name: string = 'InvalidCollectionAuthorityRecord';
+  readonly code: number = 0x5a
+  readonly name: string = 'InvalidCollectionAuthorityRecord'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidCollectionAuthorityRecordError);
+      Error.captureStackTrace(this, InvalidCollectionAuthorityRecordError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5a, () => new InvalidCollectionAuthorityRecordError());
+createErrorFromCodeLookup.set(
+  0x5a,
+  () => new InvalidCollectionAuthorityRecordError()
+)
 createErrorFromNameLookup.set(
   'InvalidCollectionAuthorityRecord',
-  () => new InvalidCollectionAuthorityRecordError(),
-);
+  () => new InvalidCollectionAuthorityRecordError()
+)
 
 /**
  * InvalidFreezeAuthority: 'Metadata does not match the freeze authority on the mint'
@@ -1967,18 +2194,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidFreezeAuthorityError extends Error {
-  readonly code: number = 0x5b;
-  readonly name: string = 'InvalidFreezeAuthority';
+  readonly code: number = 0x5b
+  readonly name: string = 'InvalidFreezeAuthority'
   constructor() {
-    super('Metadata does not match the freeze authority on the mint');
+    super('Metadata does not match the freeze authority on the mint')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidFreezeAuthorityError);
+      Error.captureStackTrace(this, InvalidFreezeAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5b, () => new InvalidFreezeAuthorityError());
-createErrorFromNameLookup.set('InvalidFreezeAuthority', () => new InvalidFreezeAuthorityError());
+createErrorFromCodeLookup.set(0x5b, () => new InvalidFreezeAuthorityError())
+createErrorFromNameLookup.set(
+  'InvalidFreezeAuthority',
+  () => new InvalidFreezeAuthorityError()
+)
 
 /**
  * InvalidDelegate: 'All tokens in this account have not been delegated to this user.'
@@ -1987,18 +2217,21 @@ createErrorFromNameLookup.set('InvalidFreezeAuthority', () => new InvalidFreezeA
  * @category generated
  */
 export class InvalidDelegateError extends Error {
-  readonly code: number = 0x5c;
-  readonly name: string = 'InvalidDelegate';
+  readonly code: number = 0x5c
+  readonly name: string = 'InvalidDelegate'
   constructor() {
-    super('All tokens in this account have not been delegated to this user.');
+    super('All tokens in this account have not been delegated to this user.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidDelegateError);
+      Error.captureStackTrace(this, InvalidDelegateError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5c, () => new InvalidDelegateError());
-createErrorFromNameLookup.set('InvalidDelegate', () => new InvalidDelegateError());
+createErrorFromCodeLookup.set(0x5c, () => new InvalidDelegateError())
+createErrorFromNameLookup.set(
+  'InvalidDelegate',
+  () => new InvalidDelegateError()
+)
 
 /**
  * CannotAdjustVerifiedCreator: ''
@@ -2007,21 +2240,24 @@ createErrorFromNameLookup.set('InvalidDelegate', () => new InvalidDelegateError(
  * @category generated
  */
 export class CannotAdjustVerifiedCreatorError extends Error {
-  readonly code: number = 0x5d;
-  readonly name: string = 'CannotAdjustVerifiedCreator';
+  readonly code: number = 0x5d
+  readonly name: string = 'CannotAdjustVerifiedCreator'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotAdjustVerifiedCreatorError);
+      Error.captureStackTrace(this, CannotAdjustVerifiedCreatorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5d, () => new CannotAdjustVerifiedCreatorError());
+createErrorFromCodeLookup.set(
+  0x5d,
+  () => new CannotAdjustVerifiedCreatorError()
+)
 createErrorFromNameLookup.set(
   'CannotAdjustVerifiedCreator',
-  () => new CannotAdjustVerifiedCreatorError(),
-);
+  () => new CannotAdjustVerifiedCreatorError()
+)
 
 /**
  * CannotRemoveVerifiedCreator: 'Verified creators cannot be removed.'
@@ -2030,21 +2266,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotRemoveVerifiedCreatorError extends Error {
-  readonly code: number = 0x5e;
-  readonly name: string = 'CannotRemoveVerifiedCreator';
+  readonly code: number = 0x5e
+  readonly name: string = 'CannotRemoveVerifiedCreator'
   constructor() {
-    super('Verified creators cannot be removed.');
+    super('Verified creators cannot be removed.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotRemoveVerifiedCreatorError);
+      Error.captureStackTrace(this, CannotRemoveVerifiedCreatorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5e, () => new CannotRemoveVerifiedCreatorError());
+createErrorFromCodeLookup.set(
+  0x5e,
+  () => new CannotRemoveVerifiedCreatorError()
+)
 createErrorFromNameLookup.set(
   'CannotRemoveVerifiedCreator',
-  () => new CannotRemoveVerifiedCreatorError(),
-);
+  () => new CannotRemoveVerifiedCreatorError()
+)
 
 /**
  * CannotWipeVerifiedCreators: ''
@@ -2053,21 +2292,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotWipeVerifiedCreatorsError extends Error {
-  readonly code: number = 0x5f;
-  readonly name: string = 'CannotWipeVerifiedCreators';
+  readonly code: number = 0x5f
+  readonly name: string = 'CannotWipeVerifiedCreators'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotWipeVerifiedCreatorsError);
+      Error.captureStackTrace(this, CannotWipeVerifiedCreatorsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x5f, () => new CannotWipeVerifiedCreatorsError());
+createErrorFromCodeLookup.set(0x5f, () => new CannotWipeVerifiedCreatorsError())
 createErrorFromNameLookup.set(
   'CannotWipeVerifiedCreators',
-  () => new CannotWipeVerifiedCreatorsError(),
-);
+  () => new CannotWipeVerifiedCreatorsError()
+)
 
 /**
  * NotAllowedToChangeSellerFeeBasisPoints: ''
@@ -2076,21 +2315,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class NotAllowedToChangeSellerFeeBasisPointsError extends Error {
-  readonly code: number = 0x60;
-  readonly name: string = 'NotAllowedToChangeSellerFeeBasisPoints';
+  readonly code: number = 0x60
+  readonly name: string = 'NotAllowedToChangeSellerFeeBasisPoints'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotAllowedToChangeSellerFeeBasisPointsError);
+      Error.captureStackTrace(this, NotAllowedToChangeSellerFeeBasisPointsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x60, () => new NotAllowedToChangeSellerFeeBasisPointsError());
+createErrorFromCodeLookup.set(
+  0x60,
+  () => new NotAllowedToChangeSellerFeeBasisPointsError()
+)
 createErrorFromNameLookup.set(
   'NotAllowedToChangeSellerFeeBasisPoints',
-  () => new NotAllowedToChangeSellerFeeBasisPointsError(),
-);
+  () => new NotAllowedToChangeSellerFeeBasisPointsError()
+)
 
 /**
  * EditionOverrideCannotBeZero: 'Edition override cannot be zero'
@@ -2099,21 +2341,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class EditionOverrideCannotBeZeroError extends Error {
-  readonly code: number = 0x61;
-  readonly name: string = 'EditionOverrideCannotBeZero';
+  readonly code: number = 0x61
+  readonly name: string = 'EditionOverrideCannotBeZero'
   constructor() {
-    super('Edition override cannot be zero');
+    super('Edition override cannot be zero')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EditionOverrideCannotBeZeroError);
+      Error.captureStackTrace(this, EditionOverrideCannotBeZeroError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x61, () => new EditionOverrideCannotBeZeroError());
+createErrorFromCodeLookup.set(
+  0x61,
+  () => new EditionOverrideCannotBeZeroError()
+)
 createErrorFromNameLookup.set(
   'EditionOverrideCannotBeZero',
-  () => new EditionOverrideCannotBeZeroError(),
-);
+  () => new EditionOverrideCannotBeZeroError()
+)
 
 /**
  * InvalidUser: 'Invalid User'
@@ -2122,18 +2367,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidUserError extends Error {
-  readonly code: number = 0x62;
-  readonly name: string = 'InvalidUser';
+  readonly code: number = 0x62
+  readonly name: string = 'InvalidUser'
   constructor() {
-    super('Invalid User');
+    super('Invalid User')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidUserError);
+      Error.captureStackTrace(this, InvalidUserError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x62, () => new InvalidUserError());
-createErrorFromNameLookup.set('InvalidUser', () => new InvalidUserError());
+createErrorFromCodeLookup.set(0x62, () => new InvalidUserError())
+createErrorFromNameLookup.set('InvalidUser', () => new InvalidUserError())
 
 /**
  * RevokeCollectionAuthoritySignerIncorrect: 'Revoke Collection Authority signer is incorrect'
@@ -2142,21 +2387,27 @@ createErrorFromNameLookup.set('InvalidUser', () => new InvalidUserError());
  * @category generated
  */
 export class RevokeCollectionAuthoritySignerIncorrectError extends Error {
-  readonly code: number = 0x63;
-  readonly name: string = 'RevokeCollectionAuthoritySignerIncorrect';
+  readonly code: number = 0x63
+  readonly name: string = 'RevokeCollectionAuthoritySignerIncorrect'
   constructor() {
-    super('Revoke Collection Authority signer is incorrect');
+    super('Revoke Collection Authority signer is incorrect')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, RevokeCollectionAuthoritySignerIncorrectError);
+      Error.captureStackTrace(
+        this,
+        RevokeCollectionAuthoritySignerIncorrectError
+      )
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x63, () => new RevokeCollectionAuthoritySignerIncorrectError());
+createErrorFromCodeLookup.set(
+  0x63,
+  () => new RevokeCollectionAuthoritySignerIncorrectError()
+)
 createErrorFromNameLookup.set(
   'RevokeCollectionAuthoritySignerIncorrect',
-  () => new RevokeCollectionAuthoritySignerIncorrectError(),
-);
+  () => new RevokeCollectionAuthoritySignerIncorrectError()
+)
 
 /**
  * TokenCloseFailed: ''
@@ -2165,18 +2416,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class TokenCloseFailedError extends Error {
-  readonly code: number = 0x64;
-  readonly name: string = 'TokenCloseFailed';
+  readonly code: number = 0x64
+  readonly name: string = 'TokenCloseFailed'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, TokenCloseFailedError);
+      Error.captureStackTrace(this, TokenCloseFailedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x64, () => new TokenCloseFailedError());
-createErrorFromNameLookup.set('TokenCloseFailed', () => new TokenCloseFailedError());
+createErrorFromCodeLookup.set(0x64, () => new TokenCloseFailedError())
+createErrorFromNameLookup.set(
+  'TokenCloseFailed',
+  () => new TokenCloseFailedError()
+)
 
 /**
  * UnsizedCollection: 'Can't use this function on unsized collection'
@@ -2185,18 +2439,21 @@ createErrorFromNameLookup.set('TokenCloseFailed', () => new TokenCloseFailedErro
  * @category generated
  */
 export class UnsizedCollectionError extends Error {
-  readonly code: number = 0x65;
-  readonly name: string = 'UnsizedCollection';
+  readonly code: number = 0x65
+  readonly name: string = 'UnsizedCollection'
   constructor() {
-    super("Can't use this function on unsized collection");
+    super("Can't use this function on unsized collection")
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UnsizedCollectionError);
+      Error.captureStackTrace(this, UnsizedCollectionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x65, () => new UnsizedCollectionError());
-createErrorFromNameLookup.set('UnsizedCollection', () => new UnsizedCollectionError());
+createErrorFromCodeLookup.set(0x65, () => new UnsizedCollectionError())
+createErrorFromNameLookup.set(
+  'UnsizedCollection',
+  () => new UnsizedCollectionError()
+)
 
 /**
  * SizedCollection: 'Can't use this function on a sized collection'
@@ -2205,18 +2462,21 @@ createErrorFromNameLookup.set('UnsizedCollection', () => new UnsizedCollectionEr
  * @category generated
  */
 export class SizedCollectionError extends Error {
-  readonly code: number = 0x66;
-  readonly name: string = 'SizedCollection';
+  readonly code: number = 0x66
+  readonly name: string = 'SizedCollection'
   constructor() {
-    super("Can't use this function on a sized collection");
+    super("Can't use this function on a sized collection")
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, SizedCollectionError);
+      Error.captureStackTrace(this, SizedCollectionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x66, () => new SizedCollectionError());
-createErrorFromNameLookup.set('SizedCollection', () => new SizedCollectionError());
+createErrorFromCodeLookup.set(0x66, () => new SizedCollectionError())
+createErrorFromNameLookup.set(
+  'SizedCollection',
+  () => new SizedCollectionError()
+)
 
 /**
  * MissingCollectionMetadata: 'Missing collection metadata account'
@@ -2225,21 +2485,21 @@ createErrorFromNameLookup.set('SizedCollection', () => new SizedCollectionError(
  * @category generated
  */
 export class MissingCollectionMetadataError extends Error {
-  readonly code: number = 0x67;
-  readonly name: string = 'MissingCollectionMetadata';
+  readonly code: number = 0x67
+  readonly name: string = 'MissingCollectionMetadata'
   constructor() {
-    super('Missing collection metadata account');
+    super('Missing collection metadata account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingCollectionMetadataError);
+      Error.captureStackTrace(this, MissingCollectionMetadataError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x67, () => new MissingCollectionMetadataError());
+createErrorFromCodeLookup.set(0x67, () => new MissingCollectionMetadataError())
 createErrorFromNameLookup.set(
   'MissingCollectionMetadata',
-  () => new MissingCollectionMetadataError(),
-);
+  () => new MissingCollectionMetadataError()
+)
 
 /**
  * NotAMemberOfCollection: 'This NFT is not a member of the specified collection.'
@@ -2248,18 +2508,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class NotAMemberOfCollectionError extends Error {
-  readonly code: number = 0x68;
-  readonly name: string = 'NotAMemberOfCollection';
+  readonly code: number = 0x68
+  readonly name: string = 'NotAMemberOfCollection'
   constructor() {
-    super('This NFT is not a member of the specified collection.');
+    super('This NFT is not a member of the specified collection.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotAMemberOfCollectionError);
+      Error.captureStackTrace(this, NotAMemberOfCollectionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x68, () => new NotAMemberOfCollectionError());
-createErrorFromNameLookup.set('NotAMemberOfCollection', () => new NotAMemberOfCollectionError());
+createErrorFromCodeLookup.set(0x68, () => new NotAMemberOfCollectionError())
+createErrorFromNameLookup.set(
+  'NotAMemberOfCollection',
+  () => new NotAMemberOfCollectionError()
+)
 
 /**
  * NotVerifiedMemberOfCollection: 'This NFT is not a verified member of the specified collection.'
@@ -2268,21 +2531,24 @@ createErrorFromNameLookup.set('NotAMemberOfCollection', () => new NotAMemberOfCo
  * @category generated
  */
 export class NotVerifiedMemberOfCollectionError extends Error {
-  readonly code: number = 0x69;
-  readonly name: string = 'NotVerifiedMemberOfCollection';
+  readonly code: number = 0x69
+  readonly name: string = 'NotVerifiedMemberOfCollection'
   constructor() {
-    super('This NFT is not a verified member of the specified collection.');
+    super('This NFT is not a verified member of the specified collection.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotVerifiedMemberOfCollectionError);
+      Error.captureStackTrace(this, NotVerifiedMemberOfCollectionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x69, () => new NotVerifiedMemberOfCollectionError());
+createErrorFromCodeLookup.set(
+  0x69,
+  () => new NotVerifiedMemberOfCollectionError()
+)
 createErrorFromNameLookup.set(
   'NotVerifiedMemberOfCollection',
-  () => new NotVerifiedMemberOfCollectionError(),
-);
+  () => new NotVerifiedMemberOfCollectionError()
+)
 
 /**
  * NotACollectionParent: 'This NFT is not a collection parent NFT.'
@@ -2291,18 +2557,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class NotACollectionParentError extends Error {
-  readonly code: number = 0x6a;
-  readonly name: string = 'NotACollectionParent';
+  readonly code: number = 0x6a
+  readonly name: string = 'NotACollectionParent'
   constructor() {
-    super('This NFT is not a collection parent NFT.');
+    super('This NFT is not a collection parent NFT.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotACollectionParentError);
+      Error.captureStackTrace(this, NotACollectionParentError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6a, () => new NotACollectionParentError());
-createErrorFromNameLookup.set('NotACollectionParent', () => new NotACollectionParentError());
+createErrorFromCodeLookup.set(0x6a, () => new NotACollectionParentError())
+createErrorFromNameLookup.set(
+  'NotACollectionParent',
+  () => new NotACollectionParentError()
+)
 
 /**
  * CouldNotDetermineTokenStandard: 'Could not determine a TokenStandard type.'
@@ -2311,21 +2580,24 @@ createErrorFromNameLookup.set('NotACollectionParent', () => new NotACollectionPa
  * @category generated
  */
 export class CouldNotDetermineTokenStandardError extends Error {
-  readonly code: number = 0x6b;
-  readonly name: string = 'CouldNotDetermineTokenStandard';
+  readonly code: number = 0x6b
+  readonly name: string = 'CouldNotDetermineTokenStandard'
   constructor() {
-    super('Could not determine a TokenStandard type.');
+    super('Could not determine a TokenStandard type.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CouldNotDetermineTokenStandardError);
+      Error.captureStackTrace(this, CouldNotDetermineTokenStandardError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6b, () => new CouldNotDetermineTokenStandardError());
+createErrorFromCodeLookup.set(
+  0x6b,
+  () => new CouldNotDetermineTokenStandardError()
+)
 createErrorFromNameLookup.set(
   'CouldNotDetermineTokenStandard',
-  () => new CouldNotDetermineTokenStandardError(),
-);
+  () => new CouldNotDetermineTokenStandardError()
+)
 
 /**
  * MissingEditionAccount: 'This mint account has an edition but none was provided.'
@@ -2334,18 +2606,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingEditionAccountError extends Error {
-  readonly code: number = 0x6c;
-  readonly name: string = 'MissingEditionAccount';
+  readonly code: number = 0x6c
+  readonly name: string = 'MissingEditionAccount'
   constructor() {
-    super('This mint account has an edition but none was provided.');
+    super('This mint account has an edition but none was provided.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingEditionAccountError);
+      Error.captureStackTrace(this, MissingEditionAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6c, () => new MissingEditionAccountError());
-createErrorFromNameLookup.set('MissingEditionAccount', () => new MissingEditionAccountError());
+createErrorFromCodeLookup.set(0x6c, () => new MissingEditionAccountError())
+createErrorFromNameLookup.set(
+  'MissingEditionAccount',
+  () => new MissingEditionAccountError()
+)
 
 /**
  * NotAMasterEdition: 'This edition is not a Master Edition'
@@ -2354,18 +2629,21 @@ createErrorFromNameLookup.set('MissingEditionAccount', () => new MissingEditionA
  * @category generated
  */
 export class NotAMasterEditionError extends Error {
-  readonly code: number = 0x6d;
-  readonly name: string = 'NotAMasterEdition';
+  readonly code: number = 0x6d
+  readonly name: string = 'NotAMasterEdition'
   constructor() {
-    super('This edition is not a Master Edition');
+    super('This edition is not a Master Edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotAMasterEditionError);
+      Error.captureStackTrace(this, NotAMasterEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6d, () => new NotAMasterEditionError());
-createErrorFromNameLookup.set('NotAMasterEdition', () => new NotAMasterEditionError());
+createErrorFromCodeLookup.set(0x6d, () => new NotAMasterEditionError())
+createErrorFromNameLookup.set(
+  'NotAMasterEdition',
+  () => new NotAMasterEditionError()
+)
 
 /**
  * MasterEditionHasPrints: 'This Master Edition has existing prints'
@@ -2374,18 +2652,21 @@ createErrorFromNameLookup.set('NotAMasterEdition', () => new NotAMasterEditionEr
  * @category generated
  */
 export class MasterEditionHasPrintsError extends Error {
-  readonly code: number = 0x6e;
-  readonly name: string = 'MasterEditionHasPrints';
+  readonly code: number = 0x6e
+  readonly name: string = 'MasterEditionHasPrints'
   constructor() {
-    super('This Master Edition has existing prints');
+    super('This Master Edition has existing prints')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MasterEditionHasPrintsError);
+      Error.captureStackTrace(this, MasterEditionHasPrintsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6e, () => new MasterEditionHasPrintsError());
-createErrorFromNameLookup.set('MasterEditionHasPrints', () => new MasterEditionHasPrintsError());
+createErrorFromCodeLookup.set(0x6e, () => new MasterEditionHasPrintsError())
+createErrorFromNameLookup.set(
+  'MasterEditionHasPrints',
+  () => new MasterEditionHasPrintsError()
+)
 
 /**
  * BorshDeserializationError: ''
@@ -2394,21 +2675,21 @@ createErrorFromNameLookup.set('MasterEditionHasPrints', () => new MasterEditionH
  * @category generated
  */
 export class BorshDeserializationErrorError extends Error {
-  readonly code: number = 0x6f;
-  readonly name: string = 'BorshDeserializationError';
+  readonly code: number = 0x6f
+  readonly name: string = 'BorshDeserializationError'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, BorshDeserializationErrorError);
+      Error.captureStackTrace(this, BorshDeserializationErrorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x6f, () => new BorshDeserializationErrorError());
+createErrorFromCodeLookup.set(0x6f, () => new BorshDeserializationErrorError())
 createErrorFromNameLookup.set(
   'BorshDeserializationError',
-  () => new BorshDeserializationErrorError(),
-);
+  () => new BorshDeserializationErrorError()
+)
 
 /**
  * CannotUpdateVerifiedCollection: 'Cannot update a verified collection in this command'
@@ -2417,21 +2698,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotUpdateVerifiedCollectionError extends Error {
-  readonly code: number = 0x70;
-  readonly name: string = 'CannotUpdateVerifiedCollection';
+  readonly code: number = 0x70
+  readonly name: string = 'CannotUpdateVerifiedCollection'
   constructor() {
-    super('Cannot update a verified collection in this command');
+    super('Cannot update a verified collection in this command')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotUpdateVerifiedCollectionError);
+      Error.captureStackTrace(this, CannotUpdateVerifiedCollectionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x70, () => new CannotUpdateVerifiedCollectionError());
+createErrorFromCodeLookup.set(
+  0x70,
+  () => new CannotUpdateVerifiedCollectionError()
+)
 createErrorFromNameLookup.set(
   'CannotUpdateVerifiedCollection',
-  () => new CannotUpdateVerifiedCollectionError(),
-);
+  () => new CannotUpdateVerifiedCollectionError()
+)
 
 /**
  * CollectionMasterEditionAccountInvalid: 'Edition account doesnt match collection '
@@ -2440,21 +2724,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CollectionMasterEditionAccountInvalidError extends Error {
-  readonly code: number = 0x71;
-  readonly name: string = 'CollectionMasterEditionAccountInvalid';
+  readonly code: number = 0x71
+  readonly name: string = 'CollectionMasterEditionAccountInvalid'
   constructor() {
-    super('Edition account doesnt match collection ');
+    super('Edition account doesnt match collection ')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CollectionMasterEditionAccountInvalidError);
+      Error.captureStackTrace(this, CollectionMasterEditionAccountInvalidError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x71, () => new CollectionMasterEditionAccountInvalidError());
+createErrorFromCodeLookup.set(
+  0x71,
+  () => new CollectionMasterEditionAccountInvalidError()
+)
 createErrorFromNameLookup.set(
   'CollectionMasterEditionAccountInvalid',
-  () => new CollectionMasterEditionAccountInvalidError(),
-);
+  () => new CollectionMasterEditionAccountInvalidError()
+)
 
 /**
  * AlreadyVerified: 'Item is already verified.'
@@ -2463,18 +2750,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class AlreadyVerifiedError extends Error {
-  readonly code: number = 0x72;
-  readonly name: string = 'AlreadyVerified';
+  readonly code: number = 0x72
+  readonly name: string = 'AlreadyVerified'
   constructor() {
-    super('Item is already verified.');
+    super('Item is already verified.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AlreadyVerifiedError);
+      Error.captureStackTrace(this, AlreadyVerifiedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x72, () => new AlreadyVerifiedError());
-createErrorFromNameLookup.set('AlreadyVerified', () => new AlreadyVerifiedError());
+createErrorFromCodeLookup.set(0x72, () => new AlreadyVerifiedError())
+createErrorFromNameLookup.set(
+  'AlreadyVerified',
+  () => new AlreadyVerifiedError()
+)
 
 /**
  * AlreadyUnverified: ''
@@ -2483,18 +2773,21 @@ createErrorFromNameLookup.set('AlreadyVerified', () => new AlreadyVerifiedError(
  * @category generated
  */
 export class AlreadyUnverifiedError extends Error {
-  readonly code: number = 0x73;
-  readonly name: string = 'AlreadyUnverified';
+  readonly code: number = 0x73
+  readonly name: string = 'AlreadyUnverified'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AlreadyUnverifiedError);
+      Error.captureStackTrace(this, AlreadyUnverifiedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x73, () => new AlreadyUnverifiedError());
-createErrorFromNameLookup.set('AlreadyUnverified', () => new AlreadyUnverifiedError());
+createErrorFromCodeLookup.set(0x73, () => new AlreadyUnverifiedError())
+createErrorFromNameLookup.set(
+  'AlreadyUnverified',
+  () => new AlreadyUnverifiedError()
+)
 
 /**
  * NotAPrintEdition: 'This edition is not a Print Edition'
@@ -2503,18 +2796,21 @@ createErrorFromNameLookup.set('AlreadyUnverified', () => new AlreadyUnverifiedEr
  * @category generated
  */
 export class NotAPrintEditionError extends Error {
-  readonly code: number = 0x74;
-  readonly name: string = 'NotAPrintEdition';
+  readonly code: number = 0x74
+  readonly name: string = 'NotAPrintEdition'
   constructor() {
-    super('This edition is not a Print Edition');
+    super('This edition is not a Print Edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NotAPrintEditionError);
+      Error.captureStackTrace(this, NotAPrintEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x74, () => new NotAPrintEditionError());
-createErrorFromNameLookup.set('NotAPrintEdition', () => new NotAPrintEditionError());
+createErrorFromCodeLookup.set(0x74, () => new NotAPrintEditionError())
+createErrorFromNameLookup.set(
+  'NotAPrintEdition',
+  () => new NotAPrintEditionError()
+)
 
 /**
  * InvalidMasterEdition: 'Invalid Master Edition'
@@ -2523,18 +2819,21 @@ createErrorFromNameLookup.set('NotAPrintEdition', () => new NotAPrintEditionErro
  * @category generated
  */
 export class InvalidMasterEditionError extends Error {
-  readonly code: number = 0x75;
-  readonly name: string = 'InvalidMasterEdition';
+  readonly code: number = 0x75
+  readonly name: string = 'InvalidMasterEdition'
   constructor() {
-    super('Invalid Master Edition');
+    super('Invalid Master Edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMasterEditionError);
+      Error.captureStackTrace(this, InvalidMasterEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x75, () => new InvalidMasterEditionError());
-createErrorFromNameLookup.set('InvalidMasterEdition', () => new InvalidMasterEditionError());
+createErrorFromCodeLookup.set(0x75, () => new InvalidMasterEditionError())
+createErrorFromNameLookup.set(
+  'InvalidMasterEdition',
+  () => new InvalidMasterEditionError()
+)
 
 /**
  * InvalidPrintEdition: 'Invalid Print Edition'
@@ -2543,18 +2842,21 @@ createErrorFromNameLookup.set('InvalidMasterEdition', () => new InvalidMasterEdi
  * @category generated
  */
 export class InvalidPrintEditionError extends Error {
-  readonly code: number = 0x76;
-  readonly name: string = 'InvalidPrintEdition';
+  readonly code: number = 0x76
+  readonly name: string = 'InvalidPrintEdition'
   constructor() {
-    super('Invalid Print Edition');
+    super('Invalid Print Edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidPrintEditionError);
+      Error.captureStackTrace(this, InvalidPrintEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x76, () => new InvalidPrintEditionError());
-createErrorFromNameLookup.set('InvalidPrintEdition', () => new InvalidPrintEditionError());
+createErrorFromCodeLookup.set(0x76, () => new InvalidPrintEditionError())
+createErrorFromNameLookup.set(
+  'InvalidPrintEdition',
+  () => new InvalidPrintEditionError()
+)
 
 /**
  * InvalidEditionMarker: 'Invalid Edition Marker'
@@ -2563,18 +2865,21 @@ createErrorFromNameLookup.set('InvalidPrintEdition', () => new InvalidPrintEditi
  * @category generated
  */
 export class InvalidEditionMarkerError extends Error {
-  readonly code: number = 0x77;
-  readonly name: string = 'InvalidEditionMarker';
+  readonly code: number = 0x77
+  readonly name: string = 'InvalidEditionMarker'
   constructor() {
-    super('Invalid Edition Marker');
+    super('Invalid Edition Marker')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidEditionMarkerError);
+      Error.captureStackTrace(this, InvalidEditionMarkerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x77, () => new InvalidEditionMarkerError());
-createErrorFromNameLookup.set('InvalidEditionMarker', () => new InvalidEditionMarkerError());
+createErrorFromCodeLookup.set(0x77, () => new InvalidEditionMarkerError())
+createErrorFromNameLookup.set(
+  'InvalidEditionMarker',
+  () => new InvalidEditionMarkerError()
+)
 
 /**
  * ReservationListDeprecated: 'Reservation List is Deprecated'
@@ -2583,21 +2888,21 @@ createErrorFromNameLookup.set('InvalidEditionMarker', () => new InvalidEditionMa
  * @category generated
  */
 export class ReservationListDeprecatedError extends Error {
-  readonly code: number = 0x78;
-  readonly name: string = 'ReservationListDeprecated';
+  readonly code: number = 0x78
+  readonly name: string = 'ReservationListDeprecated'
   constructor() {
-    super('Reservation List is Deprecated');
+    super('Reservation List is Deprecated')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, ReservationListDeprecatedError);
+      Error.captureStackTrace(this, ReservationListDeprecatedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x78, () => new ReservationListDeprecatedError());
+createErrorFromCodeLookup.set(0x78, () => new ReservationListDeprecatedError())
 createErrorFromNameLookup.set(
   'ReservationListDeprecated',
-  () => new ReservationListDeprecatedError(),
-);
+  () => new ReservationListDeprecatedError()
+)
 
 /**
  * PrintEditionDoesNotMatchMasterEdition: 'Print Edition does not match Master Edition'
@@ -2606,21 +2911,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class PrintEditionDoesNotMatchMasterEditionError extends Error {
-  readonly code: number = 0x79;
-  readonly name: string = 'PrintEditionDoesNotMatchMasterEdition';
+  readonly code: number = 0x79
+  readonly name: string = 'PrintEditionDoesNotMatchMasterEdition'
   constructor() {
-    super('Print Edition does not match Master Edition');
+    super('Print Edition does not match Master Edition')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, PrintEditionDoesNotMatchMasterEditionError);
+      Error.captureStackTrace(this, PrintEditionDoesNotMatchMasterEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x79, () => new PrintEditionDoesNotMatchMasterEditionError());
+createErrorFromCodeLookup.set(
+  0x79,
+  () => new PrintEditionDoesNotMatchMasterEditionError()
+)
 createErrorFromNameLookup.set(
   'PrintEditionDoesNotMatchMasterEdition',
-  () => new PrintEditionDoesNotMatchMasterEditionError(),
-);
+  () => new PrintEditionDoesNotMatchMasterEditionError()
+)
 
 /**
  * EditionNumberGreaterThanMaxSupply: 'Edition Number greater than max supply'
@@ -2629,21 +2937,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class EditionNumberGreaterThanMaxSupplyError extends Error {
-  readonly code: number = 0x7a;
-  readonly name: string = 'EditionNumberGreaterThanMaxSupply';
+  readonly code: number = 0x7a
+  readonly name: string = 'EditionNumberGreaterThanMaxSupply'
   constructor() {
-    super('Edition Number greater than max supply');
+    super('Edition Number greater than max supply')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EditionNumberGreaterThanMaxSupplyError);
+      Error.captureStackTrace(this, EditionNumberGreaterThanMaxSupplyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7a, () => new EditionNumberGreaterThanMaxSupplyError());
+createErrorFromCodeLookup.set(
+  0x7a,
+  () => new EditionNumberGreaterThanMaxSupplyError()
+)
 createErrorFromNameLookup.set(
   'EditionNumberGreaterThanMaxSupply',
-  () => new EditionNumberGreaterThanMaxSupplyError(),
-);
+  () => new EditionNumberGreaterThanMaxSupplyError()
+)
 
 /**
  * MustUnverify: 'Must unverify before migrating collections.'
@@ -2652,18 +2963,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MustUnverifyError extends Error {
-  readonly code: number = 0x7b;
-  readonly name: string = 'MustUnverify';
+  readonly code: number = 0x7b
+  readonly name: string = 'MustUnverify'
   constructor() {
-    super('Must unverify before migrating collections.');
+    super('Must unverify before migrating collections.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MustUnverifyError);
+      Error.captureStackTrace(this, MustUnverifyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7b, () => new MustUnverifyError());
-createErrorFromNameLookup.set('MustUnverify', () => new MustUnverifyError());
+createErrorFromCodeLookup.set(0x7b, () => new MustUnverifyError())
+createErrorFromNameLookup.set('MustUnverify', () => new MustUnverifyError())
 
 /**
  * InvalidEscrowBumpSeed: 'Invalid Escrow Account Bump Seed'
@@ -2672,18 +2983,21 @@ createErrorFromNameLookup.set('MustUnverify', () => new MustUnverifyError());
  * @category generated
  */
 export class InvalidEscrowBumpSeedError extends Error {
-  readonly code: number = 0x7c;
-  readonly name: string = 'InvalidEscrowBumpSeed';
+  readonly code: number = 0x7c
+  readonly name: string = 'InvalidEscrowBumpSeed'
   constructor() {
-    super('Invalid Escrow Account Bump Seed');
+    super('Invalid Escrow Account Bump Seed')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidEscrowBumpSeedError);
+      Error.captureStackTrace(this, InvalidEscrowBumpSeedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7c, () => new InvalidEscrowBumpSeedError());
-createErrorFromNameLookup.set('InvalidEscrowBumpSeed', () => new InvalidEscrowBumpSeedError());
+createErrorFromCodeLookup.set(0x7c, () => new InvalidEscrowBumpSeedError())
+createErrorFromNameLookup.set(
+  'InvalidEscrowBumpSeed',
+  () => new InvalidEscrowBumpSeedError()
+)
 
 /**
  * MustBeEscrowAuthority: 'Must Escrow Authority'
@@ -2692,18 +3006,21 @@ createErrorFromNameLookup.set('InvalidEscrowBumpSeed', () => new InvalidEscrowBu
  * @category generated
  */
 export class MustBeEscrowAuthorityError extends Error {
-  readonly code: number = 0x7d;
-  readonly name: string = 'MustBeEscrowAuthority';
+  readonly code: number = 0x7d
+  readonly name: string = 'MustBeEscrowAuthority'
   constructor() {
-    super('Must Escrow Authority');
+    super('Must Escrow Authority')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MustBeEscrowAuthorityError);
+      Error.captureStackTrace(this, MustBeEscrowAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7d, () => new MustBeEscrowAuthorityError());
-createErrorFromNameLookup.set('MustBeEscrowAuthority', () => new MustBeEscrowAuthorityError());
+createErrorFromCodeLookup.set(0x7d, () => new MustBeEscrowAuthorityError())
+createErrorFromNameLookup.set(
+  'MustBeEscrowAuthority',
+  () => new MustBeEscrowAuthorityError()
+)
 
 /**
  * InvalidSystemProgram: 'Invalid System Program'
@@ -2712,18 +3029,21 @@ createErrorFromNameLookup.set('MustBeEscrowAuthority', () => new MustBeEscrowAut
  * @category generated
  */
 export class InvalidSystemProgramError extends Error {
-  readonly code: number = 0x7e;
-  readonly name: string = 'InvalidSystemProgram';
+  readonly code: number = 0x7e
+  readonly name: string = 'InvalidSystemProgram'
   constructor() {
-    super('Invalid System Program');
+    super('Invalid System Program')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidSystemProgramError);
+      Error.captureStackTrace(this, InvalidSystemProgramError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7e, () => new InvalidSystemProgramError());
-createErrorFromNameLookup.set('InvalidSystemProgram', () => new InvalidSystemProgramError());
+createErrorFromCodeLookup.set(0x7e, () => new InvalidSystemProgramError())
+createErrorFromNameLookup.set(
+  'InvalidSystemProgram',
+  () => new InvalidSystemProgramError()
+)
 
 /**
  * MustBeNonFungible: 'Must be a Non Fungible Token'
@@ -2732,18 +3052,21 @@ createErrorFromNameLookup.set('InvalidSystemProgram', () => new InvalidSystemPro
  * @category generated
  */
 export class MustBeNonFungibleError extends Error {
-  readonly code: number = 0x7f;
-  readonly name: string = 'MustBeNonFungible';
+  readonly code: number = 0x7f
+  readonly name: string = 'MustBeNonFungible'
   constructor() {
-    super('Must be a Non Fungible Token');
+    super('Must be a Non Fungible Token')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MustBeNonFungibleError);
+      Error.captureStackTrace(this, MustBeNonFungibleError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x7f, () => new MustBeNonFungibleError());
-createErrorFromNameLookup.set('MustBeNonFungible', () => new MustBeNonFungibleError());
+createErrorFromCodeLookup.set(0x7f, () => new MustBeNonFungibleError())
+createErrorFromNameLookup.set(
+  'MustBeNonFungible',
+  () => new MustBeNonFungibleError()
+)
 
 /**
  * InsufficientTokens: 'Insufficient tokens for transfer'
@@ -2752,18 +3075,21 @@ createErrorFromNameLookup.set('MustBeNonFungible', () => new MustBeNonFungibleEr
  * @category generated
  */
 export class InsufficientTokensError extends Error {
-  readonly code: number = 0x80;
-  readonly name: string = 'InsufficientTokens';
+  readonly code: number = 0x80
+  readonly name: string = 'InsufficientTokens'
   constructor() {
-    super('Insufficient tokens for transfer');
+    super('Insufficient tokens for transfer')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InsufficientTokensError);
+      Error.captureStackTrace(this, InsufficientTokensError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x80, () => new InsufficientTokensError());
-createErrorFromNameLookup.set('InsufficientTokens', () => new InsufficientTokensError());
+createErrorFromCodeLookup.set(0x80, () => new InsufficientTokensError())
+createErrorFromNameLookup.set(
+  'InsufficientTokens',
+  () => new InsufficientTokensError()
+)
 
 /**
  * BorshSerializationError: 'Borsh Serialization Error'
@@ -2772,18 +3098,21 @@ createErrorFromNameLookup.set('InsufficientTokens', () => new InsufficientTokens
  * @category generated
  */
 export class BorshSerializationErrorError extends Error {
-  readonly code: number = 0x81;
-  readonly name: string = 'BorshSerializationError';
+  readonly code: number = 0x81
+  readonly name: string = 'BorshSerializationError'
   constructor() {
-    super('Borsh Serialization Error');
+    super('Borsh Serialization Error')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, BorshSerializationErrorError);
+      Error.captureStackTrace(this, BorshSerializationErrorError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x81, () => new BorshSerializationErrorError());
-createErrorFromNameLookup.set('BorshSerializationError', () => new BorshSerializationErrorError());
+createErrorFromCodeLookup.set(0x81, () => new BorshSerializationErrorError())
+createErrorFromNameLookup.set(
+  'BorshSerializationError',
+  () => new BorshSerializationErrorError()
+)
 
 /**
  * NoFreezeAuthoritySet: 'Cannot create NFT with no Freeze Authority.'
@@ -2792,18 +3121,21 @@ createErrorFromNameLookup.set('BorshSerializationError', () => new BorshSerializ
  * @category generated
  */
 export class NoFreezeAuthoritySetError extends Error {
-  readonly code: number = 0x82;
-  readonly name: string = 'NoFreezeAuthoritySet';
+  readonly code: number = 0x82
+  readonly name: string = 'NoFreezeAuthoritySet'
   constructor() {
-    super('Cannot create NFT with no Freeze Authority.');
+    super('Cannot create NFT with no Freeze Authority.')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, NoFreezeAuthoritySetError);
+      Error.captureStackTrace(this, NoFreezeAuthoritySetError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x82, () => new NoFreezeAuthoritySetError());
-createErrorFromNameLookup.set('NoFreezeAuthoritySet', () => new NoFreezeAuthoritySetError());
+createErrorFromCodeLookup.set(0x82, () => new NoFreezeAuthoritySetError())
+createErrorFromNameLookup.set(
+  'NoFreezeAuthoritySet',
+  () => new NoFreezeAuthoritySetError()
+)
 
 /**
  * InvalidCollectionSizeChange: 'Invalid collection size change'
@@ -2812,21 +3144,24 @@ createErrorFromNameLookup.set('NoFreezeAuthoritySet', () => new NoFreezeAuthorit
  * @category generated
  */
 export class InvalidCollectionSizeChangeError extends Error {
-  readonly code: number = 0x83;
-  readonly name: string = 'InvalidCollectionSizeChange';
+  readonly code: number = 0x83
+  readonly name: string = 'InvalidCollectionSizeChange'
   constructor() {
-    super('Invalid collection size change');
+    super('Invalid collection size change')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidCollectionSizeChangeError);
+      Error.captureStackTrace(this, InvalidCollectionSizeChangeError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x83, () => new InvalidCollectionSizeChangeError());
+createErrorFromCodeLookup.set(
+  0x83,
+  () => new InvalidCollectionSizeChangeError()
+)
 createErrorFromNameLookup.set(
   'InvalidCollectionSizeChange',
-  () => new InvalidCollectionSizeChangeError(),
-);
+  () => new InvalidCollectionSizeChangeError()
+)
 
 /**
  * InvalidBubblegumSigner: 'Invalid bubblegum signer'
@@ -2835,18 +3170,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidBubblegumSignerError extends Error {
-  readonly code: number = 0x84;
-  readonly name: string = 'InvalidBubblegumSigner';
+  readonly code: number = 0x84
+  readonly name: string = 'InvalidBubblegumSigner'
   constructor() {
-    super('Invalid bubblegum signer');
+    super('Invalid bubblegum signer')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidBubblegumSignerError);
+      Error.captureStackTrace(this, InvalidBubblegumSignerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x84, () => new InvalidBubblegumSignerError());
-createErrorFromNameLookup.set('InvalidBubblegumSigner', () => new InvalidBubblegumSignerError());
+createErrorFromCodeLookup.set(0x84, () => new InvalidBubblegumSignerError())
+createErrorFromNameLookup.set(
+  'InvalidBubblegumSigner',
+  () => new InvalidBubblegumSignerError()
+)
 
 /**
  * EscrowParentHasDelegate: 'Escrow parent cannot have a delegate'
@@ -2855,18 +3193,21 @@ createErrorFromNameLookup.set('InvalidBubblegumSigner', () => new InvalidBubbleg
  * @category generated
  */
 export class EscrowParentHasDelegateError extends Error {
-  readonly code: number = 0x85;
-  readonly name: string = 'EscrowParentHasDelegate';
+  readonly code: number = 0x85
+  readonly name: string = 'EscrowParentHasDelegate'
   constructor() {
-    super('Escrow parent cannot have a delegate');
+    super('Escrow parent cannot have a delegate')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, EscrowParentHasDelegateError);
+      Error.captureStackTrace(this, EscrowParentHasDelegateError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x85, () => new EscrowParentHasDelegateError());
-createErrorFromNameLookup.set('EscrowParentHasDelegate', () => new EscrowParentHasDelegateError());
+createErrorFromCodeLookup.set(0x85, () => new EscrowParentHasDelegateError())
+createErrorFromNameLookup.set(
+  'EscrowParentHasDelegate',
+  () => new EscrowParentHasDelegateError()
+)
 
 /**
  * MintIsNotSigner: 'Mint needs to be signer to initialize the account'
@@ -2875,18 +3216,21 @@ createErrorFromNameLookup.set('EscrowParentHasDelegate', () => new EscrowParentH
  * @category generated
  */
 export class MintIsNotSignerError extends Error {
-  readonly code: number = 0x86;
-  readonly name: string = 'MintIsNotSigner';
+  readonly code: number = 0x86
+  readonly name: string = 'MintIsNotSigner'
   constructor() {
-    super('Mint needs to be signer to initialize the account');
+    super('Mint needs to be signer to initialize the account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MintIsNotSignerError);
+      Error.captureStackTrace(this, MintIsNotSignerError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x86, () => new MintIsNotSignerError());
-createErrorFromNameLookup.set('MintIsNotSigner', () => new MintIsNotSignerError());
+createErrorFromCodeLookup.set(0x86, () => new MintIsNotSignerError())
+createErrorFromNameLookup.set(
+  'MintIsNotSigner',
+  () => new MintIsNotSignerError()
+)
 
 /**
  * InvalidTokenStandard: 'Invalid token standard'
@@ -2895,18 +3239,21 @@ createErrorFromNameLookup.set('MintIsNotSigner', () => new MintIsNotSignerError(
  * @category generated
  */
 export class InvalidTokenStandardError extends Error {
-  readonly code: number = 0x87;
-  readonly name: string = 'InvalidTokenStandard';
+  readonly code: number = 0x87
+  readonly name: string = 'InvalidTokenStandard'
   constructor() {
-    super('Invalid token standard');
+    super('Invalid token standard')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidTokenStandardError);
+      Error.captureStackTrace(this, InvalidTokenStandardError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x87, () => new InvalidTokenStandardError());
-createErrorFromNameLookup.set('InvalidTokenStandard', () => new InvalidTokenStandardError());
+createErrorFromCodeLookup.set(0x87, () => new InvalidTokenStandardError())
+createErrorFromNameLookup.set(
+  'InvalidTokenStandard',
+  () => new InvalidTokenStandardError()
+)
 
 /**
  * InvalidMintForTokenStandard: 'Invalid mint account for specified token standard'
@@ -2915,21 +3262,24 @@ createErrorFromNameLookup.set('InvalidTokenStandard', () => new InvalidTokenStan
  * @category generated
  */
 export class InvalidMintForTokenStandardError extends Error {
-  readonly code: number = 0x88;
-  readonly name: string = 'InvalidMintForTokenStandard';
+  readonly code: number = 0x88
+  readonly name: string = 'InvalidMintForTokenStandard'
   constructor() {
-    super('Invalid mint account for specified token standard');
+    super('Invalid mint account for specified token standard')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMintForTokenStandardError);
+      Error.captureStackTrace(this, InvalidMintForTokenStandardError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x88, () => new InvalidMintForTokenStandardError());
+createErrorFromCodeLookup.set(
+  0x88,
+  () => new InvalidMintForTokenStandardError()
+)
 createErrorFromNameLookup.set(
   'InvalidMintForTokenStandard',
-  () => new InvalidMintForTokenStandardError(),
-);
+  () => new InvalidMintForTokenStandardError()
+)
 
 /**
  * InvalidAuthorizationRules: 'Invalid authorization rules account'
@@ -2938,21 +3288,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidAuthorizationRulesError extends Error {
-  readonly code: number = 0x89;
-  readonly name: string = 'InvalidAuthorizationRules';
+  readonly code: number = 0x89
+  readonly name: string = 'InvalidAuthorizationRules'
   constructor() {
-    super('Invalid authorization rules account');
+    super('Invalid authorization rules account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidAuthorizationRulesError);
+      Error.captureStackTrace(this, InvalidAuthorizationRulesError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x89, () => new InvalidAuthorizationRulesError());
+createErrorFromCodeLookup.set(0x89, () => new InvalidAuthorizationRulesError())
 createErrorFromNameLookup.set(
   'InvalidAuthorizationRules',
-  () => new InvalidAuthorizationRulesError(),
-);
+  () => new InvalidAuthorizationRulesError()
+)
 
 /**
  * MissingAuthorizationRules: 'Missing authorization rules account'
@@ -2961,21 +3311,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingAuthorizationRulesError extends Error {
-  readonly code: number = 0x8a;
-  readonly name: string = 'MissingAuthorizationRules';
+  readonly code: number = 0x8a
+  readonly name: string = 'MissingAuthorizationRules'
   constructor() {
-    super('Missing authorization rules account');
+    super('Missing authorization rules account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingAuthorizationRulesError);
+      Error.captureStackTrace(this, MissingAuthorizationRulesError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8a, () => new MissingAuthorizationRulesError());
+createErrorFromCodeLookup.set(0x8a, () => new MissingAuthorizationRulesError())
 createErrorFromNameLookup.set(
   'MissingAuthorizationRules',
-  () => new MissingAuthorizationRulesError(),
-);
+  () => new MissingAuthorizationRulesError()
+)
 
 /**
  * MissingProgrammableConfig: 'Missing programmable configuration'
@@ -2984,21 +3334,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingProgrammableConfigError extends Error {
-  readonly code: number = 0x8b;
-  readonly name: string = 'MissingProgrammableConfig';
+  readonly code: number = 0x8b
+  readonly name: string = 'MissingProgrammableConfig'
   constructor() {
-    super('Missing programmable configuration');
+    super('Missing programmable configuration')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingProgrammableConfigError);
+      Error.captureStackTrace(this, MissingProgrammableConfigError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8b, () => new MissingProgrammableConfigError());
+createErrorFromCodeLookup.set(0x8b, () => new MissingProgrammableConfigError())
 createErrorFromNameLookup.set(
   'MissingProgrammableConfig',
-  () => new MissingProgrammableConfigError(),
-);
+  () => new MissingProgrammableConfigError()
+)
 
 /**
  * InvalidProgrammableConfig: 'Invalid programmable configuration'
@@ -3007,21 +3357,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidProgrammableConfigError extends Error {
-  readonly code: number = 0x8c;
-  readonly name: string = 'InvalidProgrammableConfig';
+  readonly code: number = 0x8c
+  readonly name: string = 'InvalidProgrammableConfig'
   constructor() {
-    super('Invalid programmable configuration');
+    super('Invalid programmable configuration')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidProgrammableConfigError);
+      Error.captureStackTrace(this, InvalidProgrammableConfigError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8c, () => new InvalidProgrammableConfigError());
+createErrorFromCodeLookup.set(0x8c, () => new InvalidProgrammableConfigError())
 createErrorFromNameLookup.set(
   'InvalidProgrammableConfig',
-  () => new InvalidProgrammableConfigError(),
-);
+  () => new InvalidProgrammableConfigError()
+)
 
 /**
  * DelegateAlreadyExists: 'Delegate already exists'
@@ -3030,18 +3380,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class DelegateAlreadyExistsError extends Error {
-  readonly code: number = 0x8d;
-  readonly name: string = 'DelegateAlreadyExists';
+  readonly code: number = 0x8d
+  readonly name: string = 'DelegateAlreadyExists'
   constructor() {
-    super('Delegate already exists');
+    super('Delegate already exists')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DelegateAlreadyExistsError);
+      Error.captureStackTrace(this, DelegateAlreadyExistsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8d, () => new DelegateAlreadyExistsError());
-createErrorFromNameLookup.set('DelegateAlreadyExists', () => new DelegateAlreadyExistsError());
+createErrorFromCodeLookup.set(0x8d, () => new DelegateAlreadyExistsError())
+createErrorFromNameLookup.set(
+  'DelegateAlreadyExists',
+  () => new DelegateAlreadyExistsError()
+)
 
 /**
  * DelegateNotFound: 'Delegate not found'
@@ -3050,18 +3403,21 @@ createErrorFromNameLookup.set('DelegateAlreadyExists', () => new DelegateAlready
  * @category generated
  */
 export class DelegateNotFoundError extends Error {
-  readonly code: number = 0x8e;
-  readonly name: string = 'DelegateNotFound';
+  readonly code: number = 0x8e
+  readonly name: string = 'DelegateNotFound'
   constructor() {
-    super('Delegate not found');
+    super('Delegate not found')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DelegateNotFoundError);
+      Error.captureStackTrace(this, DelegateNotFoundError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8e, () => new DelegateNotFoundError());
-createErrorFromNameLookup.set('DelegateNotFound', () => new DelegateNotFoundError());
+createErrorFromCodeLookup.set(0x8e, () => new DelegateNotFoundError())
+createErrorFromNameLookup.set(
+  'DelegateNotFound',
+  () => new DelegateNotFoundError()
+)
 
 /**
  * MissingAccountInBuilder: 'Required account not set in instruction builder'
@@ -3070,18 +3426,21 @@ createErrorFromNameLookup.set('DelegateNotFound', () => new DelegateNotFoundErro
  * @category generated
  */
 export class MissingAccountInBuilderError extends Error {
-  readonly code: number = 0x8f;
-  readonly name: string = 'MissingAccountInBuilder';
+  readonly code: number = 0x8f
+  readonly name: string = 'MissingAccountInBuilder'
   constructor() {
-    super('Required account not set in instruction builder');
+    super('Required account not set in instruction builder')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingAccountInBuilderError);
+      Error.captureStackTrace(this, MissingAccountInBuilderError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x8f, () => new MissingAccountInBuilderError());
-createErrorFromNameLookup.set('MissingAccountInBuilder', () => new MissingAccountInBuilderError());
+createErrorFromCodeLookup.set(0x8f, () => new MissingAccountInBuilderError())
+createErrorFromNameLookup.set(
+  'MissingAccountInBuilder',
+  () => new MissingAccountInBuilderError()
+)
 
 /**
  * MissingArgumentInBuilder: 'Required argument not set in instruction builder'
@@ -3090,21 +3449,21 @@ createErrorFromNameLookup.set('MissingAccountInBuilder', () => new MissingAccoun
  * @category generated
  */
 export class MissingArgumentInBuilderError extends Error {
-  readonly code: number = 0x90;
-  readonly name: string = 'MissingArgumentInBuilder';
+  readonly code: number = 0x90
+  readonly name: string = 'MissingArgumentInBuilder'
   constructor() {
-    super('Required argument not set in instruction builder');
+    super('Required argument not set in instruction builder')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingArgumentInBuilderError);
+      Error.captureStackTrace(this, MissingArgumentInBuilderError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x90, () => new MissingArgumentInBuilderError());
+createErrorFromCodeLookup.set(0x90, () => new MissingArgumentInBuilderError())
 createErrorFromNameLookup.set(
   'MissingArgumentInBuilder',
-  () => new MissingArgumentInBuilderError(),
-);
+  () => new MissingArgumentInBuilderError()
+)
 
 /**
  * FeatureNotSupported: 'Feature not supported currently'
@@ -3113,18 +3472,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class FeatureNotSupportedError extends Error {
-  readonly code: number = 0x91;
-  readonly name: string = 'FeatureNotSupported';
+  readonly code: number = 0x91
+  readonly name: string = 'FeatureNotSupported'
   constructor() {
-    super('Feature not supported currently');
+    super('Feature not supported currently')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, FeatureNotSupportedError);
+      Error.captureStackTrace(this, FeatureNotSupportedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x91, () => new FeatureNotSupportedError());
-createErrorFromNameLookup.set('FeatureNotSupported', () => new FeatureNotSupportedError());
+createErrorFromCodeLookup.set(0x91, () => new FeatureNotSupportedError())
+createErrorFromNameLookup.set(
+  'FeatureNotSupported',
+  () => new FeatureNotSupportedError()
+)
 
 /**
  * InvalidSystemWallet: 'Invalid system wallet'
@@ -3133,18 +3495,21 @@ createErrorFromNameLookup.set('FeatureNotSupported', () => new FeatureNotSupport
  * @category generated
  */
 export class InvalidSystemWalletError extends Error {
-  readonly code: number = 0x92;
-  readonly name: string = 'InvalidSystemWallet';
+  readonly code: number = 0x92
+  readonly name: string = 'InvalidSystemWallet'
   constructor() {
-    super('Invalid system wallet');
+    super('Invalid system wallet')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidSystemWalletError);
+      Error.captureStackTrace(this, InvalidSystemWalletError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x92, () => new InvalidSystemWalletError());
-createErrorFromNameLookup.set('InvalidSystemWallet', () => new InvalidSystemWalletError());
+createErrorFromCodeLookup.set(0x92, () => new InvalidSystemWalletError())
+createErrorFromNameLookup.set(
+  'InvalidSystemWallet',
+  () => new InvalidSystemWalletError()
+)
 
 /**
  * OnlySaleDelegateCanTransfer: 'Only the sale delegate can transfer while its set'
@@ -3153,21 +3518,24 @@ createErrorFromNameLookup.set('InvalidSystemWallet', () => new InvalidSystemWall
  * @category generated
  */
 export class OnlySaleDelegateCanTransferError extends Error {
-  readonly code: number = 0x93;
-  readonly name: string = 'OnlySaleDelegateCanTransfer';
+  readonly code: number = 0x93
+  readonly name: string = 'OnlySaleDelegateCanTransfer'
   constructor() {
-    super('Only the sale delegate can transfer while its set');
+    super('Only the sale delegate can transfer while its set')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, OnlySaleDelegateCanTransferError);
+      Error.captureStackTrace(this, OnlySaleDelegateCanTransferError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x93, () => new OnlySaleDelegateCanTransferError());
+createErrorFromCodeLookup.set(
+  0x93,
+  () => new OnlySaleDelegateCanTransferError()
+)
 createErrorFromNameLookup.set(
   'OnlySaleDelegateCanTransfer',
-  () => new OnlySaleDelegateCanTransferError(),
-);
+  () => new OnlySaleDelegateCanTransferError()
+)
 
 /**
  * MissingTokenAccount: 'Missing token account'
@@ -3176,18 +3544,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingTokenAccountError extends Error {
-  readonly code: number = 0x94;
-  readonly name: string = 'MissingTokenAccount';
+  readonly code: number = 0x94
+  readonly name: string = 'MissingTokenAccount'
   constructor() {
-    super('Missing token account');
+    super('Missing token account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingTokenAccountError);
+      Error.captureStackTrace(this, MissingTokenAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x94, () => new MissingTokenAccountError());
-createErrorFromNameLookup.set('MissingTokenAccount', () => new MissingTokenAccountError());
+createErrorFromCodeLookup.set(0x94, () => new MissingTokenAccountError())
+createErrorFromNameLookup.set(
+  'MissingTokenAccount',
+  () => new MissingTokenAccountError()
+)
 
 /**
  * MissingSplTokenProgram: 'Missing SPL token program'
@@ -3196,18 +3567,21 @@ createErrorFromNameLookup.set('MissingTokenAccount', () => new MissingTokenAccou
  * @category generated
  */
 export class MissingSplTokenProgramError extends Error {
-  readonly code: number = 0x95;
-  readonly name: string = 'MissingSplTokenProgram';
+  readonly code: number = 0x95
+  readonly name: string = 'MissingSplTokenProgram'
   constructor() {
-    super('Missing SPL token program');
+    super('Missing SPL token program')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingSplTokenProgramError);
+      Error.captureStackTrace(this, MissingSplTokenProgramError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x95, () => new MissingSplTokenProgramError());
-createErrorFromNameLookup.set('MissingSplTokenProgram', () => new MissingSplTokenProgramError());
+createErrorFromCodeLookup.set(0x95, () => new MissingSplTokenProgramError())
+createErrorFromNameLookup.set(
+  'MissingSplTokenProgram',
+  () => new MissingSplTokenProgramError()
+)
 
 /**
  * MissingAuthorizationRulesProgram: 'Missing authorization rules program'
@@ -3216,21 +3590,24 @@ createErrorFromNameLookup.set('MissingSplTokenProgram', () => new MissingSplToke
  * @category generated
  */
 export class MissingAuthorizationRulesProgramError extends Error {
-  readonly code: number = 0x96;
-  readonly name: string = 'MissingAuthorizationRulesProgram';
+  readonly code: number = 0x96
+  readonly name: string = 'MissingAuthorizationRulesProgram'
   constructor() {
-    super('Missing authorization rules program');
+    super('Missing authorization rules program')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingAuthorizationRulesProgramError);
+      Error.captureStackTrace(this, MissingAuthorizationRulesProgramError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x96, () => new MissingAuthorizationRulesProgramError());
+createErrorFromCodeLookup.set(
+  0x96,
+  () => new MissingAuthorizationRulesProgramError()
+)
 createErrorFromNameLookup.set(
   'MissingAuthorizationRulesProgram',
-  () => new MissingAuthorizationRulesProgramError(),
-);
+  () => new MissingAuthorizationRulesProgramError()
+)
 
 /**
  * InvalidDelegateRoleForTransfer: 'Invalid delegate role for transfer'
@@ -3239,21 +3616,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidDelegateRoleForTransferError extends Error {
-  readonly code: number = 0x97;
-  readonly name: string = 'InvalidDelegateRoleForTransfer';
+  readonly code: number = 0x97
+  readonly name: string = 'InvalidDelegateRoleForTransfer'
   constructor() {
-    super('Invalid delegate role for transfer');
+    super('Invalid delegate role for transfer')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidDelegateRoleForTransferError);
+      Error.captureStackTrace(this, InvalidDelegateRoleForTransferError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x97, () => new InvalidDelegateRoleForTransferError());
+createErrorFromCodeLookup.set(
+  0x97,
+  () => new InvalidDelegateRoleForTransferError()
+)
 createErrorFromNameLookup.set(
   'InvalidDelegateRoleForTransfer',
-  () => new InvalidDelegateRoleForTransferError(),
-);
+  () => new InvalidDelegateRoleForTransferError()
+)
 
 /**
  * InvalidTransferAuthority: 'Invalid transfer authority'
@@ -3262,21 +3642,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidTransferAuthorityError extends Error {
-  readonly code: number = 0x98;
-  readonly name: string = 'InvalidTransferAuthority';
+  readonly code: number = 0x98
+  readonly name: string = 'InvalidTransferAuthority'
   constructor() {
-    super('Invalid transfer authority');
+    super('Invalid transfer authority')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidTransferAuthorityError);
+      Error.captureStackTrace(this, InvalidTransferAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x98, () => new InvalidTransferAuthorityError());
+createErrorFromCodeLookup.set(0x98, () => new InvalidTransferAuthorityError())
 createErrorFromNameLookup.set(
   'InvalidTransferAuthority',
-  () => new InvalidTransferAuthorityError(),
-);
+  () => new InvalidTransferAuthorityError()
+)
 
 /**
  * InstructionNotSupported: 'Instruction not supported for ProgrammableNonFungible assets'
@@ -3285,18 +3665,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InstructionNotSupportedError extends Error {
-  readonly code: number = 0x99;
-  readonly name: string = 'InstructionNotSupported';
+  readonly code: number = 0x99
+  readonly name: string = 'InstructionNotSupported'
   constructor() {
-    super('Instruction not supported for ProgrammableNonFungible assets');
+    super('Instruction not supported for ProgrammableNonFungible assets')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InstructionNotSupportedError);
+      Error.captureStackTrace(this, InstructionNotSupportedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x99, () => new InstructionNotSupportedError());
-createErrorFromNameLookup.set('InstructionNotSupported', () => new InstructionNotSupportedError());
+createErrorFromCodeLookup.set(0x99, () => new InstructionNotSupportedError())
+createErrorFromNameLookup.set(
+  'InstructionNotSupported',
+  () => new InstructionNotSupportedError()
+)
 
 /**
  * KeyMismatch: 'Public key does not match expected value'
@@ -3305,18 +3688,18 @@ createErrorFromNameLookup.set('InstructionNotSupported', () => new InstructionNo
  * @category generated
  */
 export class KeyMismatchError extends Error {
-  readonly code: number = 0x9a;
-  readonly name: string = 'KeyMismatch';
+  readonly code: number = 0x9a
+  readonly name: string = 'KeyMismatch'
   constructor() {
-    super('Public key does not match expected value');
+    super('Public key does not match expected value')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, KeyMismatchError);
+      Error.captureStackTrace(this, KeyMismatchError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9a, () => new KeyMismatchError());
-createErrorFromNameLookup.set('KeyMismatch', () => new KeyMismatchError());
+createErrorFromCodeLookup.set(0x9a, () => new KeyMismatchError())
+createErrorFromNameLookup.set('KeyMismatch', () => new KeyMismatchError())
 
 /**
  * LockedToken: 'Token is locked'
@@ -3325,18 +3708,18 @@ createErrorFromNameLookup.set('KeyMismatch', () => new KeyMismatchError());
  * @category generated
  */
 export class LockedTokenError extends Error {
-  readonly code: number = 0x9b;
-  readonly name: string = 'LockedToken';
+  readonly code: number = 0x9b
+  readonly name: string = 'LockedToken'
   constructor() {
-    super('Token is locked');
+    super('Token is locked')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, LockedTokenError);
+      Error.captureStackTrace(this, LockedTokenError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9b, () => new LockedTokenError());
-createErrorFromNameLookup.set('LockedToken', () => new LockedTokenError());
+createErrorFromCodeLookup.set(0x9b, () => new LockedTokenError())
+createErrorFromNameLookup.set('LockedToken', () => new LockedTokenError())
 
 /**
  * UnlockedToken: 'Token is unlocked'
@@ -3345,18 +3728,18 @@ createErrorFromNameLookup.set('LockedToken', () => new LockedTokenError());
  * @category generated
  */
 export class UnlockedTokenError extends Error {
-  readonly code: number = 0x9c;
-  readonly name: string = 'UnlockedToken';
+  readonly code: number = 0x9c
+  readonly name: string = 'UnlockedToken'
   constructor() {
-    super('Token is unlocked');
+    super('Token is unlocked')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, UnlockedTokenError);
+      Error.captureStackTrace(this, UnlockedTokenError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9c, () => new UnlockedTokenError());
-createErrorFromNameLookup.set('UnlockedToken', () => new UnlockedTokenError());
+createErrorFromCodeLookup.set(0x9c, () => new UnlockedTokenError())
+createErrorFromNameLookup.set('UnlockedToken', () => new UnlockedTokenError())
 
 /**
  * MissingDelegateRole: 'Missing delegate role'
@@ -3365,18 +3748,21 @@ createErrorFromNameLookup.set('UnlockedToken', () => new UnlockedTokenError());
  * @category generated
  */
 export class MissingDelegateRoleError extends Error {
-  readonly code: number = 0x9d;
-  readonly name: string = 'MissingDelegateRole';
+  readonly code: number = 0x9d
+  readonly name: string = 'MissingDelegateRole'
   constructor() {
-    super('Missing delegate role');
+    super('Missing delegate role')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingDelegateRoleError);
+      Error.captureStackTrace(this, MissingDelegateRoleError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9d, () => new MissingDelegateRoleError());
-createErrorFromNameLookup.set('MissingDelegateRole', () => new MissingDelegateRoleError());
+createErrorFromCodeLookup.set(0x9d, () => new MissingDelegateRoleError())
+createErrorFromNameLookup.set(
+  'MissingDelegateRole',
+  () => new MissingDelegateRoleError()
+)
 
 /**
  * InvalidAuthorityType: 'Invalid authority type'
@@ -3385,18 +3771,21 @@ createErrorFromNameLookup.set('MissingDelegateRole', () => new MissingDelegateRo
  * @category generated
  */
 export class InvalidAuthorityTypeError extends Error {
-  readonly code: number = 0x9e;
-  readonly name: string = 'InvalidAuthorityType';
+  readonly code: number = 0x9e
+  readonly name: string = 'InvalidAuthorityType'
   constructor() {
-    super('Invalid authority type');
+    super('Invalid authority type')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidAuthorityTypeError);
+      Error.captureStackTrace(this, InvalidAuthorityTypeError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9e, () => new InvalidAuthorityTypeError());
-createErrorFromNameLookup.set('InvalidAuthorityType', () => new InvalidAuthorityTypeError());
+createErrorFromCodeLookup.set(0x9e, () => new InvalidAuthorityTypeError())
+createErrorFromNameLookup.set(
+  'InvalidAuthorityType',
+  () => new InvalidAuthorityTypeError()
+)
 
 /**
  * MissingTokenRecord: 'Missing token record account'
@@ -3405,18 +3794,21 @@ createErrorFromNameLookup.set('InvalidAuthorityType', () => new InvalidAuthority
  * @category generated
  */
 export class MissingTokenRecordError extends Error {
-  readonly code: number = 0x9f;
-  readonly name: string = 'MissingTokenRecord';
+  readonly code: number = 0x9f
+  readonly name: string = 'MissingTokenRecord'
   constructor() {
-    super('Missing token record account');
+    super('Missing token record account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingTokenRecordError);
+      Error.captureStackTrace(this, MissingTokenRecordError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0x9f, () => new MissingTokenRecordError());
-createErrorFromNameLookup.set('MissingTokenRecord', () => new MissingTokenRecordError());
+createErrorFromCodeLookup.set(0x9f, () => new MissingTokenRecordError())
+createErrorFromNameLookup.set(
+  'MissingTokenRecord',
+  () => new MissingTokenRecordError()
+)
 
 /**
  * MintSupplyMustBeZero: 'Mint supply must be zero for programmable assets'
@@ -3425,18 +3817,21 @@ createErrorFromNameLookup.set('MissingTokenRecord', () => new MissingTokenRecord
  * @category generated
  */
 export class MintSupplyMustBeZeroError extends Error {
-  readonly code: number = 0xa0;
-  readonly name: string = 'MintSupplyMustBeZero';
+  readonly code: number = 0xa0
+  readonly name: string = 'MintSupplyMustBeZero'
   constructor() {
-    super('Mint supply must be zero for programmable assets');
+    super('Mint supply must be zero for programmable assets')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MintSupplyMustBeZeroError);
+      Error.captureStackTrace(this, MintSupplyMustBeZeroError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa0, () => new MintSupplyMustBeZeroError());
-createErrorFromNameLookup.set('MintSupplyMustBeZero', () => new MintSupplyMustBeZeroError());
+createErrorFromCodeLookup.set(0xa0, () => new MintSupplyMustBeZeroError())
+createErrorFromNameLookup.set(
+  'MintSupplyMustBeZero',
+  () => new MintSupplyMustBeZeroError()
+)
 
 /**
  * DataIsEmptyOrZeroed: 'Data is empty or zeroed'
@@ -3445,18 +3840,21 @@ createErrorFromNameLookup.set('MintSupplyMustBeZero', () => new MintSupplyMustBe
  * @category generated
  */
 export class DataIsEmptyOrZeroedError extends Error {
-  readonly code: number = 0xa1;
-  readonly name: string = 'DataIsEmptyOrZeroed';
+  readonly code: number = 0xa1
+  readonly name: string = 'DataIsEmptyOrZeroed'
   constructor() {
-    super('Data is empty or zeroed');
+    super('Data is empty or zeroed')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DataIsEmptyOrZeroedError);
+      Error.captureStackTrace(this, DataIsEmptyOrZeroedError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa1, () => new DataIsEmptyOrZeroedError());
-createErrorFromNameLookup.set('DataIsEmptyOrZeroed', () => new DataIsEmptyOrZeroedError());
+createErrorFromCodeLookup.set(0xa1, () => new DataIsEmptyOrZeroedError())
+createErrorFromNameLookup.set(
+  'DataIsEmptyOrZeroed',
+  () => new DataIsEmptyOrZeroedError()
+)
 
 /**
  * MissingTokenOwnerAccount: 'Missing token owner'
@@ -3465,21 +3863,21 @@ createErrorFromNameLookup.set('DataIsEmptyOrZeroed', () => new DataIsEmptyOrZero
  * @category generated
  */
 export class MissingTokenOwnerAccountError extends Error {
-  readonly code: number = 0xa2;
-  readonly name: string = 'MissingTokenOwnerAccount';
+  readonly code: number = 0xa2
+  readonly name: string = 'MissingTokenOwnerAccount'
   constructor() {
-    super('Missing token owner');
+    super('Missing token owner')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingTokenOwnerAccountError);
+      Error.captureStackTrace(this, MissingTokenOwnerAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa2, () => new MissingTokenOwnerAccountError());
+createErrorFromCodeLookup.set(0xa2, () => new MissingTokenOwnerAccountError())
 createErrorFromNameLookup.set(
   'MissingTokenOwnerAccount',
-  () => new MissingTokenOwnerAccountError(),
-);
+  () => new MissingTokenOwnerAccountError()
+)
 
 /**
  * InvalidMasterEditionAccountLength: 'Master edition account has an invalid length'
@@ -3488,21 +3886,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidMasterEditionAccountLengthError extends Error {
-  readonly code: number = 0xa3;
-  readonly name: string = 'InvalidMasterEditionAccountLength';
+  readonly code: number = 0xa3
+  readonly name: string = 'InvalidMasterEditionAccountLength'
   constructor() {
-    super('Master edition account has an invalid length');
+    super('Master edition account has an invalid length')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMasterEditionAccountLengthError);
+      Error.captureStackTrace(this, InvalidMasterEditionAccountLengthError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa3, () => new InvalidMasterEditionAccountLengthError());
+createErrorFromCodeLookup.set(
+  0xa3,
+  () => new InvalidMasterEditionAccountLengthError()
+)
 createErrorFromNameLookup.set(
   'InvalidMasterEditionAccountLength',
-  () => new InvalidMasterEditionAccountLengthError(),
-);
+  () => new InvalidMasterEditionAccountLengthError()
+)
 
 /**
  * IncorrectTokenState: 'Incorrect token state'
@@ -3511,18 +3912,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class IncorrectTokenStateError extends Error {
-  readonly code: number = 0xa4;
-  readonly name: string = 'IncorrectTokenState';
+  readonly code: number = 0xa4
+  readonly name: string = 'IncorrectTokenState'
   constructor() {
-    super('Incorrect token state');
+    super('Incorrect token state')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, IncorrectTokenStateError);
+      Error.captureStackTrace(this, IncorrectTokenStateError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa4, () => new IncorrectTokenStateError());
-createErrorFromNameLookup.set('IncorrectTokenState', () => new IncorrectTokenStateError());
+createErrorFromCodeLookup.set(0xa4, () => new IncorrectTokenStateError())
+createErrorFromNameLookup.set(
+  'IncorrectTokenState',
+  () => new IncorrectTokenStateError()
+)
 
 /**
  * InvalidDelegateRole: 'Invalid delegate role'
@@ -3531,18 +3935,21 @@ createErrorFromNameLookup.set('IncorrectTokenState', () => new IncorrectTokenSta
  * @category generated
  */
 export class InvalidDelegateRoleError extends Error {
-  readonly code: number = 0xa5;
-  readonly name: string = 'InvalidDelegateRole';
+  readonly code: number = 0xa5
+  readonly name: string = 'InvalidDelegateRole'
   constructor() {
-    super('Invalid delegate role');
+    super('Invalid delegate role')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidDelegateRoleError);
+      Error.captureStackTrace(this, InvalidDelegateRoleError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa5, () => new InvalidDelegateRoleError());
-createErrorFromNameLookup.set('InvalidDelegateRole', () => new InvalidDelegateRoleError());
+createErrorFromCodeLookup.set(0xa5, () => new InvalidDelegateRoleError())
+createErrorFromNameLookup.set(
+  'InvalidDelegateRole',
+  () => new InvalidDelegateRoleError()
+)
 
 /**
  * MissingPrintSupply: 'Print supply is required for non-fungibles'
@@ -3551,18 +3958,21 @@ createErrorFromNameLookup.set('InvalidDelegateRole', () => new InvalidDelegateRo
  * @category generated
  */
 export class MissingPrintSupplyError extends Error {
-  readonly code: number = 0xa6;
-  readonly name: string = 'MissingPrintSupply';
+  readonly code: number = 0xa6
+  readonly name: string = 'MissingPrintSupply'
   constructor() {
-    super('Print supply is required for non-fungibles');
+    super('Print supply is required for non-fungibles')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingPrintSupplyError);
+      Error.captureStackTrace(this, MissingPrintSupplyError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa6, () => new MissingPrintSupplyError());
-createErrorFromNameLookup.set('MissingPrintSupply', () => new MissingPrintSupplyError());
+createErrorFromCodeLookup.set(0xa6, () => new MissingPrintSupplyError())
+createErrorFromNameLookup.set(
+  'MissingPrintSupply',
+  () => new MissingPrintSupplyError()
+)
 
 /**
  * MissingMasterEditionAccount: 'Missing master edition account'
@@ -3571,21 +3981,24 @@ createErrorFromNameLookup.set('MissingPrintSupply', () => new MissingPrintSupply
  * @category generated
  */
 export class MissingMasterEditionAccountError extends Error {
-  readonly code: number = 0xa7;
-  readonly name: string = 'MissingMasterEditionAccount';
+  readonly code: number = 0xa7
+  readonly name: string = 'MissingMasterEditionAccount'
   constructor() {
-    super('Missing master edition account');
+    super('Missing master edition account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingMasterEditionAccountError);
+      Error.captureStackTrace(this, MissingMasterEditionAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa7, () => new MissingMasterEditionAccountError());
+createErrorFromCodeLookup.set(
+  0xa7,
+  () => new MissingMasterEditionAccountError()
+)
 createErrorFromNameLookup.set(
   'MissingMasterEditionAccount',
-  () => new MissingMasterEditionAccountError(),
-);
+  () => new MissingMasterEditionAccountError()
+)
 
 /**
  * AmountMustBeGreaterThanZero: 'Amount must be greater than zero'
@@ -3594,21 +4007,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class AmountMustBeGreaterThanZeroError extends Error {
-  readonly code: number = 0xa8;
-  readonly name: string = 'AmountMustBeGreaterThanZero';
+  readonly code: number = 0xa8
+  readonly name: string = 'AmountMustBeGreaterThanZero'
   constructor() {
-    super('Amount must be greater than zero');
+    super('Amount must be greater than zero')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, AmountMustBeGreaterThanZeroError);
+      Error.captureStackTrace(this, AmountMustBeGreaterThanZeroError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa8, () => new AmountMustBeGreaterThanZeroError());
+createErrorFromCodeLookup.set(
+  0xa8,
+  () => new AmountMustBeGreaterThanZeroError()
+)
 createErrorFromNameLookup.set(
   'AmountMustBeGreaterThanZero',
-  () => new AmountMustBeGreaterThanZeroError(),
-);
+  () => new AmountMustBeGreaterThanZeroError()
+)
 
 /**
  * InvalidDelegateArgs: 'Invalid delegate args'
@@ -3617,18 +4033,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidDelegateArgsError extends Error {
-  readonly code: number = 0xa9;
-  readonly name: string = 'InvalidDelegateArgs';
+  readonly code: number = 0xa9
+  readonly name: string = 'InvalidDelegateArgs'
   constructor() {
-    super('Invalid delegate args');
+    super('Invalid delegate args')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidDelegateArgsError);
+      Error.captureStackTrace(this, InvalidDelegateArgsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xa9, () => new InvalidDelegateArgsError());
-createErrorFromNameLookup.set('InvalidDelegateArgs', () => new InvalidDelegateArgsError());
+createErrorFromCodeLookup.set(0xa9, () => new InvalidDelegateArgsError())
+createErrorFromNameLookup.set(
+  'InvalidDelegateArgs',
+  () => new InvalidDelegateArgsError()
+)
 
 /**
  * MissingLockedTransferAddress: 'Missing address for locked transfer'
@@ -3637,21 +4056,24 @@ createErrorFromNameLookup.set('InvalidDelegateArgs', () => new InvalidDelegateAr
  * @category generated
  */
 export class MissingLockedTransferAddressError extends Error {
-  readonly code: number = 0xaa;
-  readonly name: string = 'MissingLockedTransferAddress';
+  readonly code: number = 0xaa
+  readonly name: string = 'MissingLockedTransferAddress'
   constructor() {
-    super('Missing address for locked transfer');
+    super('Missing address for locked transfer')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingLockedTransferAddressError);
+      Error.captureStackTrace(this, MissingLockedTransferAddressError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xaa, () => new MissingLockedTransferAddressError());
+createErrorFromCodeLookup.set(
+  0xaa,
+  () => new MissingLockedTransferAddressError()
+)
 createErrorFromNameLookup.set(
   'MissingLockedTransferAddress',
-  () => new MissingLockedTransferAddressError(),
-);
+  () => new MissingLockedTransferAddressError()
+)
 
 /**
  * InvalidLockedTransferAddress: 'Invalid destination address for locked transfer'
@@ -3660,21 +4082,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidLockedTransferAddressError extends Error {
-  readonly code: number = 0xab;
-  readonly name: string = 'InvalidLockedTransferAddress';
+  readonly code: number = 0xab
+  readonly name: string = 'InvalidLockedTransferAddress'
   constructor() {
-    super('Invalid destination address for locked transfer');
+    super('Invalid destination address for locked transfer')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidLockedTransferAddressError);
+      Error.captureStackTrace(this, InvalidLockedTransferAddressError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xab, () => new InvalidLockedTransferAddressError());
+createErrorFromCodeLookup.set(
+  0xab,
+  () => new InvalidLockedTransferAddressError()
+)
 createErrorFromNameLookup.set(
   'InvalidLockedTransferAddress',
-  () => new InvalidLockedTransferAddressError(),
-);
+  () => new InvalidLockedTransferAddressError()
+)
 
 /**
  * DataIncrementLimitExceeded: 'Exceeded account realloc increase limit'
@@ -3683,21 +4108,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class DataIncrementLimitExceededError extends Error {
-  readonly code: number = 0xac;
-  readonly name: string = 'DataIncrementLimitExceeded';
+  readonly code: number = 0xac
+  readonly name: string = 'DataIncrementLimitExceeded'
   constructor() {
-    super('Exceeded account realloc increase limit');
+    super('Exceeded account realloc increase limit')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, DataIncrementLimitExceededError);
+      Error.captureStackTrace(this, DataIncrementLimitExceededError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xac, () => new DataIncrementLimitExceededError());
+createErrorFromCodeLookup.set(0xac, () => new DataIncrementLimitExceededError())
 createErrorFromNameLookup.set(
   'DataIncrementLimitExceeded',
-  () => new DataIncrementLimitExceededError(),
-);
+  () => new DataIncrementLimitExceededError()
+)
 
 /**
  * CannotUpdateAssetWithDelegate: 'Cannot update the rule set of a programmable asset that has a delegate'
@@ -3706,21 +4131,26 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotUpdateAssetWithDelegateError extends Error {
-  readonly code: number = 0xad;
-  readonly name: string = 'CannotUpdateAssetWithDelegate';
+  readonly code: number = 0xad
+  readonly name: string = 'CannotUpdateAssetWithDelegate'
   constructor() {
-    super('Cannot update the rule set of a programmable asset that has a delegate');
+    super(
+      'Cannot update the rule set of a programmable asset that has a delegate'
+    )
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotUpdateAssetWithDelegateError);
+      Error.captureStackTrace(this, CannotUpdateAssetWithDelegateError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xad, () => new CannotUpdateAssetWithDelegateError());
+createErrorFromCodeLookup.set(
+  0xad,
+  () => new CannotUpdateAssetWithDelegateError()
+)
 createErrorFromNameLookup.set(
   'CannotUpdateAssetWithDelegate',
-  () => new CannotUpdateAssetWithDelegateError(),
-);
+  () => new CannotUpdateAssetWithDelegateError()
+)
 
 /**
  * InvalidAmount: 'Invalid token amount for this operation or token standard'
@@ -3729,18 +4159,18 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidAmountError extends Error {
-  readonly code: number = 0xae;
-  readonly name: string = 'InvalidAmount';
+  readonly code: number = 0xae
+  readonly name: string = 'InvalidAmount'
   constructor() {
-    super('Invalid token amount for this operation or token standard');
+    super('Invalid token amount for this operation or token standard')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidAmountError);
+      Error.captureStackTrace(this, InvalidAmountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xae, () => new InvalidAmountError());
-createErrorFromNameLookup.set('InvalidAmount', () => new InvalidAmountError());
+createErrorFromCodeLookup.set(0xae, () => new InvalidAmountError())
+createErrorFromNameLookup.set('InvalidAmount', () => new InvalidAmountError())
 
 /**
  * MissingMasterEditionMintAccount: 'Missing master edition mint account'
@@ -3749,21 +4179,24 @@ createErrorFromNameLookup.set('InvalidAmount', () => new InvalidAmountError());
  * @category generated
  */
 export class MissingMasterEditionMintAccountError extends Error {
-  readonly code: number = 0xaf;
-  readonly name: string = 'MissingMasterEditionMintAccount';
+  readonly code: number = 0xaf
+  readonly name: string = 'MissingMasterEditionMintAccount'
   constructor() {
-    super('Missing master edition mint account');
+    super('Missing master edition mint account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingMasterEditionMintAccountError);
+      Error.captureStackTrace(this, MissingMasterEditionMintAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xaf, () => new MissingMasterEditionMintAccountError());
+createErrorFromCodeLookup.set(
+  0xaf,
+  () => new MissingMasterEditionMintAccountError()
+)
 createErrorFromNameLookup.set(
   'MissingMasterEditionMintAccount',
-  () => new MissingMasterEditionMintAccountError(),
-);
+  () => new MissingMasterEditionMintAccountError()
+)
 
 /**
  * MissingMasterEditionTokenAccount: 'Missing master edition token account'
@@ -3772,21 +4205,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingMasterEditionTokenAccountError extends Error {
-  readonly code: number = 0xb0;
-  readonly name: string = 'MissingMasterEditionTokenAccount';
+  readonly code: number = 0xb0
+  readonly name: string = 'MissingMasterEditionTokenAccount'
   constructor() {
-    super('Missing master edition token account');
+    super('Missing master edition token account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingMasterEditionTokenAccountError);
+      Error.captureStackTrace(this, MissingMasterEditionTokenAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb0, () => new MissingMasterEditionTokenAccountError());
+createErrorFromCodeLookup.set(
+  0xb0,
+  () => new MissingMasterEditionTokenAccountError()
+)
 createErrorFromNameLookup.set(
   'MissingMasterEditionTokenAccount',
-  () => new MissingMasterEditionTokenAccountError(),
-);
+  () => new MissingMasterEditionTokenAccountError()
+)
 
 /**
  * MissingEditionMarkerAccount: 'Missing edition marker account'
@@ -3795,21 +4231,24 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingEditionMarkerAccountError extends Error {
-  readonly code: number = 0xb1;
-  readonly name: string = 'MissingEditionMarkerAccount';
+  readonly code: number = 0xb1
+  readonly name: string = 'MissingEditionMarkerAccount'
   constructor() {
-    super('Missing edition marker account');
+    super('Missing edition marker account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingEditionMarkerAccountError);
+      Error.captureStackTrace(this, MissingEditionMarkerAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb1, () => new MissingEditionMarkerAccountError());
+createErrorFromCodeLookup.set(
+  0xb1,
+  () => new MissingEditionMarkerAccountError()
+)
 createErrorFromNameLookup.set(
   'MissingEditionMarkerAccount',
-  () => new MissingEditionMarkerAccountError(),
-);
+  () => new MissingEditionMarkerAccountError()
+)
 
 /**
  * CannotBurnWithDelegate: 'Cannot burn while persistent delegate is set'
@@ -3818,18 +4257,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class CannotBurnWithDelegateError extends Error {
-  readonly code: number = 0xb2;
-  readonly name: string = 'CannotBurnWithDelegate';
+  readonly code: number = 0xb2
+  readonly name: string = 'CannotBurnWithDelegate'
   constructor() {
-    super('Cannot burn while persistent delegate is set');
+    super('Cannot burn while persistent delegate is set')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, CannotBurnWithDelegateError);
+      Error.captureStackTrace(this, CannotBurnWithDelegateError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb2, () => new CannotBurnWithDelegateError());
-createErrorFromNameLookup.set('CannotBurnWithDelegate', () => new CannotBurnWithDelegateError());
+createErrorFromCodeLookup.set(0xb2, () => new CannotBurnWithDelegateError())
+createErrorFromNameLookup.set(
+  'CannotBurnWithDelegate',
+  () => new CannotBurnWithDelegateError()
+)
 
 /**
  * MissingEdition: 'Missing edition account'
@@ -3838,18 +4280,18 @@ createErrorFromNameLookup.set('CannotBurnWithDelegate', () => new CannotBurnWith
  * @category generated
  */
 export class MissingEditionError extends Error {
-  readonly code: number = 0xb3;
-  readonly name: string = 'MissingEdition';
+  readonly code: number = 0xb3
+  readonly name: string = 'MissingEdition'
   constructor() {
-    super('Missing edition account');
+    super('Missing edition account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingEditionError);
+      Error.captureStackTrace(this, MissingEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb3, () => new MissingEditionError());
-createErrorFromNameLookup.set('MissingEdition', () => new MissingEditionError());
+createErrorFromCodeLookup.set(0xb3, () => new MissingEditionError())
+createErrorFromNameLookup.set('MissingEdition', () => new MissingEditionError())
 
 /**
  * InvalidAssociatedTokenAccountProgram: 'Invalid Associated Token Account Program'
@@ -3858,21 +4300,24 @@ createErrorFromNameLookup.set('MissingEdition', () => new MissingEditionError())
  * @category generated
  */
 export class InvalidAssociatedTokenAccountProgramError extends Error {
-  readonly code: number = 0xb4;
-  readonly name: string = 'InvalidAssociatedTokenAccountProgram';
+  readonly code: number = 0xb4
+  readonly name: string = 'InvalidAssociatedTokenAccountProgram'
   constructor() {
-    super('Invalid Associated Token Account Program');
+    super('Invalid Associated Token Account Program')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidAssociatedTokenAccountProgramError);
+      Error.captureStackTrace(this, InvalidAssociatedTokenAccountProgramError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb4, () => new InvalidAssociatedTokenAccountProgramError());
+createErrorFromCodeLookup.set(
+  0xb4,
+  () => new InvalidAssociatedTokenAccountProgramError()
+)
 createErrorFromNameLookup.set(
   'InvalidAssociatedTokenAccountProgram',
-  () => new InvalidAssociatedTokenAccountProgramError(),
-);
+  () => new InvalidAssociatedTokenAccountProgramError()
+)
 
 /**
  * InvalidInstructionsSysvar: 'Invalid InstructionsSysvar'
@@ -3881,21 +4326,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidInstructionsSysvarError extends Error {
-  readonly code: number = 0xb5;
-  readonly name: string = 'InvalidInstructionsSysvar';
+  readonly code: number = 0xb5
+  readonly name: string = 'InvalidInstructionsSysvar'
   constructor() {
-    super('Invalid InstructionsSysvar');
+    super('Invalid InstructionsSysvar')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidInstructionsSysvarError);
+      Error.captureStackTrace(this, InvalidInstructionsSysvarError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb5, () => new InvalidInstructionsSysvarError());
+createErrorFromCodeLookup.set(0xb5, () => new InvalidInstructionsSysvarError())
 createErrorFromNameLookup.set(
   'InvalidInstructionsSysvar',
-  () => new InvalidInstructionsSysvarError(),
-);
+  () => new InvalidInstructionsSysvarError()
+)
 
 /**
  * InvalidParentAccounts: 'Invalid or Unneeded parent accounts'
@@ -3904,18 +4349,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidParentAccountsError extends Error {
-  readonly code: number = 0xb6;
-  readonly name: string = 'InvalidParentAccounts';
+  readonly code: number = 0xb6
+  readonly name: string = 'InvalidParentAccounts'
   constructor() {
-    super('Invalid or Unneeded parent accounts');
+    super('Invalid or Unneeded parent accounts')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidParentAccountsError);
+      Error.captureStackTrace(this, InvalidParentAccountsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb6, () => new InvalidParentAccountsError());
-createErrorFromNameLookup.set('InvalidParentAccounts', () => new InvalidParentAccountsError());
+createErrorFromCodeLookup.set(0xb6, () => new InvalidParentAccountsError())
+createErrorFromNameLookup.set(
+  'InvalidParentAccounts',
+  () => new InvalidParentAccountsError()
+)
 
 /**
  * InvalidUpdateArgs: 'Authority cannot apply all update args'
@@ -3924,18 +4372,21 @@ createErrorFromNameLookup.set('InvalidParentAccounts', () => new InvalidParentAc
  * @category generated
  */
 export class InvalidUpdateArgsError extends Error {
-  readonly code: number = 0xb7;
-  readonly name: string = 'InvalidUpdateArgs';
+  readonly code: number = 0xb7
+  readonly name: string = 'InvalidUpdateArgs'
   constructor() {
-    super('Authority cannot apply all update args');
+    super('Authority cannot apply all update args')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidUpdateArgsError);
+      Error.captureStackTrace(this, InvalidUpdateArgsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb7, () => new InvalidUpdateArgsError());
-createErrorFromNameLookup.set('InvalidUpdateArgs', () => new InvalidUpdateArgsError());
+createErrorFromCodeLookup.set(0xb7, () => new InvalidUpdateArgsError())
+createErrorFromNameLookup.set(
+  'InvalidUpdateArgs',
+  () => new InvalidUpdateArgsError()
+)
 
 /**
  * InsufficientTokenBalance: 'Token account does not have enough tokens'
@@ -3944,21 +4395,21 @@ createErrorFromNameLookup.set('InvalidUpdateArgs', () => new InvalidUpdateArgsEr
  * @category generated
  */
 export class InsufficientTokenBalanceError extends Error {
-  readonly code: number = 0xb8;
-  readonly name: string = 'InsufficientTokenBalance';
+  readonly code: number = 0xb8
+  readonly name: string = 'InsufficientTokenBalance'
   constructor() {
-    super('Token account does not have enough tokens');
+    super('Token account does not have enough tokens')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InsufficientTokenBalanceError);
+      Error.captureStackTrace(this, InsufficientTokenBalanceError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb8, () => new InsufficientTokenBalanceError());
+createErrorFromCodeLookup.set(0xb8, () => new InsufficientTokenBalanceError())
 createErrorFromNameLookup.set(
   'InsufficientTokenBalance',
-  () => new InsufficientTokenBalanceError(),
-);
+  () => new InsufficientTokenBalanceError()
+)
 
 /**
  * MissingCollectionMint: 'Missing collection account'
@@ -3967,18 +4418,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class MissingCollectionMintError extends Error {
-  readonly code: number = 0xb9;
-  readonly name: string = 'MissingCollectionMint';
+  readonly code: number = 0xb9
+  readonly name: string = 'MissingCollectionMint'
   constructor() {
-    super('Missing collection account');
+    super('Missing collection account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingCollectionMintError);
+      Error.captureStackTrace(this, MissingCollectionMintError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xb9, () => new MissingCollectionMintError());
-createErrorFromNameLookup.set('MissingCollectionMint', () => new MissingCollectionMintError());
+createErrorFromCodeLookup.set(0xb9, () => new MissingCollectionMintError())
+createErrorFromNameLookup.set(
+  'MissingCollectionMint',
+  () => new MissingCollectionMintError()
+)
 
 /**
  * MissingCollectionMasterEdition: 'Missing collection master edition account'
@@ -3987,21 +4441,24 @@ createErrorFromNameLookup.set('MissingCollectionMint', () => new MissingCollecti
  * @category generated
  */
 export class MissingCollectionMasterEditionError extends Error {
-  readonly code: number = 0xba;
-  readonly name: string = 'MissingCollectionMasterEdition';
+  readonly code: number = 0xba
+  readonly name: string = 'MissingCollectionMasterEdition'
   constructor() {
-    super('Missing collection master edition account');
+    super('Missing collection master edition account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingCollectionMasterEditionError);
+      Error.captureStackTrace(this, MissingCollectionMasterEditionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xba, () => new MissingCollectionMasterEditionError());
+createErrorFromCodeLookup.set(
+  0xba,
+  () => new MissingCollectionMasterEditionError()
+)
 createErrorFromNameLookup.set(
   'MissingCollectionMasterEdition',
-  () => new MissingCollectionMasterEditionError(),
-);
+  () => new MissingCollectionMasterEditionError()
+)
 
 /**
  * InvalidTokenRecord: 'Invalid token record account'
@@ -4010,18 +4467,21 @@ createErrorFromNameLookup.set(
  * @category generated
  */
 export class InvalidTokenRecordError extends Error {
-  readonly code: number = 0xbb;
-  readonly name: string = 'InvalidTokenRecord';
+  readonly code: number = 0xbb
+  readonly name: string = 'InvalidTokenRecord'
   constructor() {
-    super('Invalid token record account');
+    super('Invalid token record account')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidTokenRecordError);
+      Error.captureStackTrace(this, InvalidTokenRecordError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xbb, () => new InvalidTokenRecordError());
-createErrorFromNameLookup.set('InvalidTokenRecord', () => new InvalidTokenRecordError());
+createErrorFromCodeLookup.set(0xbb, () => new InvalidTokenRecordError())
+createErrorFromNameLookup.set(
+  'InvalidTokenRecord',
+  () => new InvalidTokenRecordError()
+)
 
 /**
  * InvalidCloseAuthority: 'The close authority needs to be revoked by the Utility Delegate'
@@ -4030,18 +4490,21 @@ createErrorFromNameLookup.set('InvalidTokenRecord', () => new InvalidTokenRecord
  * @category generated
  */
 export class InvalidCloseAuthorityError extends Error {
-  readonly code: number = 0xbc;
-  readonly name: string = 'InvalidCloseAuthority';
+  readonly code: number = 0xbc
+  readonly name: string = 'InvalidCloseAuthority'
   constructor() {
-    super('The close authority needs to be revoked by the Utility Delegate');
+    super('The close authority needs to be revoked by the Utility Delegate')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidCloseAuthorityError);
+      Error.captureStackTrace(this, InvalidCloseAuthorityError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xbc, () => new InvalidCloseAuthorityError());
-createErrorFromNameLookup.set('InvalidCloseAuthority', () => new InvalidCloseAuthorityError());
+createErrorFromCodeLookup.set(0xbc, () => new InvalidCloseAuthorityError())
+createErrorFromNameLookup.set(
+  'InvalidCloseAuthority',
+  () => new InvalidCloseAuthorityError()
+)
 
 /**
  * InvalidInstruction: 'Invalid or removed instruction'
@@ -4050,18 +4513,21 @@ createErrorFromNameLookup.set('InvalidCloseAuthority', () => new InvalidCloseAut
  * @category generated
  */
 export class InvalidInstructionError extends Error {
-  readonly code: number = 0xbd;
-  readonly name: string = 'InvalidInstruction';
+  readonly code: number = 0xbd
+  readonly name: string = 'InvalidInstruction'
   constructor() {
-    super('Invalid or removed instruction');
+    super('Invalid or removed instruction')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidInstructionError);
+      Error.captureStackTrace(this, InvalidInstructionError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xbd, () => new InvalidInstructionError());
-createErrorFromNameLookup.set('InvalidInstruction', () => new InvalidInstructionError());
+createErrorFromCodeLookup.set(0xbd, () => new InvalidInstructionError())
+createErrorFromNameLookup.set(
+  'InvalidInstruction',
+  () => new InvalidInstructionError()
+)
 
 /**
  * MissingDelegateRecord: 'Missing delegate record'
@@ -4070,18 +4536,21 @@ createErrorFromNameLookup.set('InvalidInstruction', () => new InvalidInstruction
  * @category generated
  */
 export class MissingDelegateRecordError extends Error {
-  readonly code: number = 0xbe;
-  readonly name: string = 'MissingDelegateRecord';
+  readonly code: number = 0xbe
+  readonly name: string = 'MissingDelegateRecord'
   constructor() {
-    super('Missing delegate record');
+    super('Missing delegate record')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, MissingDelegateRecordError);
+      Error.captureStackTrace(this, MissingDelegateRecordError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xbe, () => new MissingDelegateRecordError());
-createErrorFromNameLookup.set('MissingDelegateRecord', () => new MissingDelegateRecordError());
+createErrorFromCodeLookup.set(0xbe, () => new MissingDelegateRecordError())
+createErrorFromNameLookup.set(
+  'MissingDelegateRecord',
+  () => new MissingDelegateRecordError()
+)
 
 /**
  * InvalidFeeAccount: ''
@@ -4090,18 +4559,21 @@ createErrorFromNameLookup.set('MissingDelegateRecord', () => new MissingDelegate
  * @category generated
  */
 export class InvalidFeeAccountError extends Error {
-  readonly code: number = 0xbf;
-  readonly name: string = 'InvalidFeeAccount';
+  readonly code: number = 0xbf
+  readonly name: string = 'InvalidFeeAccount'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidFeeAccountError);
+      Error.captureStackTrace(this, InvalidFeeAccountError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xbf, () => new InvalidFeeAccountError());
-createErrorFromNameLookup.set('InvalidFeeAccount', () => new InvalidFeeAccountError());
+createErrorFromCodeLookup.set(0xbf, () => new InvalidFeeAccountError())
+createErrorFromNameLookup.set(
+  'InvalidFeeAccount',
+  () => new InvalidFeeAccountError()
+)
 
 /**
  * InvalidMetadataFlags: ''
@@ -4110,18 +4582,50 @@ createErrorFromNameLookup.set('InvalidFeeAccount', () => new InvalidFeeAccountEr
  * @category generated
  */
 export class InvalidMetadataFlagsError extends Error {
-  readonly code: number = 0xc0;
-  readonly name: string = 'InvalidMetadataFlags';
+  readonly code: number = 0xc0
+  readonly name: string = 'InvalidMetadataFlags'
   constructor() {
-    super('');
+    super('')
     if (typeof Error.captureStackTrace === 'function') {
-      Error.captureStackTrace(this, InvalidMetadataFlagsError);
+      Error.captureStackTrace(this, InvalidMetadataFlagsError)
     }
   }
 }
 
-createErrorFromCodeLookup.set(0xc0, () => new InvalidMetadataFlagsError());
-createErrorFromNameLookup.set('InvalidMetadataFlags', () => new InvalidMetadataFlagsError());
+createErrorFromCodeLookup.set(0xc0, () => new InvalidMetadataFlagsError())
+createErrorFromNameLookup.set(
+  'InvalidMetadataFlags',
+  () => new InvalidMetadataFlagsError()
+)
+
+/**
+ * CannotChangeUpdateAuthorityWithDelegate: 'Cannot change the update authority with a delegate'
+ *
+ * @category Errors
+ * @category generated
+ */
+export class CannotChangeUpdateAuthorityWithDelegateError extends Error {
+  readonly code: number = 0xc1
+  readonly name: string = 'CannotChangeUpdateAuthorityWithDelegate'
+  constructor() {
+    super('Cannot change the update authority with a delegate')
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(
+        this,
+        CannotChangeUpdateAuthorityWithDelegateError
+      )
+    }
+  }
+}
+
+createErrorFromCodeLookup.set(
+  0xc1,
+  () => new CannotChangeUpdateAuthorityWithDelegateError()
+)
+createErrorFromNameLookup.set(
+  'CannotChangeUpdateAuthorityWithDelegate',
+  () => new CannotChangeUpdateAuthorityWithDelegateError()
+)
 
 /**
  * Attempts to resolve a custom program error from the provided error code.
@@ -4129,8 +4633,8 @@ createErrorFromNameLookup.set('InvalidMetadataFlags', () => new InvalidMetadataF
  * @category generated
  */
 export function errorFromCode(code: number): MaybeErrorWithCode {
-  const createError = createErrorFromCodeLookup.get(code);
-  return createError != null ? createError() : null;
+  const createError = createErrorFromCodeLookup.get(code)
+  return createError != null ? createError() : null
 }
 
 /**
@@ -4139,6 +4643,6 @@ export function errorFromCode(code: number): MaybeErrorWithCode {
  * @category generated
  */
 export function errorFromName(name: string): MaybeErrorWithCode {
-  const createError = createErrorFromNameLookup.get(name);
-  return createError != null ? createError() : null;
+  const createError = createErrorFromNameLookup.get(name)
+  return createError != null ? createError() : null
 }

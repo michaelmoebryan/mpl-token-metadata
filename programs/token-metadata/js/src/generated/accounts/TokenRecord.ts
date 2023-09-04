@@ -5,13 +5,16 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
-import { TokenState, tokenStateBeet } from '../types/TokenState';
-import { TokenDelegateRole, tokenDelegateRoleBeet } from '../types/TokenDelegateRole';
-import * as customSerializer from '../../custom/token-record-deserializer';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
+import { TokenState, tokenStateBeet } from '../types/TokenState'
+import {
+  TokenDelegateRole,
+  tokenDelegateRoleBeet,
+} from '../types/TokenDelegateRole'
+import * as customSerializer from '../../custom/token-record-deserializer'
 
 /**
  * Arguments used to create {@link TokenRecord}
@@ -19,14 +22,14 @@ import * as customSerializer from '../../custom/token-record-deserializer';
  * @category generated
  */
 export type TokenRecordArgs = {
-  key: Key;
-  bump: number;
-  state: TokenState;
-  ruleSetRevision: beet.COption<beet.bignum>;
-  delegate: beet.COption<web3.PublicKey>;
-  delegateRole: beet.COption<TokenDelegateRole>;
-  lockedTransfer: beet.COption<web3.PublicKey>;
-};
+  key: Key
+  bump: number
+  state: TokenState
+  ruleSetRevision: beet.COption<beet.bignum>
+  delegate: beet.COption<web3.PublicKey>
+  delegateRole: beet.COption<TokenDelegateRole>
+  lockedTransfer: beet.COption<web3.PublicKey>
+}
 /**
  * Holds the data for the {@link TokenRecord} Account and provides de/serialization
  * functionality for that data
@@ -42,7 +45,7 @@ export class TokenRecord implements TokenRecordArgs {
     readonly ruleSetRevision: beet.COption<beet.bignum>,
     readonly delegate: beet.COption<web3.PublicKey>,
     readonly delegateRole: beet.COption<TokenDelegateRole>,
-    readonly lockedTransfer: beet.COption<web3.PublicKey>,
+    readonly lockedTransfer: beet.COption<web3.PublicKey>
   ) {}
 
   /**
@@ -56,16 +59,19 @@ export class TokenRecord implements TokenRecordArgs {
       args.ruleSetRevision,
       args.delegate,
       args.delegateRole,
-      args.lockedTransfer,
-    );
+      args.lockedTransfer
+    )
   }
 
   /**
    * Deserializes the {@link TokenRecord} from the data of the provided {@link web3.AccountInfo}.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static fromAccountInfo(accountInfo: web3.AccountInfo<Buffer>, offset = 0): [TokenRecord, number] {
-    return TokenRecord.deserialize(accountInfo.data, offset);
+  static fromAccountInfo(
+    accountInfo: web3.AccountInfo<Buffer>,
+    offset = 0
+  ): [TokenRecord, number] {
+    return TokenRecord.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -77,13 +83,16 @@ export class TokenRecord implements TokenRecordArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<TokenRecord> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find TokenRecord account at ${address}`);
+      throw new Error(`Unable to find TokenRecord account at ${address}`)
     }
-    return TokenRecord.fromAccountInfo(accountInfo, 0)[0];
+    return TokenRecord.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -93,9 +102,11 @@ export class TokenRecord implements TokenRecordArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, tokenRecordBeet);
+    return beetSolana.GpaBuilder.fromStruct(programId, tokenRecordBeet)
   }
 
   /**
@@ -103,7 +114,7 @@ export class TokenRecord implements TokenRecordArgs {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [TokenRecord, number] {
-    return resolvedDeserialize(buf, offset);
+    return resolvedDeserialize(buf, offset)
   }
 
   /**
@@ -111,7 +122,7 @@ export class TokenRecord implements TokenRecordArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return resolvedSerialize(this);
+    return resolvedSerialize(this)
   }
 
   /**
@@ -122,8 +133,8 @@ export class TokenRecord implements TokenRecordArgs {
    * depends on them
    */
   static byteSize(args: TokenRecordArgs) {
-    const instance = TokenRecord.fromArgs(args);
-    return tokenRecordBeet.toFixedFromValue(instance).byteSize;
+    const instance = TokenRecord.fromArgs(args)
+    return tokenRecordBeet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -137,9 +148,12 @@ export class TokenRecord implements TokenRecordArgs {
   static async getMinimumBalanceForRentExemption(
     args: TokenRecordArgs,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(TokenRecord.byteSize(args), commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      TokenRecord.byteSize(args),
+      commitment
+    )
   }
 
   /**
@@ -155,7 +169,7 @@ export class TokenRecord implements TokenRecordArgs {
       delegate: this.delegate,
       delegateRole: this.delegateRole,
       lockedTransfer: this.lockedTransfer,
-    };
+    }
   }
 }
 
@@ -163,7 +177,10 @@ export class TokenRecord implements TokenRecordArgs {
  * @category Accounts
  * @category generated
  */
-export const tokenRecordBeet = new beet.FixableBeetStruct<TokenRecord, TokenRecordArgs>(
+export const tokenRecordBeet = new beet.FixableBeetStruct<
+  TokenRecord,
+  TokenRecordArgs
+>(
   [
     ['key', keyBeet],
     ['bump', beet.u8],
@@ -174,19 +191,19 @@ export const tokenRecordBeet = new beet.FixableBeetStruct<TokenRecord, TokenReco
     ['lockedTransfer', beet.coption(beetSolana.publicKey)],
   ],
   TokenRecord.fromArgs,
-  'TokenRecord',
-);
+  'TokenRecord'
+)
 
 const serializer = customSerializer as unknown as {
-  serialize: typeof tokenRecordBeet.serialize;
-  deserialize: typeof tokenRecordBeet.deserialize;
-};
+  serialize: typeof tokenRecordBeet.serialize
+  deserialize: typeof tokenRecordBeet.deserialize
+}
 
 const resolvedSerialize =
   typeof serializer.serialize === 'function'
     ? serializer.serialize.bind(serializer)
-    : tokenRecordBeet.serialize.bind(tokenRecordBeet);
+    : tokenRecordBeet.serialize.bind(tokenRecordBeet)
 const resolvedDeserialize =
   typeof serializer.deserialize === 'function'
     ? serializer.deserialize.bind(serializer)
-    : tokenRecordBeet.deserialize.bind(tokenRecordBeet);
+    : tokenRecordBeet.deserialize.bind(tokenRecordBeet)

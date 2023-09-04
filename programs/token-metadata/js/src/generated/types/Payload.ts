@@ -5,11 +5,11 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { PayloadType, payloadTypeBeet } from './PayloadType';
+import * as beet from '@metaplex-foundation/beet'
+import { PayloadType, payloadTypeBeet } from './PayloadType'
 export type Payload = {
-  map: Map<string, PayloadType>;
-};
+  map: Map<string, PayloadType>
+}
 
 /**
  * @category userTypes
@@ -17,5 +17,5 @@ export type Payload = {
  */
 export const payloadBeet = new beet.FixableBeetArgsStruct<Payload>(
   [['map', beet.map(beet.utf8String, payloadTypeBeet)]],
-  'Payload',
-);
+  'Payload'
+)

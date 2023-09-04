@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
 /**
  * This type is used to derive the {@link RuleSetToggle} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link RuleSetToggle} type instead.
@@ -18,10 +18,10 @@ import * as beetSolana from '@metaplex-foundation/beet-solana';
  * @private
  */
 export type RuleSetToggleRecord = {
-  None: void /* scalar variant */;
-  Clear: void /* scalar variant */;
-  Set: { fields: [web3.PublicKey] };
-};
+  None: void /* scalar variant */
+  Clear: void /* scalar variant */
+  Set: { fields: [web3.PublicKey] }
+}
 
 /**
  * Union type respresenting the RuleSetToggle data enum defined in Rust.
@@ -34,14 +34,17 @@ export type RuleSetToggleRecord = {
  * @category enums
  * @category generated
  */
-export type RuleSetToggle = beet.DataEnumKeyAsKind<RuleSetToggleRecord>;
+export type RuleSetToggle = beet.DataEnumKeyAsKind<RuleSetToggleRecord>
 
-export const isRuleSetToggleNone = (x: RuleSetToggle): x is RuleSetToggle & { __kind: 'None' } =>
-  x.__kind === 'None';
-export const isRuleSetToggleClear = (x: RuleSetToggle): x is RuleSetToggle & { __kind: 'Clear' } =>
-  x.__kind === 'Clear';
-export const isRuleSetToggleSet = (x: RuleSetToggle): x is RuleSetToggle & { __kind: 'Set' } =>
-  x.__kind === 'Set';
+export const isRuleSetToggleNone = (
+  x: RuleSetToggle
+): x is RuleSetToggle & { __kind: 'None' } => x.__kind === 'None'
+export const isRuleSetToggleClear = (
+  x: RuleSetToggle
+): x is RuleSetToggle & { __kind: 'Clear' } => x.__kind === 'Clear'
+export const isRuleSetToggleSet = (
+  x: RuleSetToggle
+): x is RuleSetToggle & { __kind: 'Set' } => x.__kind === 'Set'
 
 /**
  * @category userTypes
@@ -54,7 +57,7 @@ export const ruleSetToggleBeet = beet.dataEnum<RuleSetToggleRecord>([
     'Set',
     new beet.BeetArgsStruct<RuleSetToggleRecord['Set']>(
       [['fields', beet.fixedSizeTuple([beetSolana.publicKey])]],
-      'RuleSetToggleRecord["Set"]',
+      'RuleSetToggleRecord["Set"]'
     ),
   ],
-]) as beet.FixableBeet<RuleSetToggle, RuleSetToggle>;
+]) as beet.FixableBeet<RuleSetToggle, RuleSetToggle>

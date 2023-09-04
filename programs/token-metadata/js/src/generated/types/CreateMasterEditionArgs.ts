@@ -5,16 +5,17 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type CreateMasterEditionArgs = {
-  maxSupply: beet.COption<beet.bignum>;
-};
+  maxSupply: beet.COption<beet.bignum>
+}
 
 /**
  * @category userTypes
  * @category generated
  */
-export const createMasterEditionArgsBeet = new beet.FixableBeetArgsStruct<CreateMasterEditionArgs>(
-  [['maxSupply', beet.coption(beet.u64)]],
-  'CreateMasterEditionArgs',
-);
+export const createMasterEditionArgsBeet =
+  new beet.FixableBeetArgsStruct<CreateMasterEditionArgs>(
+    [['maxSupply', beet.coption(beet.u64)]],
+    'CreateMasterEditionArgs'
+  )

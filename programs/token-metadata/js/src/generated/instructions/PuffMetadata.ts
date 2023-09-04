@@ -5,31 +5,30 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category PuffMetadata
  * @category generated
  */
-export const PuffMetadataStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'PuffMetadataInstructionArgs',
-);
+export const PuffMetadataStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'PuffMetadataInstructionArgs')
 /**
  * Accounts required by the _PuffMetadata_ instruction
  *
- * @property [_writable_] metadata Metadata account
+ * @property [_writable_] metadata
  * @category Instructions
  * @category PuffMetadata
  * @category generated
  */
 export type PuffMetadataInstructionAccounts = {
-  metadata: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+}
 
-export const puffMetadataInstructionDiscriminator = 14;
+export const puffMetadataInstructionDiscriminator = 14
 
 /**
  * Creates a _PuffMetadata_ instruction.
@@ -41,23 +40,23 @@ export const puffMetadataInstructionDiscriminator = 14;
  */
 export function createPuffMetadataInstruction(
   accounts: PuffMetadataInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = PuffMetadataStruct.serialize({
     instructionDiscriminator: puffMetadataInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
       isWritable: true,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

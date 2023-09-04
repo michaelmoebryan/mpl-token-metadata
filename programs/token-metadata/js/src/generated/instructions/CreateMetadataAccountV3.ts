@@ -5,12 +5,12 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 import {
   CreateMetadataAccountArgsV3,
   createMetadataAccountArgsV3Beet,
-} from '../types/CreateMetadataAccountArgsV3';
+} from '../types/CreateMetadataAccountArgsV3'
 
 /**
  * @category Instructions
@@ -18,8 +18,8 @@ import {
  * @category generated
  */
 export type CreateMetadataAccountV3InstructionArgs = {
-  createMetadataAccountArgsV3: CreateMetadataAccountArgsV3;
-};
+  createMetadataAccountArgsV3: CreateMetadataAccountArgsV3
+}
 /**
  * @category Instructions
  * @category CreateMetadataAccountV3
@@ -27,38 +27,38 @@ export type CreateMetadataAccountV3InstructionArgs = {
  */
 export const CreateMetadataAccountV3Struct = new beet.FixableBeetArgsStruct<
   CreateMetadataAccountV3InstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['createMetadataAccountArgsV3', createMetadataAccountArgsV3Beet],
   ],
-  'CreateMetadataAccountV3InstructionArgs',
-);
+  'CreateMetadataAccountV3InstructionArgs'
+)
 /**
  * Accounts required by the _CreateMetadataAccountV3_ instruction
  *
- * @property [_writable_] metadata Metadata key (pda of ['metadata', program id, mint id])
- * @property [] mint Mint of token asset
- * @property [**signer**] mintAuthority Mint authority
- * @property [_writable_, **signer**] payer payer
- * @property [] updateAuthority update authority info
+ * @property [_writable_] metadata
+ * @property [] mint
+ * @property [**signer**] mintAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [] updateAuthority
  * @category Instructions
  * @category CreateMetadataAccountV3
  * @category generated
  */
 export type CreateMetadataAccountV3InstructionAccounts = {
-  metadata: web3.PublicKey;
-  mint: web3.PublicKey;
-  mintAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  mint: web3.PublicKey
+  mintAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  updateAuthority: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const createMetadataAccountV3InstructionDiscriminator = 33;
+export const createMetadataAccountV3InstructionDiscriminator = 33
 
 /**
  * Creates a _CreateMetadataAccountV3_ instruction.
@@ -78,12 +78,12 @@ export const createMetadataAccountV3InstructionDiscriminator = 33;
 export function createCreateMetadataAccountV3Instruction(
   accounts: CreateMetadataAccountV3InstructionAccounts,
   args: CreateMetadataAccountV3InstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = CreateMetadataAccountV3Struct.serialize({
     instructionDiscriminator: createMetadataAccountV3InstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -115,20 +115,20 @@ export function createCreateMetadataAccountV3Instruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.rent != null) {
     keys.push({
       pubkey: accounts.rent,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

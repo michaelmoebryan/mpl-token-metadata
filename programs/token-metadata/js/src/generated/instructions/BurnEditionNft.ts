@@ -5,49 +5,48 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
  * @category BurnEditionNft
  * @category generated
  */
-export const BurnEditionNftStruct = new beet.BeetArgsStruct<{ instructionDiscriminator: number }>(
-  [['instructionDiscriminator', beet.u8]],
-  'BurnEditionNftInstructionArgs',
-);
+export const BurnEditionNftStruct = new beet.BeetArgsStruct<{
+  instructionDiscriminator: number
+}>([['instructionDiscriminator', beet.u8]], 'BurnEditionNftInstructionArgs')
 /**
  * Accounts required by the _BurnEditionNft_ instruction
  *
- * @property [_writable_] metadata Metadata (pda of ['metadata', program id, mint id])
- * @property [_writable_, **signer**] owner NFT owner
- * @property [_writable_] printEditionMint Mint of the print edition NFT
- * @property [] masterEditionMint Mint of the original/master NFT
- * @property [_writable_] printEditionTokenAccount Token account the print edition NFT is in
- * @property [] masterEditionTokenAccount Token account the Master Edition NFT is in
- * @property [_writable_] masterEditionAccount MasterEdition2 of the original NFT
- * @property [_writable_] printEditionAccount Print Edition account of the NFT
- * @property [_writable_] editionMarkerAccount Edition Marker PDA of the NFT
- * @property [] splTokenProgram SPL Token Program
+ * @property [_writable_] metadata
+ * @property [_writable_, **signer**] owner
+ * @property [_writable_] printEditionMint
+ * @property [] masterEditionMint
+ * @property [_writable_] printEditionTokenAccount
+ * @property [] masterEditionTokenAccount
+ * @property [_writable_] masterEditionAccount
+ * @property [_writable_] printEditionAccount
+ * @property [_writable_] editionMarkerAccount
+ * @property [] splTokenProgram
  * @category Instructions
  * @category BurnEditionNft
  * @category generated
  */
 export type BurnEditionNftInstructionAccounts = {
-  metadata: web3.PublicKey;
-  owner: web3.PublicKey;
-  printEditionMint: web3.PublicKey;
-  masterEditionMint: web3.PublicKey;
-  printEditionTokenAccount: web3.PublicKey;
-  masterEditionTokenAccount: web3.PublicKey;
-  masterEditionAccount: web3.PublicKey;
-  printEditionAccount: web3.PublicKey;
-  editionMarkerAccount: web3.PublicKey;
-  splTokenProgram: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  owner: web3.PublicKey
+  printEditionMint: web3.PublicKey
+  masterEditionMint: web3.PublicKey
+  printEditionTokenAccount: web3.PublicKey
+  masterEditionTokenAccount: web3.PublicKey
+  masterEditionAccount: web3.PublicKey
+  printEditionAccount: web3.PublicKey
+  editionMarkerAccount: web3.PublicKey
+  splTokenProgram: web3.PublicKey
+}
 
-export const burnEditionNftInstructionDiscriminator = 37;
+export const burnEditionNftInstructionDiscriminator = 37
 
 /**
  * Creates a _BurnEditionNft_ instruction.
@@ -59,11 +58,11 @@ export const burnEditionNftInstructionDiscriminator = 37;
  */
 export function createBurnEditionNftInstruction(
   accounts: BurnEditionNftInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = BurnEditionNftStruct.serialize({
     instructionDiscriminator: burnEditionNftInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -115,12 +114,12 @@ export function createBurnEditionNftInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

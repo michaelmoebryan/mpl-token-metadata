@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,33 +14,36 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const UnverifySizedCollectionItemStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'UnverifySizedCollectionItemInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'UnverifySizedCollectionItemInstructionArgs'
+)
 /**
  * Accounts required by the _UnverifySizedCollectionItem_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [**signer**] collectionAuthority Collection Authority
- * @property [_writable_, **signer**] payer payer
- * @property [] collectionMint Mint of the Collection
- * @property [_writable_] collection Metadata Account of the Collection
- * @property [] collectionMasterEditionAccount MasterEdition2 Account of the Collection Token
- * @property [] collectionAuthorityRecord (optional) Collection Authority Record PDA
+ * @property [_writable_] metadata
+ * @property [**signer**] collectionAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [] collectionMint
+ * @property [_writable_] collection
+ * @property [] collectionMasterEditionAccount
+ * @property [] collectionAuthorityRecord (optional)
  * @category Instructions
  * @category UnverifySizedCollectionItem
  * @category generated
  */
 export type UnverifySizedCollectionItemInstructionAccounts = {
-  metadata: web3.PublicKey;
-  collectionAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  collectionMint: web3.PublicKey;
-  collection: web3.PublicKey;
-  collectionMasterEditionAccount: web3.PublicKey;
-  collectionAuthorityRecord?: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  collectionAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  collectionMint: web3.PublicKey
+  collection: web3.PublicKey
+  collectionMasterEditionAccount: web3.PublicKey
+  collectionAuthorityRecord?: web3.PublicKey
+}
 
-export const unverifySizedCollectionItemInstructionDiscriminator = 31;
+export const unverifySizedCollectionItemInstructionDiscriminator = 31
 
 /**
  * Creates a _UnverifySizedCollectionItem_ instruction.
@@ -57,11 +60,12 @@ export const unverifySizedCollectionItemInstructionDiscriminator = 31;
  */
 export function createUnverifySizedCollectionItemInstruction(
   accounts: UnverifySizedCollectionItemInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UnverifySizedCollectionItemStruct.serialize({
-    instructionDiscriminator: unverifySizedCollectionItemInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      unverifySizedCollectionItemInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -93,20 +97,20 @@ export function createUnverifySizedCollectionItemInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.collectionAuthorityRecord != null) {
     keys.push({
       pubkey: accounts.collectionAuthorityRecord,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

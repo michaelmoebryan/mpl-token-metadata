@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,23 +14,26 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const UpdateMetadataAccountStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'UpdateMetadataAccountInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'UpdateMetadataAccountInstructionArgs'
+)
 /**
  * Accounts required by the _UpdateMetadataAccount_ instruction
  *
- * @property [_writable_] metadata Metadata account
- * @property [**signer**] updateAuthority Update authority key
+ * @property [_writable_] metadata
+ * @property [**signer**] updateAuthority
  * @category Instructions
  * @category UpdateMetadataAccount
  * @category generated
  */
 export type UpdateMetadataAccountInstructionAccounts = {
-  metadata: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-};
+  metadata: web3.PublicKey
+  updateAuthority: web3.PublicKey
+}
 
-export const updateMetadataAccountInstructionDiscriminator = 1;
+export const updateMetadataAccountInstructionDiscriminator = 1
 
 /**
  * Creates a _UpdateMetadataAccount_ instruction.
@@ -42,11 +45,11 @@ export const updateMetadataAccountInstructionDiscriminator = 1;
  */
 export function createUpdateMetadataAccountInstruction(
   accounts: UpdateMetadataAccountInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UpdateMetadataAccountStruct.serialize({
     instructionDiscriminator: updateMetadataAccountInstructionDiscriminator,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.metadata,
@@ -58,12 +61,12 @@ export function createUpdateMetadataAccountInstruction(
       isWritable: false,
       isSigner: true,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

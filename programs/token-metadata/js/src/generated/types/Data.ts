@@ -5,15 +5,15 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { Creator, creatorBeet } from './Creator';
+import * as beet from '@metaplex-foundation/beet'
+import { Creator, creatorBeet } from './Creator'
 export type Data = {
-  name: string;
-  symbol: string;
-  uri: string;
-  sellerFeeBasisPoints: number;
-  creators: beet.COption<Creator[]>;
-};
+  name: string
+  symbol: string
+  uri: string
+  sellerFeeBasisPoints: number
+  creators: beet.COption<Creator[]>
+}
 
 /**
  * @category userTypes
@@ -27,5 +27,5 @@ export const dataBeet = new beet.FixableBeetArgsStruct<Data>(
     ['sellerFeeBasisPoints', beet.u16],
     ['creators', beet.coption(beet.array(creatorBeet))],
   ],
-  'Data',
-);
+  'Data'
+)

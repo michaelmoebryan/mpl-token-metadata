@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link MetadataDelegateRecord}
@@ -16,12 +16,12 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type MetadataDelegateRecordArgs = {
-  key: Key;
-  bump: number;
-  mint: web3.PublicKey;
-  delegate: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-};
+  key: Key
+  bump: number
+  mint: web3.PublicKey
+  delegate: web3.PublicKey
+  updateAuthority: web3.PublicKey
+}
 /**
  * Holds the data for the {@link MetadataDelegateRecord} Account and provides de/serialization
  * functionality for that data
@@ -35,7 +35,7 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
     readonly bump: number,
     readonly mint: web3.PublicKey,
     readonly delegate: web3.PublicKey,
-    readonly updateAuthority: web3.PublicKey,
+    readonly updateAuthority: web3.PublicKey
   ) {}
 
   /**
@@ -47,8 +47,8 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
       args.bump,
       args.mint,
       args.delegate,
-      args.updateAuthority,
-    );
+      args.updateAuthority
+    )
   }
 
   /**
@@ -57,9 +57,9 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [MetadataDelegateRecord, number] {
-    return MetadataDelegateRecord.deserialize(accountInfo.data, offset);
+    return MetadataDelegateRecord.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -71,13 +71,18 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<MetadataDelegateRecord> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find MetadataDelegateRecord account at ${address}`);
+      throw new Error(
+        `Unable to find MetadataDelegateRecord account at ${address}`
+      )
     }
-    return MetadataDelegateRecord.fromAccountInfo(accountInfo, 0)[0];
+    return MetadataDelegateRecord.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -87,17 +92,25 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, metadataDelegateRecordBeet);
+    return beetSolana.GpaBuilder.fromStruct(
+      programId,
+      metadataDelegateRecordBeet
+    )
   }
 
   /**
    * Deserializes the {@link MetadataDelegateRecord} from the provided data Buffer.
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
-  static deserialize(buf: Buffer, offset = 0): [MetadataDelegateRecord, number] {
-    return metadataDelegateRecordBeet.deserialize(buf, offset);
+  static deserialize(
+    buf: Buffer,
+    offset = 0
+  ): [MetadataDelegateRecord, number] {
+    return metadataDelegateRecordBeet.deserialize(buf, offset)
   }
 
   /**
@@ -105,7 +118,7 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return metadataDelegateRecordBeet.serialize(this);
+    return metadataDelegateRecordBeet.serialize(this)
   }
 
   /**
@@ -113,7 +126,7 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    * {@link MetadataDelegateRecord}
    */
   static get byteSize() {
-    return metadataDelegateRecordBeet.byteSize;
+    return metadataDelegateRecordBeet.byteSize
   }
 
   /**
@@ -124,12 +137,12 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    */
   static async getMinimumBalanceForRentExemption(
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
     return connection.getMinimumBalanceForRentExemption(
       MetadataDelegateRecord.byteSize,
-      commitment,
-    );
+      commitment
+    )
   }
 
   /**
@@ -137,7 +150,7 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
    * hold {@link MetadataDelegateRecord} data.
    */
   static hasCorrectByteSize(buf: Buffer, offset = 0) {
-    return buf.byteLength - offset === MetadataDelegateRecord.byteSize;
+    return buf.byteLength - offset === MetadataDelegateRecord.byteSize
   }
 
   /**
@@ -151,7 +164,7 @@ export class MetadataDelegateRecord implements MetadataDelegateRecordArgs {
       mint: this.mint.toBase58(),
       delegate: this.delegate.toBase58(),
       updateAuthority: this.updateAuthority.toBase58(),
-    };
+    }
   }
 }
 
@@ -171,5 +184,5 @@ export const metadataDelegateRecordBeet = new beet.BeetStruct<
     ['updateAuthority', beetSolana.publicKey],
   ],
   MetadataDelegateRecord.fromArgs,
-  'MetadataDelegateRecord',
-);
+  'MetadataDelegateRecord'
+)

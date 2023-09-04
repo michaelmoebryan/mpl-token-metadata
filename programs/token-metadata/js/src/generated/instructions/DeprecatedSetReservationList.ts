@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 
 /**
  * @category Instructions
@@ -14,25 +14,28 @@ import * as web3 from '@solana/web3.js';
  * @category generated
  */
 export const DeprecatedSetReservationListStruct = new beet.BeetArgsStruct<{
-  instructionDiscriminator: number;
-}>([['instructionDiscriminator', beet.u8]], 'DeprecatedSetReservationListInstructionArgs');
+  instructionDiscriminator: number
+}>(
+  [['instructionDiscriminator', beet.u8]],
+  'DeprecatedSetReservationListInstructionArgs'
+)
 /**
  * Accounts required by the _DeprecatedSetReservationList_ instruction
  *
- * @property [_writable_] masterEdition Master Edition V1 key (pda of ['metadata', program id, mint id, 'edition'])
- * @property [_writable_] reservationList PDA for ReservationList of ['metadata', program id, master edition key, 'reservation', resource-key]
- * @property [**signer**] resource The resource you tied the reservation list too
+ * @property [_writable_] masterEdition
+ * @property [_writable_] reservationList
+ * @property [**signer**] resource
  * @category Instructions
  * @category DeprecatedSetReservationList
  * @category generated
  */
 export type DeprecatedSetReservationListInstructionAccounts = {
-  masterEdition: web3.PublicKey;
-  reservationList: web3.PublicKey;
-  resource: web3.PublicKey;
-};
+  masterEdition: web3.PublicKey
+  reservationList: web3.PublicKey
+  resource: web3.PublicKey
+}
 
-export const deprecatedSetReservationListInstructionDiscriminator = 5;
+export const deprecatedSetReservationListInstructionDiscriminator = 5
 
 /**
  * Creates a _DeprecatedSetReservationList_ instruction.
@@ -44,11 +47,12 @@ export const deprecatedSetReservationListInstructionDiscriminator = 5;
  */
 export function createDeprecatedSetReservationListInstruction(
   accounts: DeprecatedSetReservationListInstructionAccounts,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = DeprecatedSetReservationListStruct.serialize({
-    instructionDiscriminator: deprecatedSetReservationListInstructionDiscriminator,
-  });
+    instructionDiscriminator:
+      deprecatedSetReservationListInstructionDiscriminator,
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.masterEdition,
@@ -65,12 +69,12 @@ export function createDeprecatedSetReservationListInstruction(
       isWritable: false,
       isSigner: true,
     },
-  ];
+  ]
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

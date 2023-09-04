@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 export type UtilizeArgs = {
-  numberOfUses: beet.bignum;
-};
+  numberOfUses: beet.bignum
+}
 
 /**
  * @category userTypes
@@ -16,5 +16,5 @@ export type UtilizeArgs = {
  */
 export const utilizeArgsBeet = new beet.BeetArgsStruct<UtilizeArgs>(
   [['numberOfUses', beet.u64]],
-  'UtilizeArgs',
-);
+  'UtilizeArgs'
+)

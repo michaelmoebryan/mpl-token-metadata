@@ -5,13 +5,13 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 import {
   CreateMasterEditionArgs,
   createMasterEditionArgsBeet,
-} from '../types/CreateMasterEditionArgs';
+} from '../types/CreateMasterEditionArgs'
 
 /**
  * @category Instructions
@@ -19,8 +19,8 @@ import {
  * @category generated
  */
 export type CreateMasterEditionV3InstructionArgs = {
-  createMasterEditionArgs: CreateMasterEditionArgs;
-};
+  createMasterEditionArgs: CreateMasterEditionArgs
+}
 /**
  * @category Instructions
  * @category CreateMasterEditionV3
@@ -28,41 +28,41 @@ export type CreateMasterEditionV3InstructionArgs = {
  */
 export const CreateMasterEditionV3Struct = new beet.FixableBeetArgsStruct<
   CreateMasterEditionV3InstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['createMasterEditionArgs', createMasterEditionArgsBeet],
   ],
-  'CreateMasterEditionV3InstructionArgs',
-);
+  'CreateMasterEditionV3InstructionArgs'
+)
 /**
  * Accounts required by the _CreateMasterEditionV3_ instruction
  *
- * @property [_writable_] edition Unallocated edition V2 account with address as pda of ['metadata', program id, mint, 'edition']
- * @property [_writable_] mint Metadata mint
- * @property [**signer**] updateAuthority Update authority
- * @property [**signer**] mintAuthority Mint authority on the metadata's mint - THIS WILL TRANSFER AUTHORITY AWAY FROM THIS KEY
- * @property [_writable_, **signer**] payer payer
- * @property [_writable_] metadata Metadata account
+ * @property [_writable_] edition
+ * @property [_writable_] mint
+ * @property [**signer**] updateAuthority
+ * @property [**signer**] mintAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [_writable_] metadata
  * @category Instructions
  * @category CreateMasterEditionV3
  * @category generated
  */
 export type CreateMasterEditionV3InstructionAccounts = {
-  edition: web3.PublicKey;
-  mint: web3.PublicKey;
-  updateAuthority: web3.PublicKey;
-  mintAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  metadata: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  edition: web3.PublicKey
+  mint: web3.PublicKey
+  updateAuthority: web3.PublicKey
+  mintAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  metadata: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const createMasterEditionV3InstructionDiscriminator = 17;
+export const createMasterEditionV3InstructionDiscriminator = 17
 
 /**
  * Creates a _CreateMasterEditionV3_ instruction.
@@ -82,12 +82,12 @@ export const createMasterEditionV3InstructionDiscriminator = 17;
 export function createCreateMasterEditionV3Instruction(
   accounts: CreateMasterEditionV3InstructionAccounts,
   args: CreateMasterEditionV3InstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = CreateMasterEditionV3Struct.serialize({
     instructionDiscriminator: createMasterEditionV3InstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.edition,
@@ -129,20 +129,20 @@ export function createCreateMasterEditionV3Instruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.rent != null) {
     keys.push({
       pubkey: accounts.rent,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link MasterEditionV1}
@@ -16,12 +16,12 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type MasterEditionV1Args = {
-  key: Key;
-  supply: beet.bignum;
-  maxSupply: beet.COption<beet.bignum>;
-  printingMint: web3.PublicKey;
-  oneTimePrintingAuthorizationMint: web3.PublicKey;
-};
+  key: Key
+  supply: beet.bignum
+  maxSupply: beet.COption<beet.bignum>
+  printingMint: web3.PublicKey
+  oneTimePrintingAuthorizationMint: web3.PublicKey
+}
 /**
  * Holds the data for the {@link MasterEditionV1} Account and provides de/serialization
  * functionality for that data
@@ -35,7 +35,7 @@ export class MasterEditionV1 implements MasterEditionV1Args {
     readonly supply: beet.bignum,
     readonly maxSupply: beet.COption<beet.bignum>,
     readonly printingMint: web3.PublicKey,
-    readonly oneTimePrintingAuthorizationMint: web3.PublicKey,
+    readonly oneTimePrintingAuthorizationMint: web3.PublicKey
   ) {}
 
   /**
@@ -47,8 +47,8 @@ export class MasterEditionV1 implements MasterEditionV1Args {
       args.supply,
       args.maxSupply,
       args.printingMint,
-      args.oneTimePrintingAuthorizationMint,
-    );
+      args.oneTimePrintingAuthorizationMint
+    )
   }
 
   /**
@@ -57,9 +57,9 @@ export class MasterEditionV1 implements MasterEditionV1Args {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [MasterEditionV1, number] {
-    return MasterEditionV1.deserialize(accountInfo.data, offset);
+    return MasterEditionV1.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -71,13 +71,16 @@ export class MasterEditionV1 implements MasterEditionV1Args {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<MasterEditionV1> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find MasterEditionV1 account at ${address}`);
+      throw new Error(`Unable to find MasterEditionV1 account at ${address}`)
     }
-    return MasterEditionV1.fromAccountInfo(accountInfo, 0)[0];
+    return MasterEditionV1.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -87,9 +90,11 @@ export class MasterEditionV1 implements MasterEditionV1Args {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, masterEditionV1Beet);
+    return beetSolana.GpaBuilder.fromStruct(programId, masterEditionV1Beet)
   }
 
   /**
@@ -97,7 +102,7 @@ export class MasterEditionV1 implements MasterEditionV1Args {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [MasterEditionV1, number] {
-    return masterEditionV1Beet.deserialize(buf, offset);
+    return masterEditionV1Beet.deserialize(buf, offset)
   }
 
   /**
@@ -105,7 +110,7 @@ export class MasterEditionV1 implements MasterEditionV1Args {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return masterEditionV1Beet.serialize(this);
+    return masterEditionV1Beet.serialize(this)
   }
 
   /**
@@ -116,8 +121,8 @@ export class MasterEditionV1 implements MasterEditionV1Args {
    * depends on them
    */
   static byteSize(args: MasterEditionV1Args) {
-    const instance = MasterEditionV1.fromArgs(args);
-    return masterEditionV1Beet.toFixedFromValue(instance).byteSize;
+    const instance = MasterEditionV1.fromArgs(args)
+    return masterEditionV1Beet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -131,9 +136,12 @@ export class MasterEditionV1 implements MasterEditionV1Args {
   static async getMinimumBalanceForRentExemption(
     args: MasterEditionV1Args,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(MasterEditionV1.byteSize(args), commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      MasterEditionV1.byteSize(args),
+      commitment
+    )
   }
 
   /**
@@ -144,20 +152,21 @@ export class MasterEditionV1 implements MasterEditionV1Args {
     return {
       key: 'Key.' + Key[this.key],
       supply: (() => {
-        const x = <{ toNumber: () => number }>this.supply;
+        const x = <{ toNumber: () => number }>this.supply
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
       maxSupply: this.maxSupply,
       printingMint: this.printingMint.toBase58(),
-      oneTimePrintingAuthorizationMint: this.oneTimePrintingAuthorizationMint.toBase58(),
-    };
+      oneTimePrintingAuthorizationMint:
+        this.oneTimePrintingAuthorizationMint.toBase58(),
+    }
   }
 }
 
@@ -165,7 +174,10 @@ export class MasterEditionV1 implements MasterEditionV1Args {
  * @category Accounts
  * @category generated
  */
-export const masterEditionV1Beet = new beet.FixableBeetStruct<MasterEditionV1, MasterEditionV1Args>(
+export const masterEditionV1Beet = new beet.FixableBeetStruct<
+  MasterEditionV1,
+  MasterEditionV1Args
+>(
   [
     ['key', keyBeet],
     ['supply', beet.u64],
@@ -174,5 +186,5 @@ export const masterEditionV1Beet = new beet.FixableBeetStruct<MasterEditionV1, M
     ['oneTimePrintingAuthorizationMint', beetSolana.publicKey],
   ],
   MasterEditionV1.fromArgs,
-  'MasterEditionV1',
-);
+  'MasterEditionV1'
+)

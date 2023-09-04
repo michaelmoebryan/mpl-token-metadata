@@ -5,7 +5,7 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
+import * as beet from '@metaplex-foundation/beet'
 /**
  * @category enums
  * @category generated
@@ -22,7 +22,6 @@ export enum AuthorityType {
  * @category userTypes
  * @category generated
  */
-export const authorityTypeBeet = beet.fixedScalarEnum(AuthorityType) as beet.FixedSizeBeet<
-  AuthorityType,
+export const authorityTypeBeet = beet.fixedScalarEnum(
   AuthorityType
->;
+) as beet.FixedSizeBeet<AuthorityType, AuthorityType>

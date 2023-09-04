@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link MasterEditionV2}
@@ -16,10 +16,10 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type MasterEditionV2Args = {
-  key: Key;
-  supply: beet.bignum;
-  maxSupply: beet.COption<beet.bignum>;
-};
+  key: Key
+  supply: beet.bignum
+  maxSupply: beet.COption<beet.bignum>
+}
 /**
  * Holds the data for the {@link MasterEditionV2} Account and provides de/serialization
  * functionality for that data
@@ -31,14 +31,14 @@ export class MasterEditionV2 implements MasterEditionV2Args {
   private constructor(
     readonly key: Key,
     readonly supply: beet.bignum,
-    readonly maxSupply: beet.COption<beet.bignum>,
+    readonly maxSupply: beet.COption<beet.bignum>
   ) {}
 
   /**
    * Creates a {@link MasterEditionV2} instance from the provided args.
    */
   static fromArgs(args: MasterEditionV2Args) {
-    return new MasterEditionV2(args.key, args.supply, args.maxSupply);
+    return new MasterEditionV2(args.key, args.supply, args.maxSupply)
   }
 
   /**
@@ -47,9 +47,9 @@ export class MasterEditionV2 implements MasterEditionV2Args {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [MasterEditionV2, number] {
-    return MasterEditionV2.deserialize(accountInfo.data, offset);
+    return MasterEditionV2.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -61,13 +61,16 @@ export class MasterEditionV2 implements MasterEditionV2Args {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<MasterEditionV2> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find MasterEditionV2 account at ${address}`);
+      throw new Error(`Unable to find MasterEditionV2 account at ${address}`)
     }
-    return MasterEditionV2.fromAccountInfo(accountInfo, 0)[0];
+    return MasterEditionV2.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -77,9 +80,11 @@ export class MasterEditionV2 implements MasterEditionV2Args {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, masterEditionV2Beet);
+    return beetSolana.GpaBuilder.fromStruct(programId, masterEditionV2Beet)
   }
 
   /**
@@ -87,7 +92,7 @@ export class MasterEditionV2 implements MasterEditionV2Args {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [MasterEditionV2, number] {
-    return masterEditionV2Beet.deserialize(buf, offset);
+    return masterEditionV2Beet.deserialize(buf, offset)
   }
 
   /**
@@ -95,7 +100,7 @@ export class MasterEditionV2 implements MasterEditionV2Args {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return masterEditionV2Beet.serialize(this);
+    return masterEditionV2Beet.serialize(this)
   }
 
   /**
@@ -106,8 +111,8 @@ export class MasterEditionV2 implements MasterEditionV2Args {
    * depends on them
    */
   static byteSize(args: MasterEditionV2Args) {
-    const instance = MasterEditionV2.fromArgs(args);
-    return masterEditionV2Beet.toFixedFromValue(instance).byteSize;
+    const instance = MasterEditionV2.fromArgs(args)
+    return masterEditionV2Beet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -121,9 +126,12 @@ export class MasterEditionV2 implements MasterEditionV2Args {
   static async getMinimumBalanceForRentExemption(
     args: MasterEditionV2Args,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(MasterEditionV2.byteSize(args), commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      MasterEditionV2.byteSize(args),
+      commitment
+    )
   }
 
   /**
@@ -134,18 +142,18 @@ export class MasterEditionV2 implements MasterEditionV2Args {
     return {
       key: 'Key.' + Key[this.key],
       supply: (() => {
-        const x = <{ toNumber: () => number }>this.supply;
+        const x = <{ toNumber: () => number }>this.supply
         if (typeof x.toNumber === 'function') {
           try {
-            return x.toNumber();
+            return x.toNumber()
           } catch (_) {
-            return x;
+            return x
           }
         }
-        return x;
+        return x
       })(),
       maxSupply: this.maxSupply,
-    };
+    }
   }
 }
 
@@ -153,12 +161,15 @@ export class MasterEditionV2 implements MasterEditionV2Args {
  * @category Accounts
  * @category generated
  */
-export const masterEditionV2Beet = new beet.FixableBeetStruct<MasterEditionV2, MasterEditionV2Args>(
+export const masterEditionV2Beet = new beet.FixableBeetStruct<
+  MasterEditionV2,
+  MasterEditionV2Args
+>(
   [
     ['key', keyBeet],
     ['supply', beet.u64],
     ['maxSupply', beet.coption(beet.u64)],
   ],
   MasterEditionV2.fromArgs,
-  'MasterEditionV2',
-);
+  'MasterEditionV2'
+)

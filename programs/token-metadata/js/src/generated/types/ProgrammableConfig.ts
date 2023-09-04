@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as web3 from '@solana/web3.js';
-import * as beet from '@metaplex-foundation/beet';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
+import * as web3 from '@solana/web3.js'
+import * as beet from '@metaplex-foundation/beet'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
 /**
  * This type is used to derive the {@link ProgrammableConfig} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link ProgrammableConfig} type instead.
@@ -18,8 +18,8 @@ import * as beetSolana from '@metaplex-foundation/beet-solana';
  * @private
  */
 export type ProgrammableConfigRecord = {
-  V1: { ruleSet: beet.COption<web3.PublicKey> };
-};
+  V1: { ruleSet: beet.COption<web3.PublicKey> }
+}
 
 /**
  * Union type respresenting the ProgrammableConfig data enum defined in Rust.
@@ -32,11 +32,12 @@ export type ProgrammableConfigRecord = {
  * @category enums
  * @category generated
  */
-export type ProgrammableConfig = beet.DataEnumKeyAsKind<ProgrammableConfigRecord>;
+export type ProgrammableConfig =
+  beet.DataEnumKeyAsKind<ProgrammableConfigRecord>
 
 export const isProgrammableConfigV1 = (
-  x: ProgrammableConfig,
-): x is ProgrammableConfig & { __kind: 'V1' } => x.__kind === 'V1';
+  x: ProgrammableConfig
+): x is ProgrammableConfig & { __kind: 'V1' } => x.__kind === 'V1'
 
 /**
  * @category userTypes
@@ -47,7 +48,7 @@ export const programmableConfigBeet = beet.dataEnum<ProgrammableConfigRecord>([
     'V1',
     new beet.FixableBeetArgsStruct<ProgrammableConfigRecord['V1']>(
       [['ruleSet', beet.coption(beetSolana.publicKey)]],
-      'ProgrammableConfigRecord["V1"]',
+      'ProgrammableConfigRecord["V1"]'
     ),
   ],
-]) as beet.FixableBeet<ProgrammableConfig, ProgrammableConfig>;
+]) as beet.FixableBeet<ProgrammableConfig, ProgrammableConfig>

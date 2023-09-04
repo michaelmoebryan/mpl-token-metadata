@@ -5,9 +5,9 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { UpdateArgs, updateArgsBeet } from '../types/UpdateArgs';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import { UpdateArgs, updateArgsBeet } from '../types/UpdateArgs'
 
 /**
  * @category Instructions
@@ -15,8 +15,8 @@ import { UpdateArgs, updateArgsBeet } from '../types/UpdateArgs';
  * @category generated
  */
 export type UpdateInstructionArgs = {
-  updateArgs: UpdateArgs;
-};
+  updateArgs: UpdateArgs
+}
 /**
  * @category Instructions
  * @category Update
@@ -24,53 +24,55 @@ export type UpdateInstructionArgs = {
  */
 export const UpdateStruct = new beet.FixableBeetArgsStruct<
   UpdateInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['updateArgs', updateArgsBeet],
   ],
-  'UpdateInstructionArgs',
-);
+  'UpdateInstructionArgs'
+)
 /**
  * Accounts required by the _Update_ instruction
  *
- * @property [**signer**] authority Update authority or delegate
- * @property [] delegateRecord (optional) Delegate record PDA
- * @property [] token (optional) Token account
- * @property [] mint Mint account
- * @property [_writable_] metadata Metadata account
- * @property [] edition (optional) Edition account
- * @property [_writable_, **signer**] payer Payer
- * @property [] sysvarInstructions Instructions sysvar account
- * @property [] authorizationRulesProgram (optional) Token Authorization Rules Program
- * @property [] authorizationRules (optional) Token Authorization Rules account
+ * @property [**signer**] authority
+ * @property [] delegateRecord (optional)
+ * @property [] token (optional)
+ * @property [] mint
+ * @property [_writable_] metadata
+ * @property [] edition (optional)
+ * @property [_writable_, **signer**] payer
+ * @property [] sysvarInstructions
+ * @property [] authorizationRulesProgram (optional)
+ * @property [] authorizationRules (optional)
  * @category Instructions
  * @category Update
  * @category generated
  */
 export type UpdateInstructionAccounts = {
-  authority: web3.PublicKey;
-  delegateRecord?: web3.PublicKey;
-  token?: web3.PublicKey;
-  mint: web3.PublicKey;
-  metadata: web3.PublicKey;
-  edition?: web3.PublicKey;
-  payer: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  sysvarInstructions: web3.PublicKey;
-  authorizationRulesProgram?: web3.PublicKey;
-  authorizationRules?: web3.PublicKey;
-};
+  authority: web3.PublicKey
+  delegateRecord?: web3.PublicKey
+  token?: web3.PublicKey
+  mint: web3.PublicKey
+  metadata: web3.PublicKey
+  edition?: web3.PublicKey
+  payer: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  sysvarInstructions: web3.PublicKey
+  authorizationRulesProgram?: web3.PublicKey
+  authorizationRules?: web3.PublicKey
+}
 
-export const updateInstructionDiscriminator = 50;
+export const updateInstructionDiscriminator = 50
 
 /**
  * Creates a _Update_ instruction.
  *
- * Optional accounts that are not provided default to the program ID since
- * this was indicated in the IDL from which this instruction was generated.
+ * Optional accounts that are not provided will be omitted from the accounts
+ * array passed with the instruction.
+ * An optional account that is set cannot follow an optional account that is unset.
+ * Otherwise an Error is raised.
  *
  * @param accounts that will be accessed while the instruction is processed
  * @param args to provide as instruction data to the program
@@ -82,74 +84,114 @@ export const updateInstructionDiscriminator = 50;
 export function createUpdateInstruction(
   accounts: UpdateInstructionAccounts,
   args: UpdateInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = UpdateStruct.serialize({
     instructionDiscriminator: updateInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.authority,
       isWritable: false,
       isSigner: true,
     },
-    {
-      pubkey: accounts.delegateRecord ?? programId,
+  ]
+
+  if (accounts.delegateRecord != null) {
+    keys.push({
+      pubkey: accounts.delegateRecord,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.token ?? programId,
+    })
+  }
+  if (accounts.token != null) {
+    if (accounts.delegateRecord == null) {
+      throw new Error(
+        "When providing 'token' then 'accounts.delegateRecord' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.token,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.mint,
+    })
+  }
+  keys.push({
+    pubkey: accounts.mint,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.metadata,
+    isWritable: true,
+    isSigner: false,
+  })
+  if (accounts.edition != null) {
+    if (accounts.delegateRecord == null || accounts.token == null) {
+      throw new Error(
+        "When providing 'edition' then 'accounts.delegateRecord', 'accounts.token' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.edition,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.metadata,
-      isWritable: true,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.edition ?? programId,
+    })
+  }
+  keys.push({
+    pubkey: accounts.payer,
+    isWritable: true,
+    isSigner: true,
+  })
+  keys.push({
+    pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+    isWritable: false,
+    isSigner: false,
+  })
+  keys.push({
+    pubkey: accounts.sysvarInstructions,
+    isWritable: false,
+    isSigner: false,
+  })
+  if (accounts.authorizationRulesProgram != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.token == null ||
+      accounts.edition == null
+    ) {
+      throw new Error(
+        "When providing 'authorizationRulesProgram' then 'accounts.delegateRecord', 'accounts.token', 'accounts.edition' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.authorizationRulesProgram,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.payer,
-      isWritable: true,
-      isSigner: true,
-    },
-    {
-      pubkey: accounts.systemProgram ?? web3.SystemProgram.programId,
+    })
+  }
+  if (accounts.authorizationRules != null) {
+    if (
+      accounts.delegateRecord == null ||
+      accounts.token == null ||
+      accounts.edition == null ||
+      accounts.authorizationRulesProgram == null
+    ) {
+      throw new Error(
+        "When providing 'authorizationRules' then 'accounts.delegateRecord', 'accounts.token', 'accounts.edition', 'accounts.authorizationRulesProgram' need(s) to be provided as well."
+      )
+    }
+    keys.push({
+      pubkey: accounts.authorizationRules,
       isWritable: false,
       isSigner: false,
-    },
-    {
-      pubkey: accounts.sysvarInstructions,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.authorizationRulesProgram ?? programId,
-      isWritable: false,
-      isSigner: false,
-    },
-    {
-      pubkey: accounts.authorizationRules ?? programId,
-      isWritable: false,
-      isSigner: false,
-    },
-  ];
+    })
+  }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

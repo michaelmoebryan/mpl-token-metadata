@@ -5,9 +5,12 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import { SetCollectionSizeArgs, setCollectionSizeArgsBeet } from '../types/SetCollectionSizeArgs';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import {
+  SetCollectionSizeArgs,
+  setCollectionSizeArgsBeet,
+} from '../types/SetCollectionSizeArgs'
 
 /**
  * @category Instructions
@@ -15,8 +18,8 @@ import { SetCollectionSizeArgs, setCollectionSizeArgsBeet } from '../types/SetCo
  * @category generated
  */
 export type SetCollectionSizeInstructionArgs = {
-  setCollectionSizeArgs: SetCollectionSizeArgs;
-};
+  setCollectionSizeArgs: SetCollectionSizeArgs
+}
 /**
  * @category Instructions
  * @category SetCollectionSize
@@ -24,34 +27,34 @@ export type SetCollectionSizeInstructionArgs = {
  */
 export const SetCollectionSizeStruct = new beet.BeetArgsStruct<
   SetCollectionSizeInstructionArgs & {
-    instructionDiscriminator: number;
+    instructionDiscriminator: number
   }
 >(
   [
     ['instructionDiscriminator', beet.u8],
     ['setCollectionSizeArgs', setCollectionSizeArgsBeet],
   ],
-  'SetCollectionSizeInstructionArgs',
-);
+  'SetCollectionSizeInstructionArgs'
+)
 /**
  * Accounts required by the _SetCollectionSize_ instruction
  *
- * @property [_writable_] collectionMetadata Collection Metadata account
- * @property [_writable_, **signer**] collectionAuthority Collection Update authority
- * @property [] collectionMint Mint of the Collection
- * @property [] collectionAuthorityRecord (optional) Collection Authority Record PDA
+ * @property [_writable_] collectionMetadata
+ * @property [_writable_, **signer**] collectionAuthority
+ * @property [] collectionMint
+ * @property [] collectionAuthorityRecord (optional)
  * @category Instructions
  * @category SetCollectionSize
  * @category generated
  */
 export type SetCollectionSizeInstructionAccounts = {
-  collectionMetadata: web3.PublicKey;
-  collectionAuthority: web3.PublicKey;
-  collectionMint: web3.PublicKey;
-  collectionAuthorityRecord?: web3.PublicKey;
-};
+  collectionMetadata: web3.PublicKey
+  collectionAuthority: web3.PublicKey
+  collectionMint: web3.PublicKey
+  collectionAuthorityRecord?: web3.PublicKey
+}
 
-export const setCollectionSizeInstructionDiscriminator = 34;
+export const setCollectionSizeInstructionDiscriminator = 34
 
 /**
  * Creates a _SetCollectionSize_ instruction.
@@ -71,12 +74,12 @@ export const setCollectionSizeInstructionDiscriminator = 34;
 export function createSetCollectionSizeInstruction(
   accounts: SetCollectionSizeInstructionAccounts,
   args: SetCollectionSizeInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = SetCollectionSizeStruct.serialize({
     instructionDiscriminator: setCollectionSizeInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.collectionMetadata,
@@ -93,20 +96,20 @@ export function createSetCollectionSizeInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.collectionAuthorityRecord != null) {
     keys.push({
       pubkey: accounts.collectionAuthorityRecord,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

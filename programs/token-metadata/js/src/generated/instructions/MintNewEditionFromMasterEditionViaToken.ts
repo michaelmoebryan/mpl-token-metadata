@@ -5,13 +5,13 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as splToken from '@solana/spl-token';
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
+import * as splToken from '@solana/spl-token'
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
 import {
   MintNewEditionFromMasterEditionViaTokenArgs,
   mintNewEditionFromMasterEditionViaTokenArgsBeet,
-} from '../types/MintNewEditionFromMasterEditionViaTokenArgs';
+} from '../types/MintNewEditionFromMasterEditionViaTokenArgs'
 
 /**
  * @category Instructions
@@ -19,63 +19,64 @@ import {
  * @category generated
  */
 export type MintNewEditionFromMasterEditionViaTokenInstructionArgs = {
-  mintNewEditionFromMasterEditionViaTokenArgs: MintNewEditionFromMasterEditionViaTokenArgs;
-};
+  mintNewEditionFromMasterEditionViaTokenArgs: MintNewEditionFromMasterEditionViaTokenArgs
+}
 /**
  * @category Instructions
  * @category MintNewEditionFromMasterEditionViaToken
  * @category generated
  */
-export const MintNewEditionFromMasterEditionViaTokenStruct = new beet.BeetArgsStruct<
-  MintNewEditionFromMasterEditionViaTokenInstructionArgs & {
-    instructionDiscriminator: number;
-  }
->(
-  [
-    ['instructionDiscriminator', beet.u8],
+export const MintNewEditionFromMasterEditionViaTokenStruct =
+  new beet.BeetArgsStruct<
+    MintNewEditionFromMasterEditionViaTokenInstructionArgs & {
+      instructionDiscriminator: number
+    }
+  >(
     [
-      'mintNewEditionFromMasterEditionViaTokenArgs',
-      mintNewEditionFromMasterEditionViaTokenArgsBeet,
+      ['instructionDiscriminator', beet.u8],
+      [
+        'mintNewEditionFromMasterEditionViaTokenArgs',
+        mintNewEditionFromMasterEditionViaTokenArgsBeet,
+      ],
     ],
-  ],
-  'MintNewEditionFromMasterEditionViaTokenInstructionArgs',
-);
+    'MintNewEditionFromMasterEditionViaTokenInstructionArgs'
+  )
 /**
  * Accounts required by the _MintNewEditionFromMasterEditionViaToken_ instruction
  *
- * @property [_writable_] newMetadata New Metadata key (pda of ['metadata', program id, mint id])
- * @property [_writable_] newEdition New Edition (pda of ['metadata', program id, mint id, 'edition'])
- * @property [_writable_] masterEdition Master Record Edition V2 (pda of ['metadata', program id, master metadata mint id, 'edition'])
- * @property [_writable_] newMint Mint of new token - THIS WILL TRANSFER AUTHORITY AWAY FROM THIS KEY
- * @property [_writable_] editionMarkPda Edition pda to mark creation - will be checked for pre-existence. (pda of ['metadata', program id, master metadata mint id, 'edition', edition_number]) where edition_number is NOT the edition number you pass in args but actually edition_number = floor(edition/EDITION_MARKER_BIT_SIZE).
- * @property [**signer**] newMintAuthority Mint authority of new mint
- * @property [_writable_, **signer**] payer payer
- * @property [**signer**] tokenAccountOwner owner of token account containing master token (#8)
- * @property [] tokenAccount token account containing token from master metadata mint
- * @property [] newMetadataUpdateAuthority Update authority info for new metadata
- * @property [] metadata Master record metadata account
+ * @property [_writable_] newMetadata
+ * @property [_writable_] newEdition
+ * @property [_writable_] masterEdition
+ * @property [_writable_] newMint
+ * @property [_writable_] editionMarkPda
+ * @property [**signer**] newMintAuthority
+ * @property [_writable_, **signer**] payer
+ * @property [**signer**] tokenAccountOwner
+ * @property [] tokenAccount
+ * @property [] newMetadataUpdateAuthority
+ * @property [] metadata
  * @category Instructions
  * @category MintNewEditionFromMasterEditionViaToken
  * @category generated
  */
 export type MintNewEditionFromMasterEditionViaTokenInstructionAccounts = {
-  newMetadata: web3.PublicKey;
-  newEdition: web3.PublicKey;
-  masterEdition: web3.PublicKey;
-  newMint: web3.PublicKey;
-  editionMarkPda: web3.PublicKey;
-  newMintAuthority: web3.PublicKey;
-  payer: web3.PublicKey;
-  tokenAccountOwner: web3.PublicKey;
-  tokenAccount: web3.PublicKey;
-  newMetadataUpdateAuthority: web3.PublicKey;
-  metadata: web3.PublicKey;
-  tokenProgram?: web3.PublicKey;
-  systemProgram?: web3.PublicKey;
-  rent?: web3.PublicKey;
-};
+  newMetadata: web3.PublicKey
+  newEdition: web3.PublicKey
+  masterEdition: web3.PublicKey
+  newMint: web3.PublicKey
+  editionMarkPda: web3.PublicKey
+  newMintAuthority: web3.PublicKey
+  payer: web3.PublicKey
+  tokenAccountOwner: web3.PublicKey
+  tokenAccount: web3.PublicKey
+  newMetadataUpdateAuthority: web3.PublicKey
+  metadata: web3.PublicKey
+  tokenProgram?: web3.PublicKey
+  systemProgram?: web3.PublicKey
+  rent?: web3.PublicKey
+}
 
-export const mintNewEditionFromMasterEditionViaTokenInstructionDiscriminator = 11;
+export const mintNewEditionFromMasterEditionViaTokenInstructionDiscriminator = 11
 
 /**
  * Creates a _MintNewEditionFromMasterEditionViaToken_ instruction.
@@ -95,12 +96,13 @@ export const mintNewEditionFromMasterEditionViaTokenInstructionDiscriminator = 1
 export function createMintNewEditionFromMasterEditionViaTokenInstruction(
   accounts: MintNewEditionFromMasterEditionViaTokenInstructionAccounts,
   args: MintNewEditionFromMasterEditionViaTokenInstructionArgs,
-  programId = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+  programId = new web3.PublicKey('Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL')
 ) {
   const [data] = MintNewEditionFromMasterEditionViaTokenStruct.serialize({
-    instructionDiscriminator: mintNewEditionFromMasterEditionViaTokenInstructionDiscriminator,
+    instructionDiscriminator:
+      mintNewEditionFromMasterEditionViaTokenInstructionDiscriminator,
     ...args,
-  });
+  })
   const keys: web3.AccountMeta[] = [
     {
       pubkey: accounts.newMetadata,
@@ -167,20 +169,20 @@ export function createMintNewEditionFromMasterEditionViaTokenInstruction(
       isWritable: false,
       isSigner: false,
     },
-  ];
+  ]
 
   if (accounts.rent != null) {
     keys.push({
       pubkey: accounts.rent,
       isWritable: false,
       isSigner: false,
-    });
+    })
   }
 
   const ix = new web3.TransactionInstruction({
     programId,
     keys,
     data,
-  });
-  return ix;
+  })
+  return ix
 }

@@ -5,10 +5,10 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import * as web3 from '@solana/web3.js';
-import * as beetSolana from '@metaplex-foundation/beet-solana';
-import { Key, keyBeet } from '../types/Key';
+import * as beet from '@metaplex-foundation/beet'
+import * as web3 from '@solana/web3.js'
+import * as beetSolana from '@metaplex-foundation/beet-solana'
+import { Key, keyBeet } from '../types/Key'
 
 /**
  * Arguments used to create {@link EditionMarkerV2}
@@ -16,9 +16,9 @@ import { Key, keyBeet } from '../types/Key';
  * @category generated
  */
 export type EditionMarkerV2Args = {
-  key: Key;
-  ledger: Uint8Array;
-};
+  key: Key
+  ledger: Uint8Array
+}
 /**
  * Holds the data for the {@link EditionMarkerV2} Account and provides de/serialization
  * functionality for that data
@@ -33,7 +33,7 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    * Creates a {@link EditionMarkerV2} instance from the provided args.
    */
   static fromArgs(args: EditionMarkerV2Args) {
-    return new EditionMarkerV2(args.key, args.ledger);
+    return new EditionMarkerV2(args.key, args.ledger)
   }
 
   /**
@@ -42,9 +42,9 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    */
   static fromAccountInfo(
     accountInfo: web3.AccountInfo<Buffer>,
-    offset = 0,
+    offset = 0
   ): [EditionMarkerV2, number] {
-    return EditionMarkerV2.deserialize(accountInfo.data, offset);
+    return EditionMarkerV2.deserialize(accountInfo.data, offset)
   }
 
   /**
@@ -56,13 +56,16 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
   static async fromAccountAddress(
     connection: web3.Connection,
     address: web3.PublicKey,
-    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig,
+    commitmentOrConfig?: web3.Commitment | web3.GetAccountInfoConfig
   ): Promise<EditionMarkerV2> {
-    const accountInfo = await connection.getAccountInfo(address, commitmentOrConfig);
+    const accountInfo = await connection.getAccountInfo(
+      address,
+      commitmentOrConfig
+    )
     if (accountInfo == null) {
-      throw new Error(`Unable to find EditionMarkerV2 account at ${address}`);
+      throw new Error(`Unable to find EditionMarkerV2 account at ${address}`)
     }
-    return EditionMarkerV2.fromAccountInfo(accountInfo, 0)[0];
+    return EditionMarkerV2.fromAccountInfo(accountInfo, 0)[0]
   }
 
   /**
@@ -72,9 +75,11 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    * @param programId - the program that owns the accounts we are filtering
    */
   static gpaBuilder(
-    programId: web3.PublicKey = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'),
+    programId: web3.PublicKey = new web3.PublicKey(
+      'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
+    )
   ) {
-    return beetSolana.GpaBuilder.fromStruct(programId, editionMarkerV2Beet);
+    return beetSolana.GpaBuilder.fromStruct(programId, editionMarkerV2Beet)
   }
 
   /**
@@ -82,7 +87,7 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    * @returns a tuple of the account data and the offset up to which the buffer was read to obtain it.
    */
   static deserialize(buf: Buffer, offset = 0): [EditionMarkerV2, number] {
-    return editionMarkerV2Beet.deserialize(buf, offset);
+    return editionMarkerV2Beet.deserialize(buf, offset)
   }
 
   /**
@@ -90,7 +95,7 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    * @returns a tuple of the created Buffer and the offset up to which the buffer was written to store it.
    */
   serialize(): [Buffer, number] {
-    return editionMarkerV2Beet.serialize(this);
+    return editionMarkerV2Beet.serialize(this)
   }
 
   /**
@@ -101,8 +106,8 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
    * depends on them
    */
   static byteSize(args: EditionMarkerV2Args) {
-    const instance = EditionMarkerV2.fromArgs(args);
-    return editionMarkerV2Beet.toFixedFromValue(instance).byteSize;
+    const instance = EditionMarkerV2.fromArgs(args)
+    return editionMarkerV2Beet.toFixedFromValue(instance).byteSize
   }
 
   /**
@@ -116,9 +121,12 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
   static async getMinimumBalanceForRentExemption(
     args: EditionMarkerV2Args,
     connection: web3.Connection,
-    commitment?: web3.Commitment,
+    commitment?: web3.Commitment
   ): Promise<number> {
-    return connection.getMinimumBalanceForRentExemption(EditionMarkerV2.byteSize(args), commitment);
+    return connection.getMinimumBalanceForRentExemption(
+      EditionMarkerV2.byteSize(args),
+      commitment
+    )
   }
 
   /**
@@ -129,7 +137,7 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
     return {
       key: 'Key.' + Key[this.key],
       ledger: this.ledger,
-    };
+    }
   }
 }
 
@@ -137,11 +145,14 @@ export class EditionMarkerV2 implements EditionMarkerV2Args {
  * @category Accounts
  * @category generated
  */
-export const editionMarkerV2Beet = new beet.FixableBeetStruct<EditionMarkerV2, EditionMarkerV2Args>(
+export const editionMarkerV2Beet = new beet.FixableBeetStruct<
+  EditionMarkerV2,
+  EditionMarkerV2Args
+>(
   [
     ['key', keyBeet],
     ['ledger', beet.bytes],
   ],
   EditionMarkerV2.fromArgs,
-  'EditionMarkerV2',
-);
+  'EditionMarkerV2'
+)

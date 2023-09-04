@@ -5,8 +5,8 @@
  * See: https://github.com/metaplex-foundation/solita
  */
 
-import * as beet from '@metaplex-foundation/beet';
-import { Collection, collectionBeet } from './Collection';
+import * as beet from '@metaplex-foundation/beet'
+import { Collection, collectionBeet } from './Collection'
 /**
  * This type is used to derive the {@link CollectionToggle} type as well as the de/serializer.
  * However don't refer to it in your code but use the {@link CollectionToggle} type instead.
@@ -17,10 +17,10 @@ import { Collection, collectionBeet } from './Collection';
  * @private
  */
 export type CollectionToggleRecord = {
-  None: void /* scalar variant */;
-  Clear: void /* scalar variant */;
-  Set: { fields: [Collection] };
-};
+  None: void /* scalar variant */
+  Clear: void /* scalar variant */
+  Set: { fields: [Collection] }
+}
 
 /**
  * Union type respresenting the CollectionToggle data enum defined in Rust.
@@ -33,17 +33,17 @@ export type CollectionToggleRecord = {
  * @category enums
  * @category generated
  */
-export type CollectionToggle = beet.DataEnumKeyAsKind<CollectionToggleRecord>;
+export type CollectionToggle = beet.DataEnumKeyAsKind<CollectionToggleRecord>
 
 export const isCollectionToggleNone = (
-  x: CollectionToggle,
-): x is CollectionToggle & { __kind: 'None' } => x.__kind === 'None';
+  x: CollectionToggle
+): x is CollectionToggle & { __kind: 'None' } => x.__kind === 'None'
 export const isCollectionToggleClear = (
-  x: CollectionToggle,
-): x is CollectionToggle & { __kind: 'Clear' } => x.__kind === 'Clear';
+  x: CollectionToggle
+): x is CollectionToggle & { __kind: 'Clear' } => x.__kind === 'Clear'
 export const isCollectionToggleSet = (
-  x: CollectionToggle,
-): x is CollectionToggle & { __kind: 'Set' } => x.__kind === 'Set';
+  x: CollectionToggle
+): x is CollectionToggle & { __kind: 'Set' } => x.__kind === 'Set'
 
 /**
  * @category userTypes
@@ -56,7 +56,7 @@ export const collectionToggleBeet = beet.dataEnum<CollectionToggleRecord>([
     'Set',
     new beet.BeetArgsStruct<CollectionToggleRecord['Set']>(
       [['fields', beet.fixedSizeTuple([collectionBeet])]],
-      'CollectionToggleRecord["Set"]',
+      'CollectionToggleRecord["Set"]'
     ),
   ],
-]) as beet.FixableBeet<CollectionToggle, CollectionToggle>;
+]) as beet.FixableBeet<CollectionToggle, CollectionToggle>
