@@ -338,7 +338,7 @@ impl BurnV1Builder {
                 "Sysvar1nstructions1111111111111111111111111"
             )),
             spl_token_program: self.spl_token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
         };
         let args = BurnV1InstructionArgs {

@@ -158,7 +158,7 @@ impl BurnNftBuilder {
                 .master_edition_account
                 .expect("master_edition_account is not set"),
             spl_token_program: self.spl_token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
             collection_metadata: self.collection_metadata,
         };

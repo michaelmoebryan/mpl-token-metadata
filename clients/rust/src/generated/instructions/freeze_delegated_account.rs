@@ -120,7 +120,7 @@ impl FreezeDelegatedAccountBuilder {
             edition: self.edition.expect("edition is not set"),
             mint: self.mint.expect("mint is not set"),
             token_program: self.token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
         };
 

@@ -382,10 +382,10 @@ impl TransferV1Builder {
                 "Sysvar1nstructions1111111111111111111111111"
             )),
             spl_token_program: self.spl_token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
             spl_ata_program: self.spl_ata_program.unwrap_or(solana_program::pubkey!(
-                "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+                "AAAbAgYqexzo3vo41zP5RWQDVNcEqeo9BjBhGTLvRRJe"
             )),
             authorization_rules_program: self.authorization_rules_program,
             authorization_rules: self.authorization_rules,

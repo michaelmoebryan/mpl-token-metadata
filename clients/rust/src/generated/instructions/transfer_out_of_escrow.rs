@@ -253,10 +253,10 @@ impl TransferOutOfEscrowBuilder {
                 .system_program
                 .unwrap_or(solana_program::pubkey!("11111111111111111111111111111111")),
             ata_program: self.ata_program.unwrap_or(solana_program::pubkey!(
-                "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+                "AAAbAgYqexzo3vo41zP5RWQDVNcEqeo9BjBhGTLvRRJe"
             )),
             token_program: self.token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
             sysvar_instructions: self.sysvar_instructions.unwrap_or(solana_program::pubkey!(
                 "Sysvar1nstructions1111111111111111111111111"

@@ -135,7 +135,7 @@ export function burnEditionNft(
   if (!resolvedAccounts.splTokenProgram.value) {
     resolvedAccounts.splTokenProgram.value = context.programs.getPublicKey(
       'splToken',
-      'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+      'TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb'
     );
     resolvedAccounts.splTokenProgram.isWritable = false;
   }

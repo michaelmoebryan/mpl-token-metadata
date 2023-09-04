@@ -338,7 +338,7 @@ impl MintNewEditionFromMasterEditionViaVaultProxyBuilder {
                 .expect("new_metadata_update_authority is not set"),
             metadata: self.metadata.expect("metadata is not set"),
             token_program: self.token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
             token_vault_program: self
                 .token_vault_program

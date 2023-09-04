@@ -226,7 +226,7 @@ impl BurnEditionNftBuilder {
                 .edition_marker_account
                 .expect("edition_marker_account is not set"),
             spl_token_program: self.spl_token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
         };
 

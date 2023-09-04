@@ -227,7 +227,7 @@ impl ApproveUseAuthorityBuilder {
             mint: self.mint.expect("mint is not set"),
             burner: self.burner.expect("burner is not set"),
             token_program: self.token_program.unwrap_or(solana_program::pubkey!(
-                "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+                "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             )),
             system_program: self
                 .system_program

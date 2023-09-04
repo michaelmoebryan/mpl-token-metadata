@@ -297,14 +297,14 @@ export function printV1(
   if (!resolvedAccounts.splTokenProgram.value) {
     resolvedAccounts.splTokenProgram.value = context.programs.getPublicKey(
       'splToken',
-      'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+      'TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb'
     );
     resolvedAccounts.splTokenProgram.isWritable = false;
   }
   if (!resolvedAccounts.splAtaProgram.value) {
     resolvedAccounts.splAtaProgram.value = context.programs.getPublicKey(
       'splAssociatedToken',
-      'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL'
+      'AAAbAgYqexzo3vo41zP5RWQDVNcEqeo9BjBhGTLvRRJe'
     );
     resolvedAccounts.splAtaProgram.isWritable = false;
   }
