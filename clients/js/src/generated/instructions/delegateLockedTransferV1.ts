@@ -151,7 +151,7 @@ export function delegateLockedTransferV1(
   // Program ID.
   const programId = context.programs.getPublicKey(
     'mplTokenMetadata',
-    'metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s'
+    'Do6Z4U9XdZwCGBUUwhWZSCUC6bh96bmgzhqi9zmz8dQL'
   );
 
   // Accounts.
@@ -272,7 +272,7 @@ export function delegateLockedTransferV1(
   if (!resolvedAccounts.splTokenProgram.value) {
     resolvedAccounts.splTokenProgram.value = context.programs.getPublicKey(
       'splToken',
-      'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+      'TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb'
     );
     resolvedAccounts.splTokenProgram.isWritable = false;
   }

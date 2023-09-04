@@ -328,7 +328,7 @@ kinobi.update(
             value: k.vEnum("TokenStandard", "ProgrammableNonFungible"),
             ifFalse: k.programDefault(
               "splToken",
-              "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+              "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             ),
           }),
         },
@@ -373,7 +373,7 @@ kinobi.update(
             value: k.vEnum("TokenStandard", "ProgrammableNonFungible"),
             ifFalse: k.programDefault(
               "splToken",
-              "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+              "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
             ),
           }),
         },
@@ -620,7 +620,7 @@ const tokenDelegateDefaults = {
     splTokenProgram: {
       defaultsTo: k.programDefault(
         "splToken",
-        "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        "TTTXzBCbNAJ7sJZErBkpdsgLWgwgR9gx6tud8m34YXb"
       ),
     },
   },
